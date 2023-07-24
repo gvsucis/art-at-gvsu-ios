@@ -4,9 +4,8 @@ FASTLANE ?= bundle exec fastlane
 SECRETS_DIR ?= ../art-at-gvsu-secrets/ios
 
 secrets:
-		cp -v $(SECRETS_DIR)/ArtAtGVSU/GoogleService-Info.plist ./ArtAtGVSU/GoogleService-Info.plist
-		cp -v $(SECRETS_DIR)/ArtAtGVSU/Secrets.plist ./ArtAtGVSU/Secrets.plist
-
+	cp -v $(SECRETS_DIR)/ArtAtGVSU/GoogleService-Info.plist ./ArtAtGVSU/GoogleService-Info.plist
+	cp -v $(SECRETS_DIR)/ArtAtGVSU/Secrets.plist ./ArtAtGVSU/Secrets.plist
 
 .PHONY: ci-test ci-secrets deploy-beta deploy-production deps secrets
 
