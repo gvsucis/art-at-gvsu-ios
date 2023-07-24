@@ -1,6 +1,6 @@
 # Art At GVSU
 
-[![CalVer 2023.07.1007][img_version]][url_version]
+[![CalVer 2023.07.1008][img_version]][url_version]
 
 ## Getting Started
 
@@ -13,7 +13,7 @@
 1. On the "Signing & Capabilities" tab, Enter the Team account info for the project. You'll need to get these credentials from a current team member.
 1. Hit <kbd>Command+R</kbd> and run the app using an iPhone or a simulator.
 
-[img_version]: https://img.shields.io/static/v1.svg?label=CalVer&message=2023.07.1007&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=CalVer&message=2023.07.1008&color=blue
 [url_version]: https://github.com/gvsucis/art-at-gvsu-v3
 
 ## Release
