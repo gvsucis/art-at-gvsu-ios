@@ -1,0 +1,3 @@
+# frozen_string_literal: true
+
+app_identifier("edu.gvsu.cis.masl.Art-at-GVSU")

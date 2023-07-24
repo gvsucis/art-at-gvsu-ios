@@ -1,0 +1,67 @@
+# frozen_string_literal: true
+
+opt_out_usage
+default_platform(:ios)
+
+
+platform :ios do
+  desc 'Runs all tests'
+  lane :test do
+    run_tests(
+      scheme: "ArtAtGVSU",
+      devices: ["iPhone 14"]
+    )
+  end
+
+  lane :beta do
+    setup_ci if ENV['CI']
+    match(type: 'appstore')
+    bump_beta_build_number
+    build_app
+    upload_to_testflight(
+      apple_id: ENV['APP_STORE_CONNECT_APPLE_ID'],
+      api_key_path: './app_store_connect_api_key.json',
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  lane :production do
+    setup_ci if ENV['CI']
+    match(type: "appstore")
+    build_app(scheme: "ArtAtGVSU")
+    upload_to_app_store(
+      submit_for_review: true,
+      automatic_release: true,
+      skip_screenshots: true,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      api_key_path: './app_store_connect_api_key.json',
+      # Comes from https://github.com/fastlane/fastlane/issues/5542#issuecomment-254201994
+      submission_information: {
+        add_id_info_limits_tracking: true,
+        add_id_info_serves_ads: false,
+        add_id_info_tracks_action: true,
+        add_id_info_tracks_install: true,
+        add_id_info_uses_idfa: true,
+        content_rights_has_rights: true,
+        content_rights_contains_third_party_content: true,
+        export_compliance_platform: 'ios',
+        export_compliance_compliance_required: false,
+        export_compliance_encryption_updated: false,
+        export_compliance_app_type: nil,
+        export_compliance_uses_encryption: false,
+        export_compliance_is_exempt: false,
+        export_compliance_contains_third_party_cryptography: false,
+        export_compliance_contains_proprietary_cryptography: false,
+        export_compliance_available_on_french_store: false
+      }
+    )
+  end
+
+  desc 'Update the beta build number with a unique git-based identifier'
+  lane :bump_beta_build_number do
+    prod_build_number = get_build_number.split('.').first
+    sha_hex = last_git_commit[:abbreviated_commit_hash].to_i(16)
+    increment_build_number({ build_number: "#{prod_build_number}.#{sha_hex}" })
+  end
+end

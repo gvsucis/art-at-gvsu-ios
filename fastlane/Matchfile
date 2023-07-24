@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+git_url(ENV["MATCHFILE_GIT_URL"])
+storage_mode("git")
+type("development")
+app_identifier("edu.gvsu.cis.masl.Art-at-GVSU")
+username(ENV["FASTLANE_USER"])

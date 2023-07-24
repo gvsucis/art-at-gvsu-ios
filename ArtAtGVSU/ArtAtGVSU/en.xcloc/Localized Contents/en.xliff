@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="ArtAtGVSU/Base.lproj/Main.storyboard" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="2Ly-ku-iI2.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "2Ly-ku-iI2";</note>
+      </trans-unit>
+      <trans-unit id="3nW-D7-0c6.title" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UINavigationItem"; title = "Title"; ObjectID = "3nW-D7-0c6";</note>
+      </trans-unit>
+      <trans-unit id="Ayb-2W-BpL.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "Ayb-2W-BpL";</note>
+      </trans-unit>
+      <trans-unit id="BOC-ET-8gc.normalTitle" xml:space="preserve">
+        <source>masl.cis.gvsu.edu</source>
+        <target>masl.cis.gvsu.edu</target>
+        <note>Class = "UIButton"; normalTitle = "masl.cis.gvsu.edu"; ObjectID = "BOC-ET-8gc";</note>
+      </trans-unit>
+      <trans-unit id="E9u-Gz-bvp.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "E9u-Gz-bvp";</note>
+      </trans-unit>
+      <trans-unit id="Efb-W9-TgH.text" xml:space="preserve">
+        <source>Subtitle</source>
+        <target>Subtitle</target>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "Efb-W9-TgH";</note>
+      </trans-unit>
+      <trans-unit id="Q8o-fl-9OL.text" xml:space="preserve">
+        <source>Version 1.9.9</source>
+        <target>Version 1.9.9</target>
+        <note>Class = "UITextView"; text = "Version 1.9.9"; ObjectID = "Q8o-fl-9OL";</note>
+      </trans-unit>
+      <trans-unit id="QZi-8n-dTS.title" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UINavigationItem"; title = "Title"; ObjectID = "QZi-8n-dTS";</note>
+      </trans-unit>
+      <trans-unit id="RBa-hb-auo.text" xml:space="preserve">
+        <source>The mission of grand Valley State University Art Gallery is to encourage appreciaton and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the bemifit of a veriety of audienecs, in support of the interdisciplinary educational goals of university and for the benifit of the community at large. </source>
+        <target>The mission of grand Valley State University Art Gallery is to encourage appreciaton and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the bemifit of a veriety of audienecs, in support of the interdisciplinary educational goals of university and for the benifit of the community at large. </target>
+        <note>Class = "UITextView"; text = "The mission of grand Valley State University Art Gallery is to encourage appreciaton and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the bemifit of a veriety of audienecs, in support of the interdisciplinary educational goals of university and for the benifit of the community at large. "; ObjectID = "RBa-hb-auo";</note>
+      </trans-unit>
+      <trans-unit id="SeO-Ox-1mz.text" xml:space="preserve">
+        <source>Subtitle</source>
+        <target>Subtitle</target>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "SeO-Ox-1mz";</note>
+      </trans-unit>
+      <trans-unit id="b14-BX-OKo.text" xml:space="preserve">
+        <source>Art At GVSU is a colloborative project betweeen the Grand Valley State University's Art Gallery, School of Computing and the open-source collection management project Collective Access.</source>
+        <target>Art At GVSU is a colloborative project betweeen the Grand Valley State University's Art Gallery, School of Computing and the open-source collection management project Collective Access.</target>
+        <note>Class = "UITextView"; text = "Art At GVSU is a colloborative project betweeen the Grand Valley State University's Art Gallery, School of Computing and the open-source collection management project Collective Access."; ObjectID = "b14-BX-OKo";</note>
+      </trans-unit>
+      <trans-unit id="hiw-hK-dhg.text" xml:space="preserve">
+        <source>Subtitle</source>
+        <target>Subtitle</target>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "hiw-hK-dhg";</note>
+      </trans-unit>
+      <trans-unit id="lz0-z9-cDU.normalTitle" xml:space="preserve">
+        <source>GVSU Art Gallery</source>
+        <target>GVSU Art Gallery</target>
+        <note>Class = "UIButton"; normalTitle = "GVSU Art Gallery"; ObjectID = "lz0-z9-cDU";</note>
+      </trans-unit>
+      <trans-unit id="mae-AS-KHr.normalTitle" xml:space="preserve">
+        <source>More Apps by GVSU</source>
+        <target>More Apps by GVSU</target>
+        <note>Class = "UIButton"; normalTitle = "More Apps by GVSU"; ObjectID = "mae-AS-KHr";</note>
+      </trans-unit>
+      <trans-unit id="pWB-qd-YmP.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "pWB-qd-YmP";</note>
+      </trans-unit>
+      <trans-unit id="qnb-Lu-7H9.text" xml:space="preserve">
+        <source>No Text</source>
+        <target>No Text</target>
+        <note>Class = "UILabel"; text = "No Text"; ObjectID = "qnb-Lu-7H9";</note>
+      </trans-unit>
+      <trans-unit id="rDI-Q7-Tyn.text" xml:space="preserve">
+        <source>Detail</source>
+        <target>Detail</target>
+        <note>Class = "UILabel"; text = "Detail"; ObjectID = "rDI-Q7-Tyn";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="ArtAtGVSU/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Art At GVSU</source>
+        <target>Art At GVSU</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>ArtAtGVSU</source>
+        <target>ArtAtGVSU</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>Used to scan artwork barcodes.</source>
+        <target>Used to scan artwork barcodes.</target>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocationWhenInUseUsageDescription" xml:space="preserve">
+        <source>By accessing your location, this app can find you and help you navigate to your favorite Artwork.</source>
+        <target>By accessing your location, this app can find you and help you navigate to your favorite Artwork.</target>
+        <note>Privacy - Location When In Use Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,27 @@
+name: Deploy Beta
+
+on:
+  push:
+    branches: main
+
+jobs:
+  beta:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      - name: Setup Fastlane
+        run: bundle install
+      - name: Deploy Beta to Test Flight
+        env:
+          FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
+          ENCODED_SECRETS_PLIST: ${{ secrets.ENCODED_SECRETS_PLIST }}
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          ENCODED_APP_STORE_CONNECT_API_KEY: ${{ secrets.ENCODED_APP_STORE_CONNECT_API_KEY }}
+          APP_STORE_CONNECT_APPLE_ID: ${{ secrets.APP_STORE_CONNECT_APPLE_ID }}
+          MATCHFILE_GIT_URL: ${{ secrets.MATCHFILE_GIT_URL }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+        run: make deploy-beta

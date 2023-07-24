@@ -1,0 +1,28 @@
+[bumpver]
+current_version = "2023.07.1007"
+version_pattern = "YYYY.0M.BUILD"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[bumpver.file_patterns]
+"README.md" = [
+    "{version}",
+]
+"bumpver.toml" = [
+    'current_version = "{version}"',
+]
+"ArtAtGVSU.xcodeproj/project.pbxproj" = [
+    'MARKETING_VERSION = {version};',
+    'CURRENT_PROJECT_VERSION = BUILD;'
+]
+
+"ArtAtGVSU/Info.plist" = [
+    '<string>BUILD</string>'
+]
+
+"Tests/Info.plist" = [
+    '<string>BUILD</string>'
+]
+

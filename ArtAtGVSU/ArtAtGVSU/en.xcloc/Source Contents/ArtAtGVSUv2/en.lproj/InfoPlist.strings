@@ -1,0 +1,8 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Art At GVSU";
+/* Bundle name */
+"CFBundleName" = "ArtAtGVSU";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Used to scan artwork barcodes.";
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "By accessing your location, this app can find you and help you navigate to your favorite Artwork.";

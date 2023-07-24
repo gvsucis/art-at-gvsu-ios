@@ -1,0 +1,19 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      - name: Setup Fastlane
+        run: bundle install
+      - name: Run tests
+        env:
+          FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
+          ENCODED_SECRETS_PLIST: ${{ secrets.ENCODED_SECRETS_PLIST }}
+          ENCODED_GOOGLE_SERVICE_INFO_PLIST: ${{ secrets.ENCODED_GOOGLE_SERVICE_INFO_PLIST }}
+        run: make ci-test

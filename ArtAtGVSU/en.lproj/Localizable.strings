@@ -1,0 +1,110 @@
+/*
+ Localizable.strings
+ ArtAtGVSU
+
+ Created by lauren defrancesco on 2/27/20.
+ Copyright © 2021 Applied Computing Institute. All rights reserved.
+ */
+
+
+//more to translate
+"favorites" = "Favorites";
+"noFavorites" = "No Favorites added yet";
+"artist" = "Artist";
+"relatedObjects" = "Related Objects";
+"noArt" = "No Artwork found";
+"noArtists" = "No Artists found";
+"searchQR" = "Please search for artists or artwork or use the QR Code Scanner for details of an artwork";
+"viewAllFeatured" = "View all featured Art";
+"tours" = "Tours";
+
+"about" = "About";
+
+"Locations" = "Locations";
+
+"loading" = "Loading...";
+
+"featuredArt" = "Featured Art";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "2Ly-ku-iI2"; */
+"title" = "Title";
+
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Efb-W9-TgH"; */
+"subtitle" = "Subtitle";
+
+/* Class = "UITextView"; text = "Version 1.9.9"; ObjectID = "Q8o-fl-9OL"; */
+"version" = "Version";
+
+
+/* Class = "UITextView"; text = "The mission of grand Valley State University Art Gallery is to encourage appreciaton and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the bemifit of a veriety of audienecs, in support of the interdisciplinary educational goals of university and for the benifit of the community at large. "; ObjectID = "RBa-hb-auo"; */
+"mission" = "The mission of grand Valley State University Art Gallery is to encourage appreciaton and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the bemifit of a veriety of audienecs, in support of the interdisciplinary educational goals of university and for the benifit of the community at large.";
+
+
+/* Class = "UITextView"; text = "Art At GVSU is a colloborative project betweeen the Grand Valley State University's Art Gallery, School of Computing and the open-source collection management project Collective Access."; ObjectID = "b14-BX-OKo"; */
+"purpose" = "Art At GVSU is a colloborative project betweeen the Grand Valley State University's Art Gallery, School of Computing and the open-source collection management project Collective Access.";
+
+
+/* Class = "UIButton"; normalTitle = "GVSU Art Gallery"; ObjectID = "lz0-z9-cDU"; */
+"name" = "GVSU Art Gallery";
+
+/* Class = "UIButton"; normalTitle = "More Apps by GVSU"; ObjectID = "mae-AS-KHr"; */
+"moreApps" = "More Apps by GVSU";
+
+
+/* Class = "UILabel"; text = "No Text"; ObjectID = "qnb-Lu-7H9"; */
+"noText" = "No Text";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "rDI-Q7-Tyn"; */
+"detail" = "Detail";
+
+/** Navigation */
+"navigation_Featured" = "Featured";
+"navigation_Browse" = "Browse";
+"navigation_Tours" = "Tours";
+"navigation_Search" = "Search";
+"navigation_Favorites" = "Favorites";
+"navigation_Campuses" = "Campuses";
+"navigation_Settings" = "Settings";
+
+/** Artwork Detail */
+"artworkDetail_Title" = "Title";
+"artworkDetail_Artist" = "Artist";
+"artworkDetail_WorkDescription" = "Physical Description";
+"artworkDetail_HistoricalContext" = "Historical Context";
+"artworkDetail_WorkMedium" = "Medium";
+"artworkDetail_WorkDate" = "Work Date";
+"artworkDetail_Location" = "Location";
+"artworkDetail_Identifier" = "Identifier";
+"artworkDetail_CreditLine" = "Credit";
+"artworkDetail_RelatedWorks" = "Related Objects";
+
+/** Location Detail */
+"locationDetail_ChildLocations" = "Locations";
+"locationDetail_Artworks" = "Artwork";
+"locationDetail_Empty" = "Location is empty";
+
+/** Home */
+"home_browseCampuses" = "Browse Campuses";
+"home_featuredIndex" = "View All Featured";
+
+/** Featured Index */
+"featuredIndex_NavigationTitle" = "All Featured";
+
+/** Search */
+"search_Placeholder" = "Artworks, Artists";
+"search_filter_Artists" = "Artists";
+"search_filter_Artworks" = "Artworks";
+"search_noResultsFound" = "No results found";
+
+/** Settings */
+"settings_AboutTitle" = "About Art At GVSU";
+"settings_AboutDescription" = "The mission of Grand Valley State University Art Gallery is to encourage appreciation and understanding of art and its role in society through direct engagement with original works of art. The Art Gallery acquires, preserves, interprets, exhibits, and otherwise makes accessible works of art for the benefit of a variety of audiences, in support of the interdisciplinary educational goals of the University and for the benefit of the community at large.\n\nArt At GVSU is a collaborative project between the Grand Valley State University's Art Gallery, School of Computing, and the open-source collection management project Collective Access.";
+"settings_AppearanceTitle" = "Appearance";
+"settings_AppearanceDefault" = "System Default";
+"settings_AppearanceLight" = "Light";
+"settings_AppearanceDark" = "Dark";
+"settings_ArtGalleryLinkTitle" = "GVSU Art Gallery";
+"settings_MoreAppsByGVSULinkTitle" = "More Apps by GVSU";
+"settings_SchoolOfComputingLinkTitle" = "GVSU Applied Computing Institute";
+"settings_BuildInformationTitle" = "Build Information";

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cCellBlur" rowHeight="200" id="3LR-nr-3he" customClass="CustomCellBlurTableViewCell" customModule="ArtAtGVSU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3LR-nr-3he" id="4AE-mh-CH5">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-tb-efB">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="200"/>
+                    </imageView>
+                    <visualEffectView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="XIM-Oy-BsG">
+                        <rect key="frame" x="0.0" y="161" width="420" height="39"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="E2W-k1-PY9">
+                            <rect key="frame" x="0.0" y="0.0" width="420" height="39"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HJ-NI-iHO">
+                                    <rect key="frame" x="5" y="9.333333333333341" width="41.666666666666664" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </label>
+                                <visualEffectView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hD0-yk-xCd">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="J29-AF-Gtf">
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <vibrancyEffect>
+                                        <blurEffect style="dark"/>
+                                    </vibrancyEffect>
+                                </visualEffectView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0al-rJ-Qjq" userLabel="Custom Building Count Label">
+                                    <rect key="frame" x="381.66666666666669" y="12.333333333333343" width="30.333333333333314" height="14.333333333333336"/>
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="0al-rJ-Qjq" secondAttribute="trailing" constant="8" id="amX-yc-MMC"/>
+                                <constraint firstItem="5HJ-NI-iHO" firstAttribute="centerY" secondItem="E2W-k1-PY9" secondAttribute="centerY" id="pgD-NT-YnP"/>
+                                <constraint firstItem="5HJ-NI-iHO" firstAttribute="leading" secondItem="E2W-k1-PY9" secondAttribute="leading" constant="5" id="yVi-2e-KjE"/>
+                            </constraints>
+                        </view>
+                        <constraints>
+                            <constraint firstItem="0al-rJ-Qjq" firstAttribute="centerY" secondItem="XIM-Oy-BsG" secondAttribute="centerY" id="YiL-Cb-f0a"/>
+                        </constraints>
+                        <blurEffect style="dark"/>
+                    </visualEffectView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nWb-tb-efB" firstAttribute="leading" secondItem="4AE-mh-CH5" secondAttribute="leading" id="46L-fL-jLD"/>
+                    <constraint firstItem="XIM-Oy-BsG" firstAttribute="leading" secondItem="nWb-tb-efB" secondAttribute="leading" id="CYX-5s-m3n"/>
+                    <constraint firstItem="XIM-Oy-BsG" firstAttribute="top" secondItem="nWb-tb-efB" secondAttribute="top" constant="161" id="Cfh-xy-kvt"/>
+                    <constraint firstAttribute="trailing" secondItem="nWb-tb-efB" secondAttribute="trailing" id="D4a-82-zwc"/>
+                    <constraint firstItem="XIM-Oy-BsG" firstAttribute="width" secondItem="nWb-tb-efB" secondAttribute="width" id="K3M-bP-QGr"/>
+                    <constraint firstItem="nWb-tb-efB" firstAttribute="top" secondItem="4AE-mh-CH5" secondAttribute="top" id="Oed-nA-8eC"/>
+                    <constraint firstAttribute="bottom" secondItem="nWb-tb-efB" secondAttribute="bottom" id="WJY-8l-Bjq"/>
+                    <constraint firstItem="XIM-Oy-BsG" firstAttribute="height" secondItem="nWb-tb-efB" secondAttribute="height" constant="-161" id="a69-w1-YIj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="custom_image" destination="nWb-tb-efB" id="1r1-rY-5kd"/>
+                <outlet property="custom_label" destination="5HJ-NI-iHO" id="khM-gC-KHU"/>
+                <outlet property="custom_secondary_label" destination="0al-rJ-Qjq" id="ZTG-lH-kiB"/>
+            </connections>
+            <point key="canvasLocation" x="227.536231884058" y="245.75892857142856"/>
+        </tableViewCell>
+    </objects>
+</document>
