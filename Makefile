@@ -11,7 +11,7 @@ secrets:
 
 deps:
 	bundle install
-	pip3 install bumpver==2023.1124
+	pip3 install bumpver==2023.1125
 
 .PHONY: bump-version
 bump-version:
