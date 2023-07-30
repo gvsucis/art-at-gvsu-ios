@@ -8,11 +8,19 @@
 
 import Foundation
 
-struct Favorite {
+struct Favorite: Identifiable, Comparable {
     var artworkID: String
     var artworkName: String
-    var imageURL: String
-    var artistName: String    
+    var imageURL: URL?
+    var artistName: String
+    
+    var id: String {
+        return artworkID
+    }
+    
+    static func < (lhs: Favorite, rhs: Favorite) -> Bool {
+        return lhs.id < rhs.id
+    }
 }
 
 class FavoritesStore: ObservableObject {
@@ -41,10 +49,11 @@ class FavoritesStore: ObservableObject {
     }
 
     func getFavorite() -> Bool {
-        if let favorites = UserDefaults.standard.object(forKey: "favoritesDict") as? [String : [String:String]] {
+        if let favorites = UserDefaults.standard.object(forKey: favoritesKey) as? Favorites {
             return favorites.keys.contains(artworkID)
         } else {
-            UserDefaults.standard.set([], forKey: "favoritesDict")
+            let emptyFavorites:  [String: [String: String]] = [:]
+            UserDefaults.standard.set(emptyFavorites, forKey: favoritesKey)
             return false
         }
     }
@@ -69,25 +78,33 @@ class FavoritesStore: ObservableObject {
             favorites[artwork.id] = values
         }
 
-        UserDefaults.standard.set(favorites, forKey: "favoritesDict")
+        UserDefaults.standard.set(favorites, forKey: favoritesKey)
     }
 
     static func favorites() -> [Favorite] {
-        return findFavoritesStore().values.map { artwork in
-            return Favorite(
-                artworkID: artwork["id"] ?? "",
-                artworkName: artwork["artworkName"] ?? "",
-                imageURL: artwork["url"] ?? "",
-                artistName: artwork["artistName"] ?? ""
-            )
-        }
+        return mapFavorites(findFavoritesStore()).sorted()
     }
 
-    private static func findFavoritesStore() -> [String: [String:String]] {
-        if let favorites = UserDefaults.standard.object(forKey: "favoritesDict") as? [String : [String:String]] {
+    private static func findFavoritesStore() -> Favorites {
+        if let favorites = UserDefaults.standard.object(forKey: favoritesKey) as? Favorites {
             return favorites
         } else {
             return [:]
         }
+    }
+}
+
+let favoritesKey = "favoritesDict"
+
+typealias Favorites = [String: [String:String]]
+
+func mapFavorites(_ storedFavorites: Favorites) -> [Favorite] {
+    return storedFavorites.values.map { artwork in
+        return Favorite(
+            artworkID: artwork["id"] ?? "",
+            artworkName: artwork["artworkName"] ?? "",
+            imageURL: optionalURL(artwork["url"]),
+            artistName: artwork["artistName"] ?? ""
+        )
     }
 }

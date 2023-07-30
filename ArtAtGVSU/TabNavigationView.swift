@@ -77,7 +77,7 @@ struct TabNavigationView: View {
             .id(tabIDs[SEARCH_TAB])
             .tag(SEARCH_TAB)
             NavigationView {
-                FavoriteIndexRepresentable(id: tabIDs[FAVORITES_TAB])
+                FavoritesIndexView()
                     .navigationBarTitle("navigation_Favorites", displayMode: .inline)
                     .toolbar {
                         Button(action: shareFavorites, label: { Image(systemName: "square.and.arrow.up") })
@@ -86,6 +86,7 @@ struct TabNavigationView: View {
             .tabItem {
                 Label("navigation_Favorites", systemImage: "heart.fill")
             }
+            .id(tabIDs[FAVORITES_TAB])
             .tag(FAVORITES_TAB)
         }
         .navigationViewStyle(StackNavigationViewStyle())
