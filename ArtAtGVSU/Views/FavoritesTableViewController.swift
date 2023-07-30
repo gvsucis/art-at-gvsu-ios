@@ -46,10 +46,10 @@ class FavoritesTableViewController: UITableViewController {
         let cell:CustomCellBlurTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cCellBlur", for: indexPath) as! CustomCellBlurTableViewCell
         let favorite = favorites[(indexPath as NSIndexPath).row]
         cell.custom_label.text = favorite.artworkName
-        let imageURL = URL(string: favorite.imageURL)
-        if let imageURL = imageURL {
-            cell.custom_image.sd_setImage(with: imageURL)
-        }
+//        let imageURL = URL(string: favorite.imageURL)
+//        if let imageURL = imageURL {
+//            cell.custom_image.sd_setImage(with: imageURL)
+//        }
         cell.custom_secondary_label.text =  ""
         return cell
     }

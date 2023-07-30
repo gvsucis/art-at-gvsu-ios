@@ -21,6 +21,7 @@
 		8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */; };
 		8A010EC926B7649600EEFAF1 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A010EC826B7649600EEFAF1 /* Translate.swift */; };
 		8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */; };
+		8A37B27B2A76F836000E7459 /* FavoritesIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */; };
 		8A3E55842623DE67009E9BFA /* ObjectDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E55832623DE67009E9BFA /* ObjectDetail.swift */; };
 		8A3E55A72623E59A009E9BFA /* String+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3E55A62623E59A009E9BFA /* String+Parsing.swift */; };
 		8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F76592A4A805E00B2BCB0 /* TourAnnotation.swift */; };
@@ -173,6 +174,7 @@
 		8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIndexView.swift; sourceTree = "<group>"; };
 		8A010EC826B7649600EEFAF1 /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchIndexModel.swift; sourceTree = "<group>"; };
+		8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesIndexView.swift; sourceTree = "<group>"; };
 		8A3E55832623DE67009E9BFA /* ObjectDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetail.swift; sourceTree = "<group>"; };
 		8A3E55A62623E59A009E9BFA /* String+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Parsing.swift"; sourceTree = "<group>"; };
 		8A3F76592A4A805E00B2BCB0 /* TourAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourAnnotation.swift; sourceTree = "<group>"; };
@@ -325,6 +327,14 @@
 				8AF05705262A061300E62F29 /* Carousel */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A37B2772A76F5F0000E7459 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		8A659EC02A453D0800214141 /* Tours */ = {
@@ -602,6 +612,7 @@
 		8AFEF15B263DDA0800835F6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8A37B2772A76F5F0000E7459 /* Favorites */,
 				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
 				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
@@ -888,6 +899,7 @@
 				8A87BFCD265AA55100511B3B /* ArtistDetailView.swift in Sources */,
 				8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */,
 				8A87BFCB265AA2EA00511B3B /* Artist.swift in Sources */,
+				8A37B27B2A76F836000E7459 /* FavoritesIndexView.swift in Sources */,
 				8A9BD337263F33D900B816BA /* ArtworkDetailRelatedWorks.swift in Sources */,
 				8A9F2BDD2664535F00C40F2F /* Appearance.swift in Sources */,
 				8A87BFD7265ACBE900511B3B /* DetailDivider.swift in Sources */,
