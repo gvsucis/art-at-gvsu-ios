@@ -13,6 +13,8 @@ jobs:
         uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
       - name: Setup Fastlane
         run: bundle install
+      - name: Bump beta version
+        run: bumpver update --no-commit
       - name: Deploy Beta to Test Flight
         env:
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
