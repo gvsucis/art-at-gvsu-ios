@@ -1,1 +1,1 @@
-Refresh tour feature with Apple Maps
+Adds Crashlytics to anonymously help improve the app through automated bug reports.
