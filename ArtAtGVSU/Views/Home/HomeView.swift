@@ -1,11 +1,3 @@
-//
-//  FeaturedIndexView.swift
-//  ArtAtGVSU
-//
-//  Created by Josiah Campbell on 5/23/21.
-//  Copyright © 2021 Applied Computing Institute. All rights reserved.
-//
-
 import SwiftUI
 
 struct HomeView: View {
