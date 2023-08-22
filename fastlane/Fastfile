@@ -23,6 +23,7 @@ platform :ios do
       api_key_path: './app_store_connect_api_key.json',
       skip_waiting_for_build_processing: true
     )
+    slack(message: "iOS app successfully deployed to Test Flight!")
   end
 
   lane :production do
@@ -56,6 +57,7 @@ platform :ios do
         export_compliance_available_on_french_store: false
       }
     )
+    slack(message: "iOS app successfully released to the App Store!")
   end
 
   desc 'Update the beta build number with a unique git-based identifier'

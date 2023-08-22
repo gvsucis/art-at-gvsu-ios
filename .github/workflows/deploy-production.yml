@@ -32,6 +32,7 @@ jobs:
           MATCHFILE_GIT_URL: ${{ secrets.MATCHFILE_GIT_URL }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          SLACK_URL: ${{ secrets.SLACK_URL }}
         run: make deploy-production
       - name: Sync versioning to Main
         run: git push --follow-tags
