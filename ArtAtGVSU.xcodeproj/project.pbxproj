@@ -3,10 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		36D643062ADC907F00104838 /* PreBuildActions */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 36D643072ADC907F00104838 /* Build configuration list for PBXAggregateTarget "PreBuildActions" */;
+			buildPhases = (
+				36D6430A2ADC909400104838 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = PreBuildActions;
+			productName = PreBuildActions;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61626501F4800A591C2 /* LocationIndexView.swift */; };
 		8A00C61B26502C9900A591C2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61A26502C9900A591C2 /* Location.swift */; };
 		8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */; };
@@ -45,7 +60,6 @@
 		8A659EE02A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */; };
 		8A659EE32A47778B00214141 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 8A659EE22A47778B00214141 /* DequeModule */; };
 		8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */; };
-		8A7E5F472A588FE4009F89E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A7E5F462A588FE4009F89E8 /* GoogleService-Info.plist */; };
 		8A7E5F492A5892A7009F89E8 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E5F482A5892A7009F89E8 /* Properties.swift */; };
 		8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A7E5F4A2A589318009F89E8 /* Secrets.plist */; };
 		8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87BFC6265AA05300511B3B /* EntityDetail.swift */; };
@@ -131,6 +145,20 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		36D6430B2ADC913900104838 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D228033A1C7A588B008B630A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36D643062ADC907F00104838;
+			remoteInfo = PreBuildActions;
+		};
+		36D6430D2ADC914A00104838 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D228033A1C7A588B008B630A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36D643062ADC907F00104838;
+			remoteInfo = PreBuildActions;
+		};
 		8ACF7FE92623ECA5006DA945 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D228033A1C7A588B008B630A /* Project object */;
@@ -155,6 +183,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
 		8A00C61A26502C9900A591C2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchDetail.swift; sourceTree = "<group>"; };
@@ -190,7 +219,6 @@
 		8A659EDC2A47727F00214141 /* LocationGeoreferenceParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGeoreferenceParsingTest.swift; sourceTree = "<group>"; };
 		8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourMapView.swift; sourceTree = "<group>"; };
-		8A7E5F462A588FE4009F89E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A7E5F482A5892A7009F89E8 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		8A7E5F4A2A589318009F89E8 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		8A87BFC6265AA05300511B3B /* EntityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetail.swift; sourceTree = "<group>"; };
@@ -645,7 +673,7 @@
 		D22803441C7A588B008B630A /* ArtAtGVSU */ = {
 			isa = PBXGroup;
 			children = (
-				8A7E5F462A588FE4009F89E8 /* GoogleService-Info.plist */,
+				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
 				8A659ED92A47722500214141 /* Adapters */,
 				D22803541C7A588B008B630A /* Info.plist */,
 				C4CEC60F29019E43007440BA /* art.scnassets */,
@@ -703,6 +731,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				36D6430C2ADC913900104838 /* PBXTargetDependency */,
 				8ACF7FEA2623ECA5006DA945 /* PBXTargetDependency */,
 			);
 			name = Tests;
@@ -724,6 +753,7 @@
 				C4DC7B1A29845BB100914A45 /* PBXBuildRule */,
 			);
 			dependencies = (
+				36D6430E2ADC914A00104838 /* PBXTargetDependency */,
 			);
 			name = ArtAtGVSU;
 			packageProductDependencies = (
@@ -749,6 +779,9 @@
 				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Applied Computing Institute";
 				TargetAttributes = {
+					36D643062ADC907F00104838 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					8ACF7FE32623ECA5006DA945 = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = D22803411C7A588B008B630A;
@@ -783,6 +816,7 @@
 			targets = (
 				D22803411C7A588B008B630A /* ArtAtGVSU */,
 				8ACF7FE32623ECA5006DA945 /* Tests */,
+				36D643062ADC907F00104838 /* PreBuildActions */,
 			);
 		};
 /* End PBXProject section */
@@ -800,8 +834,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */,
-				8A7E5F472A588FE4009F89E8 /* GoogleService-Info.plist in Resources */,
 				8AFEF174263DDA0800835F6D /* Localizable.strings in Resources */,
+				36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */,
 				8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */,
 				8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */,
 				C4CEC61029019E44007440BA /* art.scnassets in Resources */,
@@ -813,6 +847,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		36D6430A2ADC909400104838 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/GoogleService-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$SRCROOT/scripts/build-phases/generate-credentials.sh\n";
+		};
 		8A1631D22A929B6D00167F13 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -947,6 +999,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		36D6430C2ADC913900104838 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36D643062ADC907F00104838 /* PreBuildActions */;
+			targetProxy = 36D6430B2ADC913900104838 /* PBXContainerItemProxy */;
+		};
+		36D6430E2ADC914A00104838 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36D643062ADC907F00104838 /* PreBuildActions */;
+			targetProxy = 36D6430D2ADC914A00104838 /* PBXContainerItemProxy */;
+		};
 		8ACF7FEA2623ECA5006DA945 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D22803411C7A588B008B630A /* ArtAtGVSU */;
@@ -986,6 +1048,22 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		36D643082ADC907F00104838 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		36D643092ADC907F00104838 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		8ACF7FEC2623ECA5006DA945 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1098,7 +1176,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1149,7 +1227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1221,6 +1299,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		36D643072ADC907F00104838 /* Build configuration list for PBXAggregateTarget "PreBuildActions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36D643082ADC907F00104838 /* Debug */,
+				36D643092ADC907F00104838 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8ACF7FEB2623ECA5006DA945 /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
