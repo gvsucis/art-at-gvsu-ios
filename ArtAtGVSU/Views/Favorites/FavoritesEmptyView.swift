@@ -15,6 +15,9 @@ struct FavoritesEmptyView: View {
     }
 }
 
-#Preview {
-    FavoritesEmptyView()
+struct FavoritesEmptyView_Previews: PreviewProvider {
+    static var previews: some View {
+        FavoritesEmptyView()
+    }
 }
+
