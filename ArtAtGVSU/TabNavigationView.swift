@@ -8,29 +8,18 @@
 
 import SwiftUI
 
-let HOME_TAB = "home_tab"
-let TOUR_TAB = "tour_tab"
-let SEARCH_TAB = "search_tab"
-let FAVORITES_TAB = "favorites_tab"
-
 struct TabNavigationView: View {
-    @State private var selection = HOME_TAB
+    @StateObject private var tabs = TabController()
 
-    @State private var tabIDs = [
-        HOME_TAB: UUID(),
-        TOUR_TAB: UUID(),
-        SEARCH_TAB: UUID(),
-        FAVORITES_TAB: UUID()
-    ]
-
-    var selectionValue: Binding<String> {
+    @State private var tabIDs = buildTabIDs()
+    var selectionValue: Binding<Tab> {
         Binding(
-            get: { selection },
+            get: { tabs.activeTab },
             set: {
-                if selection == $0 {
+                if tabs.activeTab == $0 {
                     tabIDs[$0] = UUID()
                 }
-                selection = $0
+                tabs.open($0)
             }
         )
     }
@@ -47,21 +36,21 @@ struct TabNavigationView: View {
                             label: { Image(systemName: "gearshape") }
                         )
                     }
-                    .id(tabIDs[HOME_TAB])
+                    .id(tabIDs[Tab.home])
             }
             .tabItem {
                 Label("navigation_Browse", systemImage: "books.vertical.fill")
             }
-            .tag(HOME_TAB)
+            .tag(Tab.home)
             NavigationView {
                 TourIndexView()
                     .navigationBarTitle("navigation_Tours", displayMode: .inline)
-                    .id(tabIDs[TOUR_TAB])
+                    .id(tabIDs[Tab.tours])
             }
             .tabItem {
                 Label("navigation_Tours", systemImage: "map.fill")
             }
-            .tag(TOUR_TAB)
+            .tag(Tab.tours)
             NavigationView {
                 SearchIndexView()
                     .navigationBarTitle("navigation_Search", displayMode: .inline)
@@ -74,8 +63,8 @@ struct TabNavigationView: View {
             .tabItem {
                 Label("navigation_Search", systemImage: "magnifyingglass")
             }
-            .id(tabIDs[SEARCH_TAB])
-            .tag(SEARCH_TAB)
+            .id(tabIDs[Tab.search])
+            .tag(Tab.search)
             NavigationView {
                 FavoritesIndexView()
                     .navigationBarTitle("navigation_Favorites", displayMode: .inline)
@@ -86,13 +75,25 @@ struct TabNavigationView: View {
             .tabItem {
                 Label("navigation_Favorites", systemImage: "heart.fill")
             }
-            .id(tabIDs[FAVORITES_TAB])
-            .tag(FAVORITES_TAB)
+            .id(tabIDs[Tab.favorites])
+            .tag(Tab.favorites)
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .userColorTheme()
         .onAppear(perform: configureBarAppearances)
+        .environmentObject(tabs)
     }
+}
+
+func buildTabIDs() -> [Tab:UUID] {
+    var tabIDs: [Tab:UUID] = [:]
+    
+    tabIDs.updateValue(UUID(), forKey: Tab.home)
+    tabIDs.updateValue(UUID(), forKey: Tab.home)
+    tabIDs.updateValue(UUID(), forKey: Tab.home)
+    tabIDs.updateValue(UUID(), forKey: Tab.home)
+    
+    return tabIDs
 }
 
 func shareFavorites() {
