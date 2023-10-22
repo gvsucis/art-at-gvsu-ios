@@ -21,7 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		36182AB02AE5C617000497FF /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36182AAF2AE5C617000497FF /* TabManager.swift */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
+		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
 		8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61626501F4800A591C2 /* LocationIndexView.swift */; };
 		8A00C61B26502C9900A591C2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61A26502C9900A591C2 /* Location.swift */; };
 		8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */; };
@@ -183,7 +185,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36182AAF2AE5C617000497FF /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
 		8A00C61A26502C9900A591C2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchDetail.swift; sourceTree = "<group>"; };
@@ -338,6 +342,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36EE2A7C2AE5BEC500ABB8D3 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */,
+				36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		6CFB989706B71A28158DE823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,6 +635,7 @@
 		8AFEF15B263DDA0800835F6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36EE2A7C2AE5BEC500ABB8D3 /* Favorites */,
 				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
 				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
@@ -630,7 +644,6 @@
 				8A87BFD6265ACBE900511B3B /* DetailDivider.swift */,
 				8A87BFD0265AA98500511B3B /* DetailHeading.swift */,
 				8AFEF161263DDA0800835F6D /* DetailTextRow.swift */,
-				8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */,
 				8AADE6FF265AF0EB005D86F0 /* LoadingView.swift */,
 				8A9F2BCE265DEB9000C40F2F /* OpaqueButtonStyle.swift */,
 				D29B0C9F1CC5C80F002C65D2 /* ScanCodeViewController.swift */,
@@ -647,6 +660,7 @@
 				8A659EC12A453D4900214141 /* Locations */,
 				8AFEF16B263DDA0800835F6D /* Main.storyboard */,
 				8A659EC02A453D0800214141 /* Tours */,
+				36182AAF2AE5C617000497FF /* TabManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -926,6 +940,7 @@
 				8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */,
 				8AADE700265AF0EB005D86F0 /* LoadingView.swift in Sources */,
 				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
+				36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */,
 				8A87BFCF265AA5F200511B3B /* Async.swift in Sources */,
 				8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */,
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
@@ -989,6 +1004,7 @@
 				8A659EE02A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				8A9F2BC1265DD79300C40F2F /* RemoteImage.swift in Sources */,
 				8AADE704265B000D005D86F0 /* ArtworkDetailNavigationLink.swift in Sources */,
+				36182AB02AE5C617000497FF /* TabManager.swift in Sources */,
 				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
 				8A010EBD26A5189800EEFAF1 /* ArtworkDetailTitleRow.swift in Sources */,
 				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
