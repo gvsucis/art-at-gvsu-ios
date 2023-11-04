@@ -32,6 +32,7 @@ struct Artwork: Equatable {
     var thumbnail: URL?
     var arDigitalAsset: URL?
     var ar3dModels: [Model] = []
+    var arType: String = ""
 
     static func == (lhs: Artwork, rhs: Artwork) -> Bool {
         lhs.id == rhs.id
@@ -86,7 +87,8 @@ extension Artwork {
             mediaMedium: optionalURL(objectDetail.media_medium_url),
             mediaLarge: optionalURL(objectDetail.media_large_url),
             arDigitalAsset: optionalURL(objectDetail.ar_digital_asset),
-            ar3dModels: self.getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
+            ar3dModels: self.getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates),
+            arType: objectDetail.ar_type ?? "artwork"
         )
     }
     

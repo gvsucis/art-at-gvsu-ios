@@ -19,8 +19,8 @@ struct Model {
     let metadata: Metadata
 }
 
-struct ARAsset: Equatable {
-    static func == (lhs: ARAsset, rhs: ARAsset) -> Bool {
+struct ARArtwork: Equatable {
+    static func == (lhs: ARArtwork, rhs: ARArtwork) -> Bool {
         lhs.id == rhs.id
     }
     
@@ -28,16 +28,18 @@ struct ARAsset: Equatable {
     var referenceImage: URL?
     var video: URL?
     var models: [Model] = []
+    var type: String = ""
 }
 
-extension ARAsset {
+extension ARArtwork {
     
-    static func getARResources(artwork: Artwork) async throws -> ARAsset {
-        var arAsset = ARAsset(
+    static func getARResources(artwork: Artwork) async throws -> ARArtwork {
+        var arAsset = ARArtwork(
             id: artwork.id,
             referenceImage: artwork.mediaMedium,
             video: artwork.arDigitalAsset,
-            models: artwork.ar3dModels
+            models: artwork.ar3dModels,
+            type: artwork.id == "32481" ? "sculpture" : "artwork" //TODO: Replace with artwork.arType
         )
         
         let dirname = "ArtAtGvsu/\(artwork.id)"
