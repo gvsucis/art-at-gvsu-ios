@@ -68,7 +68,6 @@
 		8A659EE32A47778B00214141 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 8A659EE22A47778B00214141 /* DequeModule */; };
 		8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */; };
 		8A7E5F492A5892A7009F89E8 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E5F482A5892A7009F89E8 /* Properties.swift */; };
-		8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A7E5F4A2A589318009F89E8 /* Secrets.plist */; };
 		8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87BFC6265AA05300511B3B /* EntityDetail.swift */; };
 		8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87BFC8265AA12700511B3B /* EntityDetail+Parsing.swift */; };
 		8A87BFCB265AA2EA00511B3B /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87BFCA265AA2EA00511B3B /* Artist.swift */; };
@@ -124,11 +123,16 @@
 		8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF161263DDA0800835F6D /* DetailTextRow.swift */; };
 		8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF167263DDA0800835F6D /* MapSnapshot.swift */; };
 		8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16A263DDA0800835F6D /* ArtworkDetailView.swift */; };
-		8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16B263DDA0800835F6D /* Main.storyboard */; };
 		8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */; };
 		8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */; };
-		9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E05669528AD4384009D0C8C /* ARAssetViewController.swift */; };
-		C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3141C28FD9E9800538B99 /* ARAsset.swift */; };
+		C4C6B8372AF5F38E00AFAA72 /* ARArtworkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */; };
+		C4C6B8382AF5F38E00AFAA72 /* ARArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */; };
+		C4C6B8392AF5F38E00AFAA72 /* ARSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */; };
+		C4C6B83A2AF5F38E00AFAA72 /* ARArtworkContainerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8342AF5F38E00AFAA72 /* ARArtworkContainerViewManager.swift */; };
+		C4C6B83B2AF5F38E00AFAA72 /* ARArtworkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8352AF5F38E00AFAA72 /* ARArtworkContentView.swift */; };
+		C4C6B83C2AF5F38E00AFAA72 /* ARArtworkButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8362AF5F38E00AFAA72 /* ARArtworkButtonsView.swift */; };
+		C4C6B83E2AF5F7A800AFAA72 /* ArtworkCustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B83D2AF5F7A800AFAA72 /* ArtworkCustomARView.swift */; };
+		C4C6B8422AF5FD6500AFAA72 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4C6B8412AF5FD6500AFAA72 /* Secrets.plist */; };
 		C4CEC61029019E44007440BA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CEC60F29019E43007440BA /* art.scnassets */; };
 		D22803501C7A588B008B630A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D228034F1C7A588B008B630A /* Assets.xcassets */; };
 		D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254BAAF1C83963F0066AF00 /* ArtworkDetailController.swift */; };
@@ -231,7 +235,6 @@
 		8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourMapView.swift; sourceTree = "<group>"; };
 		8A7E5F482A5892A7009F89E8 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
-		8A7E5F4A2A589318009F89E8 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		8A87BFC6265AA05300511B3B /* EntityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetail.swift; sourceTree = "<group>"; };
 		8A87BFC8265AA12700511B3B /* EntityDetail+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityDetail+Parsing.swift"; sourceTree = "<group>"; };
 		8A87BFCA265AA2EA00511B3B /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -287,14 +290,18 @@
 		8AFEF164263DDA0800835F6D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8AFEF167263DDA0800835F6D /* MapSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSnapshot.swift; sourceTree = "<group>"; };
 		8AFEF16A263DDA0800835F6D /* ArtworkDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailView.swift; sourceTree = "<group>"; };
-		8AFEF16C263DDA0800835F6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9E05669528AD4384009D0C8C /* ARAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetViewController.swift; sourceTree = "<group>"; };
-		C44099F22911719F00718803 /* ARAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
-		C4C3141C28FD9E9800538B99 /* ARAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
+		C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtworkContainerView.swift; sourceTree = "<group>"; };
+		C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtwork.swift; sourceTree = "<group>"; };
+		C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSplashView.swift; sourceTree = "<group>"; };
+		C4C6B8342AF5F38E00AFAA72 /* ARArtworkContainerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtworkContainerViewManager.swift; sourceTree = "<group>"; };
+		C4C6B8352AF5F38E00AFAA72 /* ARArtworkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtworkContentView.swift; sourceTree = "<group>"; };
+		C4C6B8362AF5F38E00AFAA72 /* ARArtworkButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtworkButtonsView.swift; sourceTree = "<group>"; };
+		C4C6B83D2AF5F7A800AFAA72 /* ArtworkCustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCustomARView.swift; sourceTree = "<group>"; };
+		C4C6B8412AF5FD6500AFAA72 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		C4CEC60F29019E43007440BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D22803421C7A588B008B630A /* ArtAtGVSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtAtGVSU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D228034F1C7A588B008B630A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -478,7 +485,6 @@
 			children = (
 				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
-				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
 				8A87BFCE265AA5F200511B3B /* Async.swift */,
 				8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */,
 				8A87BFD6265ACBE900511B3B /* DetailDivider.swift */,
@@ -504,6 +510,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C4C6B8302AF5F38E00AFAA72 /* ARArtwork */ = {
+			isa = PBXGroup;
+			children = (
+				C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */,
+				C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */,
+				C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */,
+				C4C6B8342AF5F38E00AFAA72 /* ARArtworkContainerViewManager.swift */,
+				C4C6B8352AF5F38E00AFAA72 /* ARArtworkContentView.swift */,
+				C4C6B8362AF5F38E00AFAA72 /* ARArtworkButtonsView.swift */,
+				C4C6B83D2AF5F7A800AFAA72 /* ArtworkCustomARView.swift */,
+			);
+			path = ARArtwork;
+			sourceTree = "<group>";
+		};
 		D22803391C7A588B008B630A = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +546,7 @@
 		D22803441C7A588B008B630A /* ArtAtGVSU */ = {
 			isa = PBXGroup;
 			children = (
+				C4C6B8302AF5F38E00AFAA72 /* ARArtwork */,
 				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
 				D22803541C7A588B008B630A /* Info.plist */,
 				8A7E5F4A2A589318009F89E8 /* Secrets.plist */,
@@ -558,7 +579,6 @@
 		D28A5D351C7BDB3000DDC170 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C44099F22911719F00718803 /* ARAsset.swift */,
 				8A87BFCA265AA2EA00511B3B /* Artist.swift */,
 				8AB8BDAC2635F69700A13EAD /* Artwork.swift */,
 				8A9F2BC8265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift */,
@@ -566,7 +586,6 @@
 				8A00C61A26502C9900A591C2 /* Location.swift */,
 				8A659EC32A45430800214141 /* Tour.swift */,
 				8A659ED12A45534100214141 /* TourStop.swift */,
-				C4C3141C28FD9E9800538B99 /* ARAsset.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -689,11 +708,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */,
+				C4C6B8422AF5FD6500AFAA72 /* Secrets.plist in Resources */,
 				8AFEF174263DDA0800835F6D /* Localizable.strings in Resources */,
 				36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */,
 				8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */,
-				8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */,
 				C4CEC61029019E44007440BA /* art.scnassets in Resources */,
 				D22803501C7A588B008B630A /* Assets.xcassets in Resources */,
 				8AFEF173263DDA0800835F6D /* Main.strings in Resources */,
@@ -770,23 +788,27 @@
 				8A598F2C26501D39001C4968 /* TabNavigationView.swift in Sources */,
 				8A659ED82A4554B000214141 /* TourStopDetail+Parsing.swift in Sources */,
 				8AAAD9502651BC690081837B /* LocationDetail+Parsing.swift in Sources */,
+				C4C6B83A2AF5F38E00AFAA72 /* ARArtworkContainerViewManager.swift in Sources */,
 				8A3E55842623DE67009E9BFA /* ObjectDetail.swift in Sources */,
 				8AADE708265B441A005D86F0 /* HomeView.swift in Sources */,
 				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
 				8AADE706265B01E2005D86F0 /* FavoritesStore.swift in Sources */,
 				8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */,
 				8AC76C452659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift in Sources */,
+				C4C6B8372AF5F38E00AFAA72 /* ARArtworkContainerView.swift in Sources */,
 				8A659EBF2A453CFB00214141 /* WideTitleCard.swift in Sources */,
 				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
 				8A9F2BCF265DEB9000C40F2F /* OpaqueButtonStyle.swift in Sources */,
 				8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */,
 				8AADE700265AF0EB005D86F0 /* LoadingView.swift in Sources */,
 				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
+				C4C6B83C2AF5F38E00AFAA72 /* ARArtworkButtonsView.swift in Sources */,
 				36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */,
 				8A87BFCF265AA5F200511B3B /* Async.swift in Sources */,
 				8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */,
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
 				8A598F2A26501CF3001C4968 /* ArtGalleryApp.swift in Sources */,
+				C4C6B8382AF5F38E00AFAA72 /* ARArtwork.swift in Sources */,
 				8A9F2BC7265DDD2200C40F2F /* DynamicCodingKeys.swift in Sources */,
 				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
 				8A9F2BC9265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift in Sources */,
@@ -795,10 +817,9 @@
 				8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */,
 				8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */,
 				8A659EDB2A47726700214141 /* LocationGeoreferenceParsing.swift in Sources */,
-				C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */,
 				8ACF0C9626C07C2100358673 /* ObjectSearchResult.swift in Sources */,
 				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
-				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
+				C4C6B83E2AF5F7A800AFAA72 /* ArtworkCustomARView.swift in Sources */,
 				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
 				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
 				8A00C6232650333400A591C2 /* DecodedArray.swift in Sources */,
@@ -835,6 +856,7 @@
 				8A9F2BDB26643EE700C40F2F /* UserColorTheme.swift in Sources */,
 				8A9F2BD3266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift in Sources */,
 				8A9F2BD5266414B900C40F2F /* ArtworkDetailTabImage.swift in Sources */,
+				C4C6B8392AF5F38E00AFAA72 /* ARSplashView.swift in Sources */,
 				8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */,
 				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
 				8A00C6212650321300A591C2 /* CampusSearchResult.swift in Sources */,
@@ -849,6 +871,7 @@
 				8AADE704265B000D005D86F0 /* ArtworkDetailNavigationLink.swift in Sources */,
 				36182AB02AE5C617000497FF /* TabManager.swift in Sources */,
 				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
+				C4C6B83B2AF5F38E00AFAA72 /* ARArtworkContentView.swift in Sources */,
 				8A010EBD26A5189800EEFAF1 /* ArtworkDetailTitleRow.swift in Sources */,
 				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
 				3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */,
@@ -895,14 +918,6 @@
 				8AFEF170263DDA0800835F6D /* fr */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		8AFEF16B263DDA0800835F6D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8AFEF16C263DDA0800835F6D /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1149,7 +1164,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AppStore edu.gvsu.cis.masl.Art-at-GVSU";
 				SWIFT_OBJC_BRIDGING_HEADER = "ArtAtGVSU/ArtAtGVSU-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;

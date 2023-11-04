@@ -11,7 +11,7 @@ import SwiftUI
 struct ArtworkDetailTitleRow: View {
     let artwork: Artwork
     @ObservedObject var favorite: FavoritesStore
-    @State private var isPerformingTask = false
+    @State private var isActive = false
 
     var body: some View {
         HStack(alignment: .top) {
@@ -19,30 +19,24 @@ struct ArtworkDetailTitleRow: View {
                 .detailHeading()
                 .fixedSize(horizontal: false, vertical: true)
 
-            if artwork.arDigitalAsset != nil {
+            if artwork.arDigitalAsset != nil || artwork.id == "32481" {
                 Group {
                     Spacer()
                     Button(action: {
-                        isPerformingTask = true
-
-                        Task {
-                            await showARAsset()
-                            isPerformingTask = false
-                        }
-
+                        isActive = true
                     }) {
-                        if isPerformingTask {
-                            ProgressView()
-                        } else {
-                            Image(systemName: "camera.viewfinder")
-                                .foregroundColor(Color(UIColor.label))
-                                .imageScale(.large)
+                        Image(systemName: "camera.viewfinder")
+                            .foregroundColor(Color(UIColor.label))
+                            .imageScale(.large)
+                    }.disabled(isActive)
+                        .sheet(isPresented: $isActive) {
+                            ARSplashView(artwork: artwork)
                         }
-                    }.disabled(isPerformingTask)
                 }
-            } else {
-                EmptyView()
             }
+//            } else {
+//                EmptyView()
+//            }
             Spacer()
                 .frame(width: 16)
             Button(action: shareArtwork) {
@@ -70,39 +64,6 @@ struct ArtworkDetailTitleRow: View {
             root.present(activity, animated: true, completion: nil)
         }
     }
-
-    func showARAsset() async {
-        guard let arAssetVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ARAssetVC") as? ARAssetViewController else {
-            fatalError("ARAssetViewController not implemented in storyboard")
-        }
-
-        let arAsset2 = try! await ARAsset.getARResources(artwork: artwork)
-
-        arAssetVC.arAsset = arAsset2
-
-        if let root = UIApplication.shared.windows.first?.rootViewController{
-            root.present(arAssetVC, animated: true, completion: nil)
-        }
-    }
-}
-
-struct ARAssetVCView: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> ARAssetViewController {
-
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ARAssetVC") as? ARAssetViewController else {
-            fatalError("ARAssetViewController not implemented in storyboard")
-        }
-
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: ARAssetViewController, context: Context) {
-
-        // update code
-
-    }
-
 }
 
 struct ArtworkDetailTitleRow_Previews: PreviewProvider {
