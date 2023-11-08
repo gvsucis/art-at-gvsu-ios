@@ -9,6 +9,7 @@
 import Foundation
 import RSWeb
 import SceneKit
+import ARKit
 
 struct Metadata {
     let transform: SCNMatrix4?
@@ -29,6 +30,7 @@ struct ARArtwork: Equatable {
     var video: URL?
     var models: [Model] = []
     var type: String = ""
+    var refimg: ARReferenceImage?
 }
 
 extension ARArtwork {
@@ -39,7 +41,8 @@ extension ARArtwork {
             referenceImage: artwork.mediaMedium,
             video: artwork.arDigitalAsset,
             models: artwork.ar3dModels,
-            type: artwork.id == "32481" ? "sculpture" : "artwork" //TODO: Replace with artwork.arType
+            type: artwork.id == "32481" ? "sculpture" : "artwork", //TODO: Replace with artwork.arType
+            refimg: nil
         )
         
         let dirname = "ArtAtGvsu/\(artwork.id)"
@@ -48,6 +51,28 @@ extension ARArtwork {
         arAsset.video = await downloadFile(url: artwork.arDigitalAsset!, dirname: dirname)
         
         arAsset.referenceImage = await downloadFile(url: artwork.mediaMedium!, dirname: dirname)
+        
+        let img = try? await artworkconfig2(imageRef: arAsset.referenceImage!, name: artwork.id)
+        
+        print("LOADED IMAGE ASSET: \(String(describing: artwork.name))");
+        guard let cgImage = img?.cgImage else { throw "Error" }
+        
+        let imageWidth = CGFloat(cgImage.width) * 0.0002645833
+        
+        print("Image width: \(imageWidth)")
+        
+        let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: imageWidth)
+        arImage.name = "ARImage-\(artwork.name)"
+        
+        arImage.validate { [] (error) in
+            if let error = error {
+                print("Reference image validation failed: \(error.localizedDescription)")
+//                return
+            }
+        
+        }
+        
+        arAsset.refimg = arImage
         
         var models: [Model] = []
         
@@ -68,6 +93,12 @@ extension ARArtwork {
                 continuation.resume(returning: url)
             }
         }
+    }
+    
+    static func artworkconfig2(imageRef: URL, name: String) async throws -> UIImage? {
+        print("configuring...... \(name)");
+        let data = try Data(contentsOf: imageRef)
+        return UIImage(data: data)
     }
     
     static func downloadFile(url: URL, dirname: String, transport: Transport = URLSession.shared, _ completion: @escaping (URL) -> Void) {
@@ -115,4 +146,8 @@ extension ARArtwork {
         }
         return true
     }
+}
+
+extension String: LocalizedError {
+    public var errorDescription: String? { return self }
 }

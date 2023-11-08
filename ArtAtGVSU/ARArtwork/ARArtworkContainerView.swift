@@ -6,6 +6,7 @@ import AVFoundation
 struct ARContainerView: UIViewRepresentable {
     var sessionRunOptions: ARSession.RunOptions
     var artwork: Artwork
+    var arArtwork: ARArtwork
     @ObservedObject var containerViewManager = ARArtworkContainerViewManager()
     
 //    private let worldTrackingConfiguration: ARWorldTrackingConfiguration = {
@@ -33,7 +34,7 @@ struct ARContainerView: UIViewRepresentable {
         print("Dismantle....")
         coordinator.parent.containerViewManager.arView.session.pause()
         print("Pausing session....")
-        coordinator.parent.containerViewManager.audioPlayer.pause()
+        coordinator.parent.containerViewManager.audioPlayer?.pause()
         print("Pausing audio....")
     }
     
@@ -48,13 +49,27 @@ struct ARContainerView: UIViewRepresentable {
        func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
            print("[INFO] [makeCoordinator::session:didAdd] ", anchors)
           for anchor in anchors {
-              guard let objectAnchor = (anchor as? ARObjectAnchor) else {
-                  continue
+              parent.containerViewManager.appendTextToScene(anchor: anchor, text: parent.artwork.name)
+              
+//              guard let objectAnchor = (anchor as? ARObjectAnchor) else {
+//                  continue
+//              }
+//              
+              
+              if !(anchor is ARImageAnchor || anchor is ARObjectAnchor) {
+                return
+              }
+              
+              if (anchor is ARImageAnchor) {
+                  print("Anchor IMAGE")
+                  let objectAnchor = (anchor as? ARImageAnchor)
+                  
+                  print("Found ARObjectAnchor \(objectAnchor?.name)")
               }
             
-            print("Found ARObjectAnchor \(objectAnchor.name)")
             
-              parent.containerViewManager.appendTextToScene(anchor: anchor, text: parent.artwork.name)
+            
+              
               parent.containerViewManager.makeVideoNode(anchor: anchor)
               parent.containerViewManager.addBox(anchor: anchor)
           }
@@ -89,8 +104,13 @@ struct ARContainerView: UIViewRepresentable {
    // 3
    func makeUIView(context: Context) -> ArtworkCustomARView {
        print("[INFO] [makeUIView]")
-       containerViewManager.arView.didTapView = didTapView(_:); containerViewManager.resetTrackingConfiguration()
+//       containerViewManager.configure(type: artwork.arType, artwork: arArtwork)
+       containerViewManager.arView.didTapView = didTapView(_:); containerViewManager.resetTrackingConfiguration(artwork: arArtwork)
        containerViewManager.arView.session.delegate = context.coordinator
+       
+       print("Session configuration: ", containerViewManager.arView.worldTrackingConfiguration)
+       
+       print("Type of artwork: ", artwork.arType)
        return containerViewManager.arView
    }
    // 4
