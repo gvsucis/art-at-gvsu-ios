@@ -17,9 +17,9 @@ final class ArtworkCustomARView: ARView {
     let worldTrackingConfiguration: ARWorldTrackingConfiguration = {
         print("Configuring ar world tracking")
           let worldTrackingConfiguration = ARWorldTrackingConfiguration()
-        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Alten", bundle: nil) else {
-            fatalError("Missing expected asset catalog resources.")
-        }
+//        guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Alten", bundle: nil) else {
+//            fatalError("Missing expected asset catalog resources.")
+//        }
         
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
             print("SUPPORTS SCENE RECONSTRUCTION")
@@ -31,7 +31,7 @@ final class ArtworkCustomARView: ARView {
                 worldTrackingConfiguration.frameSemantics.insert(.personSegmentationWithDepth)
         }
         
-        worldTrackingConfiguration.detectionObjects = referenceObjects
+//        worldTrackingConfiguration.detectionObjects = referenceObjects
 //          worldTrackingConfiguration.planeDetection = .horizontal
           worldTrackingConfiguration.isLightEstimationEnabled = false
           return worldTrackingConfiguration

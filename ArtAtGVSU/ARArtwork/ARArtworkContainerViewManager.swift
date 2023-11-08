@@ -14,17 +14,77 @@ import ARKit
 import RealityKit
 import AVFoundation
 
+func artworkconfig(imageRef: URL, name: String, _ completion:@escaping(ARReferenceImage)->() ) {
+        print("configuring...... \(name)");
+        DispatchQueue.global().async { [ imageRef ] in
+            if let data = try? Data(contentsOf: imageRef) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        print("LOADED IMAGE ASSET: \(String(describing: imageRef))");
+                        guard let cgImage = image.cgImage else { return }
+                        
+                        let imageWidth = CGFloat(cgImage.width) * 0.0002645833
+                        
+                        print("Image width: \(imageWidth)")
+                        
+                        let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: imageWidth)
+                        arImage.name = "ARImage-\(name)"
+                        
+                        arImage.validate { [] (error) in
+                            if let error = error {
+                                print("Reference image validation failed: \(error.localizedDescription)")
+                                return
+                            }
+                        }
+                        completion(arImage);
+                    }
+                }
+            }
+        }
+    }
+
 final class ARArtworkContainerViewManager: ObservableObject {
+    var type: String = "artwork"
     var arView = ArtworkCustomARView()
     var audioPlayer: AVAudioPlayer!
     var boxEntity: ModelEntity!
     var sculptureEntity: ModelEntity!
     var textEntity: ModelEntity!
+    
+    func configure(artwork: ARArtwork) {
+        if (artwork.type == "artwork") {
+            arView.worldTrackingConfiguration.maximumNumberOfTrackedImages = 1
+            artworkconfig(imageRef: (artwork.referenceImage)!, name: artwork.id) { ARReferenceImage in
+                self.arView.worldTrackingConfiguration.detectionImages = Set<ARReferenceImage>(_immutableCocoaSet: ARReferenceImage)
+            }
+            
+        } else {
+            guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Alten", bundle: nil) else {
+                fatalError("Missing expected asset catalog resources.")
+            }
+            
+            arView.worldTrackingConfiguration.detectionObjects = referenceObjects
+        }
+    }
 
-   func resetTrackingConfiguration(options: ARSession.RunOptions = []) {
-      arView.session.run(
-        arView.worldTrackingConfiguration,
-         options: options)
+   func resetTrackingConfiguration(options: ARSession.RunOptions = [],  artwork: ARArtwork) {
+       if (artwork.type == "artwork") {
+           arView.worldTrackingConfiguration.maximumNumberOfTrackedImages = 1
+           var s = Set<ARReferenceImage>()
+           s.insert(artwork.refimg!)
+           arView.worldTrackingConfiguration.detectionImages = s
+           
+       } else {
+           guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Alten", bundle: nil) else {
+               fatalError("Missing expected asset catalog resources.")
+           }
+
+           arView.worldTrackingConfiguration.detectionObjects = referenceObjects
+       }
+       
+       arView.session.run(
+         arView.worldTrackingConfiguration,
+          options: options)
    }
     
     // 1
@@ -35,10 +95,10 @@ final class ARArtworkContainerViewManager: ObservableObject {
         }
         
         
-        guard let objectAnchor = (anchor as? ARObjectAnchor) else {
-            print("ARAnchor is not of object type")
-            return
-        }
+//        guard let objectAnchor = (anchor as? ARObjectAnchor) else {
+//            print("ARAnchor is not of object type")
+//            return
+//        }
 
        let textMeshResource = MeshResource.generateText(
           text,

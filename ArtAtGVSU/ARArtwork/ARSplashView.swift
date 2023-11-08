@@ -122,19 +122,22 @@ struct ARSplashView: View {
                 }
                 .frame(alignment: .bottom)
             } else {
-                ZStack {
-//                    ARArtworkContainerView(viewModel: $viewModel, arAsset: $arAssets).ignoresSafeArea()
-                    ARContainerView(sessionRunOptions:  [.removeExistingAnchors,
-                             .resetTracking], artwork: artwork)
-//                    Text(viewModel.trackingState?.description ?? "")
-//                        .font(.headline)
-//                        .foregroundColor(.green)
-                    VStack {
-                        Spacer()
-                        ARArtworkButtonsView(count: count)
+                if arAssets != nil {
+                    ZStack {
+    //                    ARArtworkContainerView(viewModel: $viewModel, arAsset: $arAssets).ignoresSafeArea()
+                        
+                        ARContainerView(sessionRunOptions:  [.removeExistingAnchors,
+                                 .resetTracking], artwork: artwork, arArtwork: arAssets!)
+    //                    Text(viewModel.trackingState?.description ?? "")
+    //                        .font(.headline)
+    //                        .foregroundColor(.green)
+                        VStack {
+                            Spacer()
+                            ARArtworkButtonsView(count: count)
+                        }
                     }
+                    .edgesIgnoringSafeArea(.all)
                 }
-                .edgesIgnoringSafeArea(.all)
             }
             HStack {
                 closeButton(action: self.dismiss)
@@ -158,6 +161,7 @@ struct ARSplashView: View {
     func fetchARResources() {
         print("Start fetching resources")
         Task {
+            //TODO: use observer pattern
             do {
                 arAssets = try await ARArtwork.getARResources(artwork: artwork)
                     print("Successfully downloaded resources ", arAssets)
