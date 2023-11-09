@@ -9,22 +9,8 @@ struct ARContainerView: UIViewRepresentable {
     var arArtwork: ARArtwork
     @ObservedObject var containerViewManager = ARArtworkContainerViewManager()
     
-//    private let worldTrackingConfiguration: ARWorldTrackingConfiguration = {
-//       let worldTrackingConfiguration = ARWorldTrackingConfiguration()
-//        if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth)  {
-//            
-//            print("Device allows frame semantics")
-//            worldTrackingConfiguration.frameSemantics.insert(.personSegmentationWithDepth)
-//        }
-//
-//       worldTrackingConfiguration.planeDetection = .horizontal
-//       worldTrackingConfiguration.isLightEstimationEnabled = false
-//       return worldTrackingConfiguration
-//    }()
-    
      func makeCoordinator() -> Coordinator {
-//        print("[INFO] [makeCoordinator]")
-        Coordinator(self)
+         Coordinator(self)
      }
     
     static func dismantleUIView(
@@ -33,6 +19,7 @@ struct ARContainerView: UIViewRepresentable {
     ){
         print("Dismantle....")
         coordinator.parent.containerViewManager.arView.session.pause()
+        
         print("Pausing session....")
         coordinator.parent.containerViewManager.audioPlayer?.pause()
         print("Pausing audio....")
@@ -42,70 +29,43 @@ struct ARContainerView: UIViewRepresentable {
     class Coordinator: NSObject, ARSessionDelegate {
        var parent: ARContainerView
 
-       init(_ parent: ARContainerView) {
+        init(_ parent: ARContainerView) {
           self.parent = parent
        }
         
+        
        func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-           print("[INFO] [makeCoordinator::session:didAdd] ", anchors)
+//           print("[INFO] [makeCoordinator::session:didAdd] ", anchors)
           for anchor in anchors {
-              parent.containerViewManager.appendTextToScene(anchor: anchor, text: parent.artwork.name)
-              
-//              guard let objectAnchor = (anchor as? ARObjectAnchor) else {
-//                  continue
-//              }
-//              
-              
-              if !(anchor is ARImageAnchor || anchor is ARObjectAnchor) {
-                return
-              }
-              
               if (anchor is ARImageAnchor) {
                   print("Anchor IMAGE")
                   let objectAnchor = (anchor as? ARImageAnchor)
                   
-                  print("Found ARObjectAnchor \(objectAnchor?.name)")
+                  print("Found ARObjectAnchor \(objectAnchor?.name) showing video: \(parent.arArtwork.video)")
+                  print("AFAF: ", parent.arArtwork.models[0].metadata)
+                  parent.containerViewManager.appendTextToScene(anchor: anchor, text: parent.artwork.name)
+                  parent.containerViewManager.makeVideoArt(anchor: anchor, videoUrl: parent.arArtwork.video!)
+                  parent.containerViewManager.asynclo(anchor: anchor, modelUrl: parent.arArtwork.models[0].url, transform: parent.arArtwork.models[0].metadata.transform!)
+//                  parent.containerViewManager.addCup(anchor: anchor, path: parent.arArtwork.models[0].url, transform: parent.arArtwork.models[0].metadata.transform!)
+              } else if (anchor is ARObjectAnchor) {
+                  parent.containerViewManager.makeVideoNode(anchor: anchor)
+                  parent.containerViewManager.addBox(anchor: anchor)
               }
-            
-            
-            
-              
-              parent.containerViewManager.makeVideoNode(anchor: anchor)
-              parent.containerViewManager.addBox(anchor: anchor)
           }
        }
         
         func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-//            print("didUpdate")
-            
-           
-//            let currentDate = Date()
-//            let calendar = Calendar.current
-//            let seconds = calendar.component(.second, from: currentDate)
-//            
-//            let modResult = Int(seconds) % 5
-//            
-//            print("Modresult: ", modResult, " seconds", seconds)
-            
-//            print("View avg color: ", parent.containerViewManager.arView.getAverageColor())
-//            
-//            if (modResult == 0) {
-//                print("Changing box color")
-//                let color = parent.containerViewManager.arView.getAverageColor()
-//                parent.containerViewManager.boxEntity.model?.materials[0] = UnlitMaterial(color: color ?? UIColor(Color.random()))
-//                
-//            }
-            
-            
+            anchors.compactMap { $0 as? ARImageAnchor }.forEach {
+                let anchorEntity = parent.containerViewManager.imageAnchorToEntity[$0]
+                anchorEntity?.transform.matrix = $0.transform
+            }
         }
     }
    
-   
-   // 3
+
    func makeUIView(context: Context) -> ArtworkCustomARView {
        print("[INFO] [makeUIView]")
-//       containerViewManager.configure(type: artwork.arType, artwork: arArtwork)
-       containerViewManager.arView.didTapView = didTapView(_:); containerViewManager.resetTrackingConfiguration(artwork: arArtwork)
+       containerViewManager.arView.didTapView = didTapView(_:); containerViewManager.resetTrackingConfiguration(options: sessionRunOptions,artwork: arArtwork)
        containerViewManager.arView.session.delegate = context.coordinator
        
        print("Session configuration: ", containerViewManager.arView.worldTrackingConfiguration)
@@ -113,10 +73,10 @@ struct ARContainerView: UIViewRepresentable {
        print("Type of artwork: ", artwork.arType)
        return containerViewManager.arView
    }
-   // 4
+
    func updateUIView(_ uiView: ArtworkCustomARView, context: Context) {
    }
-   // 5
+
    func didTapView(_ sender: UITapGestureRecognizer) {
        print("[INFO] [didTapView]")
       let arView = containerViewManager.arView

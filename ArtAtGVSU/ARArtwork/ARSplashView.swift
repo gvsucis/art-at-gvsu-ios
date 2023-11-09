@@ -33,7 +33,8 @@ struct Circl: View {
             .foregroundColor(.clear)
             .frame(width: size, height: size)
             .scaleEffect(isAnimated.wrappedValue ? 1.0 : 0.5)
-            .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(animationDelay ?? 0.0))
+            .animation(.easeInOut(duration: 1.0))
+//            .animation(Animation.linear(duration: 0.5).repeatForever().delay(animationDelay ?? 0.0))
     }
 }
 
@@ -49,15 +50,15 @@ struct Anim: View {
     
     var body: some View {
         HStack {
-            Circl(isAnimated: $isAnimated, backgroundColors: [color1, color11], size: 15, animationDelay: 0.01)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color2, .purple], size: 24, animationDelay: 0.05)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color1, .purple], size: 30, animationDelay: 0.1)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color1, .purple], size: 24, animationDelay: 0.05)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color2, color11], size: 15, animationDelay: 0.01)
+            Circl(isAnimated: $isAnimated, backgroundColors: [color1, color11], size: 12, animationDelay: 0.1)
+            Circl(isAnimated: $isAnimated, backgroundColors: [color2, .purple], size: 16, animationDelay: 0.3)
+            Circl(isAnimated: $isAnimated, backgroundColors: [color1, color11], size: 20, animationDelay: 0.4)
+            Circl(isAnimated: $isAnimated, backgroundColors: [color2, .purple], size: 24, animationDelay: 0.6)
         }
         .onAppear{
-            self.isAnimated = true
-            
+            withAnimation {
+                isAnimated = true
+            }
         }
     }
 }
@@ -89,13 +90,6 @@ struct closeButton: View {
         .onTapGesture {
             tapped = true
             self.action()
-           
-                
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//                   // your function
-//
-//                }
-            
         }
         .padding(10)
     }
@@ -106,6 +100,7 @@ struct ARSplashView: View {
     @State var loading: Bool = false
     @State var arAssets: ARArtwork?
     var artwork: Artwork
+    @State private var isARSessionRunning = true
 //    @State var viewModel = ARArtworkContainerView.ViewModel()
     
     @Environment(\.dismiss) var dismiss
@@ -123,14 +118,10 @@ struct ARSplashView: View {
                 .frame(alignment: .bottom)
             } else {
                 if arAssets != nil {
+                    
                     ZStack {
-    //                    ARArtworkContainerView(viewModel: $viewModel, arAsset: $arAssets).ignoresSafeArea()
-                        
                         ARContainerView(sessionRunOptions:  [.removeExistingAnchors,
-                                 .resetTracking], artwork: artwork, arArtwork: arAssets!)
-    //                    Text(viewModel.trackingState?.description ?? "")
-    //                        .font(.headline)
-    //                        .foregroundColor(.green)
+                                                             .resetTracking], artwork: artwork, arArtwork: arAssets!)
                         VStack {
                             Spacer()
                             ARArtworkButtonsView(count: count)
@@ -149,12 +140,20 @@ struct ARSplashView: View {
         .background(.black)
         .onAppear {
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 withAnimation {
-                    self.loading = true
+                    print("View on appear Loading")
+//                    self.loading = true
                 }
-            }
+//            }
             fetchARResources()
+        }
+        .onDisappear {
+            self.loading = false
+            print("View on disappear: ", self.loading)
+    
+            // Terminate AR session when the view disappears
+                  
         }
     }
     
@@ -164,8 +163,8 @@ struct ARSplashView: View {
             //TODO: use observer pattern
             do {
                 arAssets = try await ARArtwork.getARResources(artwork: artwork)
-                    print("Successfully downloaded resources ", arAssets)
-                    loading = false
+                    print("Successfully downloaded resources ")
+                    loading = true
             } catch {
                 print("Error: \(error)")
             }
