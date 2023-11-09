@@ -125,6 +125,8 @@
 		8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16A263DDA0800835F6D /* ArtworkDetailView.swift */; };
 		8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */; };
 		8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */; };
+		C40AFA002AFC544A00EC3675 /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AF9FF2AFC544A00EC3675 /* ResourceLoader.swift */; };
+		C40AFA022AFC546A00EC3675 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40AFA012AFC546A00EC3675 /* Entity.swift */; };
 		C4C6B8372AF5F38E00AFAA72 /* ARArtworkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */; };
 		C4C6B8382AF5F38E00AFAA72 /* ARArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */; };
 		C4C6B8392AF5F38E00AFAA72 /* ARSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */; };
@@ -294,6 +296,8 @@
 		8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C40AF9FF2AFC544A00EC3675 /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
+		C40AFA012AFC546A00EC3675 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtworkContainerView.swift; sourceTree = "<group>"; };
 		C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARArtwork.swift; sourceTree = "<group>"; };
 		C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSplashView.swift; sourceTree = "<group>"; };
@@ -510,9 +514,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C40AF9FE2AFC542400EC3675 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C40AF9FF2AFC544A00EC3675 /* ResourceLoader.swift */,
+				C40AFA012AFC546A00EC3675 /* Entity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		C4C6B8302AF5F38E00AFAA72 /* ARArtwork */ = {
 			isa = PBXGroup;
 			children = (
+				C40AF9FE2AFC542400EC3675 /* Entities */,
 				C4C6B8312AF5F38E00AFAA72 /* ARArtworkContainerView.swift */,
 				C4C6B8322AF5F38E00AFAA72 /* ARArtwork.swift */,
 				C4C6B8332AF5F38E00AFAA72 /* ARSplashView.swift */,
@@ -819,6 +833,7 @@
 				8A659EDB2A47726700214141 /* LocationGeoreferenceParsing.swift in Sources */,
 				8ACF0C9626C07C2100358673 /* ObjectSearchResult.swift in Sources */,
 				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
+				C40AFA002AFC544A00EC3675 /* ResourceLoader.swift in Sources */,
 				C4C6B83E2AF5F7A800AFAA72 /* ArtworkCustomARView.swift in Sources */,
 				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
 				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
@@ -842,6 +857,7 @@
 				8A9F2BC3265DDB1900C40F2F /* FeaturedArtResult.swift in Sources */,
 				8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */,
 				8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */,
+				C40AFA022AFC546A00EC3675 /* Entity.swift in Sources */,
 				8A87BFD5265AC91300511B3B /* ArtistDetailBiographyView.swift in Sources */,
 				8A00C61F26502F6500A591C2 /* OptionalURL.swift in Sources */,
 				8A9BD331263E699E00B816BA /* URL+PathExtensionCheck.swift in Sources */,

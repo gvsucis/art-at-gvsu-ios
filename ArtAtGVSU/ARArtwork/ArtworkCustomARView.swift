@@ -95,6 +95,11 @@ final class ARContainerViewManager2: ObservableObject {
    }()
    // 4
    func resetTrackingConfiguration(options: ARSession.RunOptions = []) {
+       arView.debugOptions = [
+           .showAnchorOrigins,
+           .showAnchorGeometry
+       ]
+       
       arView.session.run(
          worldTrackingConfiguration,
          options: options)

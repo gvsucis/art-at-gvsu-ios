@@ -6,66 +6,26 @@
 //  Copyright © 2023 Applied Computing Institute. All rights reserved.
 //
 
-import Foundation
-
-
 import SwiftUI
 import ARKit
 import RealityKit
 import AVFoundation
+import Combine
 
-func artworkconfig(imageRef: URL, name: String, _ completion:@escaping(ARReferenceImage)->() ) {
-        print("configuring...... \(name)");
-        DispatchQueue.global().async { [ imageRef ] in
-            if let data = try? Data(contentsOf: imageRef) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        print("LOADED IMAGE ASSET: \(String(describing: imageRef))");
-                        guard let cgImage = image.cgImage else { return }
-                        
-                        let imageWidth = CGFloat(cgImage.width) * 0.0002645833
-                        
-                        print("Image width: \(imageWidth)")
-                        
-                        let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: imageWidth)
-                        arImage.name = "ARImage-\(name)"
-                        
-                        arImage.validate { [] (error) in
-                            if let error = error {
-                                print("Reference image validation failed: \(error.localizedDescription)")
-                                return
-                            }
-                        }
-                        completion(arImage);
-                    }
-                }
-            }
-        }
-    }
 
 final class ARArtworkContainerViewManager: ObservableObject {
     var type: String = "artwork"
+    private var subscriptions: Set<AnyCancellable> = []
     var arView = ArtworkCustomARView()
     var audioPlayer: AVAudioPlayer!
     var boxEntity: ModelEntity!
     var sculptureEntity: ModelEntity!
     var textEntity: ModelEntity!
+    var avPlayerLooper: AVPlayerLooper!
+    var imageAnchorToEntity: [ARImageAnchor: AnchorEntity] = [:]
     
-    func configure(artwork: ARArtwork) {
-        if (artwork.type == "artwork") {
-            arView.worldTrackingConfiguration.maximumNumberOfTrackedImages = 1
-            artworkconfig(imageRef: (artwork.referenceImage)!, name: artwork.id) { ARReferenceImage in
-                self.arView.worldTrackingConfiguration.detectionImages = Set<ARReferenceImage>(_immutableCocoaSet: ARReferenceImage)
-            }
-            
-        } else {
-            guard let referenceObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Alten", bundle: nil) else {
-                fatalError("Missing expected asset catalog resources.")
-            }
-            
-            arView.worldTrackingConfiguration.detectionObjects = referenceObjects
-        }
-    }
+    private let resourceLoader = ResourceLoader()
+    
 
    func resetTrackingConfiguration(options: ARSession.RunOptions = [],  artwork: ARArtwork) {
        if (artwork.type == "artwork") {
@@ -89,16 +49,10 @@ final class ARArtworkContainerViewManager: ObservableObject {
     
     // 1
     func appendTextToScene(anchor: ARAnchor, text: String) {
-        print("appendTextToScene")
+        print("appendTextToScene: ", textEntity)
         if textEntity != nil {
             return
         }
-        
-        
-//        guard let objectAnchor = (anchor as? ARObjectAnchor) else {
-//            print("ARAnchor is not of object type")
-//            return
-//        }
 
        let textMeshResource = MeshResource.generateText(
           text,
@@ -112,10 +66,13 @@ final class ARArtworkContainerViewManager: ObservableObject {
             SimpleMaterial(color: .white, isMetallic: false)
           ]
        )
+        
 
        let anchorEntity = AnchorEntity(anchor: anchor)
-//       anchorEntity.transform.translation.x = -textMeshResource.bounds.extents.x
-//        anchorEntity.transform.translation.y = objectAnchor.referenceObject.extent.y
+//       anchorEntity.transform.translation.x = textMeshResource.bounds.extents.x
+        
+//        let objectAnchor = (anchor as? ARImageAnchor)
+//        anchorEntity.transform.translation.y = objectAnchor.referenceImage..y
        anchorEntity.addChild(textEntity)
     
        arView.scene.anchors.append(anchorEntity)
@@ -152,6 +109,147 @@ final class ARArtworkContainerViewManager: ObservableObject {
                                      attenuationRadius: 20)
         boxEntity.components.set(pointLight)
     }
+    
+    func makeVideoArt(anchor: ARAnchor, videoUrl: URL) {
+        print("makevideoart")
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let width = Float(imageAnchor.referenceImage.physicalSize.width)
+            let height = Float(imageAnchor.referenceImage.physicalSize.height)
+            
+            let videoScreen = createVideoScreen(width: width, height: height, video: videoUrl)
+            
+            let imganc = AnchorEntity(anchor: imageAnchor)
+            imganc.transform.matrix = anchor.transform
+            
+            let rotationAngle = simd_quatf(angle: GLKMathDegreesToRadians(-90), axis: SIMD3(x: 1, y: 0, z: 0) )
+            
+            videoScreen.setOrientation(rotationAngle, relativeTo: imganc)
+            
+            imganc.addChild(videoScreen)
+            
+            arView.scene.addAnchor(imganc)
+        }
+    }
+    
+    func asynclo(anchor: ARAnchor, modelUrl: URL, transform: SCNMatrix4) {
+        let anchorEntity = AnchorEntity()
+//        anchorEntity.position = anchor.
+        arView.scene.anchors.append(anchorEntity)
+        
+        ModelEntity.loadAsync(contentsOf: modelUrl).sink(receiveCompletion: { loadCompletion in
+            switch loadCompletion {
+            case .failure(let error):
+                print("Unable to load model: \(error.localizedDescription)")
+            case .finished:
+                print("Load async finished")
+                break
+            }
+        }, receiveValue: { entity in
+            entity.scale = SIMD3(x: transform.m11, y: -transform.m22, z: -transform.m33)
+            
+            let animation = entity.availableAnimations[0]
+            entity.playAnimation(animation.repeat(duration: .infinity), transitionDuration: 1.25, startsPaused: false)
+            
+            if let anchorim = anchor as? ARImageAnchor {
+                anchorEntity.transform.matrix = anchor.transform
+                self.imageAnchorToEntity[anchorim] = anchorEntity
+            }
+            
+            DispatchQueue.global().async {
+               for child in entity.children {
+                   child.scale = SIMD3(x: transform.m11, y: -transform.m22, z: -transform.m33)
+                   
+                   anchorEntity.addChild(child)
+                   sleep(1)
+               }
+              let a = anchorEntity.availableAnimations[0]
+              anchorEntity.playAnimation(a.repeat(duration: .infinity), transitionDuration: 1.25, startsPaused: false)
+            }
+        }).store(in: &subscriptions)
+    }
+    
+    func createVideoScreen(width: Float, height: Float, video: URL) -> ModelEntity {
+        let plane = MeshResource.generatePlane(width: width, height: height)
+        
+        let videoItem = createVideoItem(filename: video)
+        let videoMaterial = createVideoMaterial(with: videoItem)
+        
+        let videoScreenModel = ModelEntity(mesh: plane, materials: [videoMaterial])
+        
+        return videoScreenModel
+    }
+    
+    func createVideoMaterial(with videoItem: AVPlayerItem) -> VideoMaterial {
+        
+        let queuePlayer = AVQueuePlayer()
+        avPlayerLooper = AVPlayerLooper(
+          player: queuePlayer,
+          templateItem: videoItem
+        )
+        
+        let videoMaterial = VideoMaterial(avPlayer: queuePlayer)
+        
+        queuePlayer.play()
+        
+        return videoMaterial
+    }
+    
+    func createVideoItem(filename:URL) -> AVPlayerItem {
+       let asset = AVAsset(url: filename)
+       let item = AVPlayerItem(asset: asset)
+
+        return item
+    }
+    
+    
+    func nodescene() {
+        
+    }
+    
+    func addCup(anchor: ARAnchor,path: URL, transform: SCNMatrix4) {
+            // Create a new cup to place at the tap location
+            let cup = try? Entity.load(contentsOf: path)
+        
+        print("Animations: ", cup?.availableAnimations)
+        
+        let cow = cup?.availableAnimations[0]
+        
+        let anchorEntity = AnchorEntity(anchor: anchor)
+        
+//        cup?.orientation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
+//        cup?./*transform = S*/
+//        cup?.setScale(SIMD3(x: transform.m11, y: transform.m22, z: transform.m33), relativeTo: nil)
+        cup?.scale = SIMD3(x: transform.m11, y: transform.m22, z: transform.m33)
+        
+//        cup!.orientation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
+        
+        cup?.playAnimation((cow?.repeat(duration: .infinity))!, transitionDuration: 1.25, startsPaused: false)
+//            do {
+//                cup = try resourceLoader.createCup(path: path)
+//            } catch let error {
+//                print("Failed to create cup: \(error)")
+//                return
+//            }
+//            
+//            defer {
+//                // Get translation from transform
+//                let column = worldTransform.columns.3
+//                let translation = SIMD3<Float>(column.x, column.y, column.z)
+//                
+//                // Move the cup to the tap location
+//                cup.setPosition(translation, relativeTo: nil)
+//            }
+            
+            // If there is not already an anchor here, create one
+
+            
+        anchorEntity.addChild(cup!)
+            arView.scene.addAnchor(anchorEntity)
+            
+            // Add the cup to the existing anchor
+        anchorEntity.addChild(cup!)
+        }
+    
     
     func makeVideoNode(anchor: ARAnchor) {
         if sculptureEntity != nil {
