@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "984FU6FGBN.edu.gvsu.cis.masl.Art-at-GVSU",
+        "paths": [
+          "/detail/entities/*",
+          "/detail/objects/*",
+          "/Detail/entities/*",
+          "/Detail/objects/*"
+        ]
+      }
+    ]
+  }
+}

@@ -186,6 +186,7 @@
 
 /* Begin PBXFileReference section */
 		36182AAF2AE5C617000497FF /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		36B923F22B1046F90031CFC2 /* ArtAtGVSU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArtAtGVSU.entitlements; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
@@ -687,6 +688,7 @@
 		D22803441C7A588B008B630A /* ArtAtGVSU */ = {
 			isa = PBXGroup;
 			children = (
+				36B923F22B1046F90031CFC2 /* ArtAtGVSU.entitlements */,
 				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
 				8A659ED92A47722500214141 /* Adapters */,
 				D22803541C7A588B008B630A /* Info.plist */,
@@ -1259,6 +1261,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ArtAtGVSU/ArtAtGVSU.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1010;
@@ -1288,6 +1291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ArtAtGVSU/ArtAtGVSU.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
