@@ -22,6 +22,11 @@
 
 /* Begin PBXBuildFile section */
 		36182AB02AE5C617000497FF /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36182AAF2AE5C617000497FF /* TabManager.swift */; };
+		3641523C2B1A58EA00300301 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3641523B2B1A58EA00300301 /* CodeScanner */; };
+		3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3641523D2B1A5AB200300301 /* QRCodeReader.swift */; };
+		36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */; };
+		36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9E2B1A7BC8009304B8 /* Logging.swift */; };
+		36830FA12B1A7CCB009304B8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830FA02B1A7CCB009304B8 /* Links.swift */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
 		8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61626501F4800A591C2 /* LocationIndexView.swift */; };
@@ -113,7 +118,6 @@
 		8ACF0C9626C07C2100358673 /* ObjectSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF0C9526C07C2100358673 /* ObjectSearchResult.swift */; };
 		8ACF0C9826C07C5A00358673 /* ObjectSearchResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF0C9726C07C5A00358673 /* ObjectSearchResultTest.swift */; };
 		8ACF0C9C26C2029600358673 /* ShareFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF0C9B26C2029600358673 /* ShareFavorites.swift */; };
-		8ACF0C9E26C2188E00358673 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF0C9D26C2188E00358673 /* File.swift */; };
 		8ACF7FF62623ECD0006DA945 /* ObjectDetailParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF7FF52623ECD0006DA945 /* ObjectDetailParsingTest.swift */; };
 		8AFEF173263DDA0800835F6D /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF15D263DDA0800835F6D /* Main.strings */; };
 		8AFEF174263DDA0800835F6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF15F263DDA0800835F6D /* Localizable.strings */; };
@@ -186,6 +190,10 @@
 
 /* Begin PBXFileReference section */
 		36182AAF2AE5C617000497FF /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		3641523D2B1A5AB200300301 /* QRCodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
+		36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderButton.swift; sourceTree = "<group>"; };
+		36830F9E2B1A7BC8009304B8 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		36830FA02B1A7CCB009304B8 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
@@ -270,7 +278,6 @@
 		8ACF0C9526C07C2100358673 /* ObjectSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSearchResult.swift; sourceTree = "<group>"; };
 		8ACF0C9726C07C5A00358673 /* ObjectSearchResultTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSearchResultTest.swift; sourceTree = "<group>"; };
 		8ACF0C9B26C2029600358673 /* ShareFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareFavorites.swift; sourceTree = "<group>"; };
-		8ACF0C9D26C2188E00358673 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8ACF7FE42623ECA5006DA945 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACF7FF52623ECD0006DA945 /* ObjectDetailParsingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetailParsingTest.swift; sourceTree = "<group>"; };
 		8ACF80032623ED1F006DA945 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -335,6 +342,7 @@
 				8A659EE32A47778B00214141 /* DequeModule in Frameworks */,
 				8A64687B2A94473F008487A1 /* FirebaseCrashlytics in Frameworks */,
 				8A6468792A94473F008487A1 /* FirebaseAnalytics in Frameworks */,
+				3641523C2B1A58EA00300301 /* CodeScanner in Frameworks */,
 				8A9BD322263E0B3500B816BA /* ImageViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +350,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		364152392B1A540C00300301 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				3641523D2B1A5AB200300301 /* QRCodeReader.swift */,
+				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
+				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
+				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		36EE2A7C2AE5BEC500ABB8D3 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,7 +654,6 @@
 		8AFEF15B263DDA0800835F6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				36EE2A7C2AE5BEC500ABB8D3 /* Favorites */,
 				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
 				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
@@ -647,20 +665,20 @@
 				8AADE6FF265AF0EB005D86F0 /* LoadingView.swift */,
 				8A9F2BCE265DEB9000C40F2F /* OpaqueButtonStyle.swift */,
 				D29B0C9F1CC5C80F002C65D2 /* ScanCodeViewController.swift */,
-				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
-				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
 				8A9F2BD62664296400C40F2F /* SettingsView.swift */,
 				8A010EC426B71FE400EEFAF1 /* SwiftlySearch.swift */,
+				36182AAF2AE5C617000497FF /* TabManager.swift */,
 				8A598F2B26501D39001C4968 /* TabNavigationView.swift */,
 				8AAAD94D265169F60081837B /* ThumbnailTitleRow.swift */,
 				8A9F2BDA26643EE700C40F2F /* UserColorTheme.swift */,
 				8A659EBE2A453CFB00214141 /* WideTitleCard.swift */,
 				8A659ECC2A454C1500214141 /* Artworks */,
+				36EE2A7C2AE5BEC500ABB8D3 /* Favorites */,
 				8A659EC22A453D5600214141 /* Home */,
 				8A659EC12A453D4900214141 /* Locations */,
 				8AFEF16B263DDA0800835F6D /* Main.storyboard */,
+				364152392B1A540C00300301 /* Search */,
 				8A659EC02A453D0800214141 /* Tours */,
-				36182AAF2AE5C617000497FF /* TabManager.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -688,14 +706,17 @@
 			isa = PBXGroup;
 			children = (
 				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
-				8A659ED92A47722500214141 /* Adapters */,
 				D22803541C7A588B008B630A /* Info.plist */,
+				8A7E5F4A2A589318009F89E8 /* Secrets.plist */,
 				C4CEC60F29019E43007440BA /* art.scnassets */,
 				8A598F2926501CF3001C4968 /* ArtGalleryApp.swift */,
 				D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */,
+				8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */,
 				8A9BD334263F332700B816BA /* Color+ArtGallery.swift */,
-				8ACF0C9D26C2188E00358673 /* File.swift */,
+				36830FA02B1A7CCB009304B8 /* Links.swift */,
+				36830F9E2B1A7BC8009304B8 /* Logging.swift */,
 				8A00C61E26502F6500A591C2 /* OptionalURL.swift */,
+				8A7E5F482A5892A7009F89E8 /* Properties.swift */,
 				8A9F2BC0265DD79300C40F2F /* RemoteImage.swift */,
 				8ACF0C9B26C2029600358673 /* ShareFavorites.swift */,
 				8A3E55A62623E59A009E9BFA /* String+Parsing.swift */,
@@ -703,14 +724,12 @@
 				8AC76C442659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift */,
 				8A9BD330263E699E00B816BA /* URL+PathExtensionCheck.swift */,
 				D228034F1C7A588B008B630A /* Assets.xcassets */,
+				8A659ED92A47722500214141 /* Adapters */,
 				8AB8BDE42635FECC00A13EAD /* ArtGalleryClient */,
 				8AFEF15F263DDA0800835F6D /* Localizable.strings */,
 				8AFEF15D263DDA0800835F6D /* Main.strings */,
 				D28A5D351C7BDB3000DDC170 /* Models */,
 				8AFEF15B263DDA0800835F6D /* Views */,
-				8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */,
-				8A7E5F482A5892A7009F89E8 /* Properties.swift */,
-				8A7E5F4A2A589318009F89E8 /* Secrets.plist */,
 			);
 			path = ArtAtGVSU;
 			sourceTree = "<group>";
@@ -777,6 +796,7 @@
 				8A659EE22A47778B00214141 /* DequeModule */,
 				8A6468782A94473F008487A1 /* FirebaseAnalytics */,
 				8A64687A2A94473F008487A1 /* FirebaseCrashlytics */,
+				3641523B2B1A58EA00300301 /* CodeScanner */,
 			);
 			productName = ArtAtGVSU;
 			productReference = D22803421C7A588B008B630A /* ArtAtGVSU.app */;
@@ -823,6 +843,7 @@
 				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = D22803431C7A588B008B630A /* Products */;
 			projectDirPath = "";
@@ -946,6 +967,7 @@
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
 				8A598F2A26501CF3001C4968 /* ArtGalleryApp.swift in Sources */,
 				8A9F2BC7265DDD2200C40F2F /* DynamicCodingKeys.swift in Sources */,
+				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
 				8A9F2BC9265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift in Sources */,
 				8A3E55A72623E59A009E9BFA /* String+Parsing.swift in Sources */,
 				8A9BD335263F332700B816BA /* Color+ArtGallery.swift in Sources */,
@@ -957,6 +979,7 @@
 				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
 				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
 				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
+				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
 				8A00C6232650333400A591C2 /* DecodedArray.swift in Sources */,
 				D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */,
 				8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */,
@@ -970,6 +993,7 @@
 				8A37B27B2A76F836000E7459 /* FavoritesIndexView.swift in Sources */,
 				8A9BD337263F33D900B816BA /* ArtworkDetailRelatedWorks.swift in Sources */,
 				8A9F2BDD2664535F00C40F2F /* Appearance.swift in Sources */,
+				36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */,
 				8A87BFD7265ACBE900511B3B /* DetailDivider.swift in Sources */,
 				8A9F2BD1266081FF00C40F2F /* FeaturedIndexView.swift in Sources */,
 				8ACF0C9C26C2029600358673 /* ShareFavorites.swift in Sources */,
@@ -990,7 +1014,6 @@
 				8A659EC42A45430800214141 /* Tour.swift in Sources */,
 				8A9F2BDB26643EE700C40F2F /* UserColorTheme.swift in Sources */,
 				8A9F2BD3266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift in Sources */,
-				8ACF0C9E26C2188E00358673 /* File.swift in Sources */,
 				8A9F2BD5266414B900C40F2F /* ArtworkDetailTabImage.swift in Sources */,
 				8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */,
 				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
@@ -1008,6 +1031,7 @@
 				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
 				8A010EBD26A5189800EEFAF1 /* ArtworkDetailTitleRow.swift in Sources */,
 				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
+				3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */,
 				8A659ED22A45534100214141 /* TourStop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1354,6 +1378,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.3;
+			};
+		};
 		8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1397,6 +1429,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3641523B2B1A58EA00300301 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		8A6468782A94473F008487A1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

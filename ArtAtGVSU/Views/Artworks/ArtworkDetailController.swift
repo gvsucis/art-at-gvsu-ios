@@ -84,7 +84,7 @@ class ArtworkDetailController: UIViewController, ArtworkDetailDelegate, GalleryI
 }
 
 struct ArtworkDetailRepresentable: UIViewControllerRepresentable {
-    var artworkID: String
+    var artworkID: String?
 
     func makeUIViewController(context: Context) -> ArtworkDetailController {
         let controller = ArtworkDetailController()
