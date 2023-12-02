@@ -49,6 +49,8 @@ struct QRCodeReaderButton: View {
     }
 }
 
-#Preview {
-    QRCodeReaderButton()
+struct QRCodeReaderButton_Previews: PreviewProvider {
+    static var previews: some View {
+        QRCodeReaderButton()
+    }
 }

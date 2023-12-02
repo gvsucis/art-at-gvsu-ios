@@ -80,8 +80,10 @@ fileprivate extension View {
     }
 }
 
-#Preview {
-    QRCodeReader(
-        onClose: {}
-    )
+struct QRCodeReader_Previews: PreviewProvider {
+    static var previews: some View {        
+        QRCodeReader(
+            onClose: {}
+        )
+    }
 }
