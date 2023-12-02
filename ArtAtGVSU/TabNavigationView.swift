@@ -32,9 +32,10 @@ struct TabNavigationView: View {
                     .toolbar {
                         NavigationLink(
                             destination: SettingsView()
-                                .navigationBarTitle("navigation_Settings", displayMode: .inline),
-                            label: { Image(systemName: "gearshape") }
-                        )
+                                .navigationBarTitle("navigation_Settings", displayMode: .inline)
+                        ) {
+                            Image(systemName: "gearshape")
+                        }
                     }
                     .id(tabIDs[Tab.home])
             }
@@ -55,9 +56,7 @@ struct TabNavigationView: View {
                 SearchIndexView()
                     .navigationBarTitle("navigation_Search", displayMode: .inline)
                     .toolbar {
-                        NavigationLink(destination: ScanQRCodeRepresentable()) {
-                            Image(systemName: "qrcode.viewfinder")
-                        }
+                        QRCodeReaderButton()
                     }
             }
             .tabItem {
@@ -69,7 +68,9 @@ struct TabNavigationView: View {
                 FavoritesIndexView()
                     .navigationBarTitle("navigation_Favorites", displayMode: .inline)
                     .toolbar {
-                        Button(action: shareFavorites, label: { Image(systemName: "square.and.arrow.up") })
+                        Button(action: shareFavorites) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
                     }
             }
             .tabItem {

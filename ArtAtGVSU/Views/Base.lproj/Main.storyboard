@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -447,7 +447,7 @@
             <objects>
                 <tableViewController id="Kfm-LB-KMh" customClass="RelatedTableViewController" customModule="ArtAtGVSU" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLn-Tc-tac">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -483,7 +483,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rqu-dW-7gi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EXy-UI-DIc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -622,46 +622,12 @@
             </objects>
             <point key="canvasLocation" x="1969" y="2187"/>
         </scene>
-        <!--Scan Code View Controller-->
-        <scene sceneID="aLa-Oj-AFt">
-            <objects>
-                <viewController storyboardIdentifier="QRCodeScanner" id="s9D-q0-Kpe" customClass="ScanCodeViewController" customModule="ArtAtGVSU" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="A6S-wL-1b7"/>
-                        <viewControllerLayoutGuide type="bottom" id="Egc-25-Yan"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EhS-Y9-nVG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUM-3R-pBb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="JUM-3R-pBb" firstAttribute="height" secondItem="EhS-Y9-nVG" secondAttribute="height" id="1rY-Ag-vom"/>
-                            <constraint firstItem="JUM-3R-pBb" firstAttribute="width" secondItem="EhS-Y9-nVG" secondAttribute="width" id="80v-qu-okt"/>
-                            <constraint firstItem="JUM-3R-pBb" firstAttribute="centerX" secondItem="EhS-Y9-nVG" secondAttribute="centerX" id="Jst-ty-HTk"/>
-                            <constraint firstItem="JUM-3R-pBb" firstAttribute="centerY" secondItem="EhS-Y9-nVG" secondAttribute="centerY" id="yxz-6J-yyA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="viewPreview" destination="JUM-3R-pBb" id="hwH-BX-L7h"/>
-                        <segue destination="PB0-RA-FIY" kind="show" identifier="ScanDetailSegue" id="eUX-RJ-WeY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pLv-n8-yUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2995" y="1414"/>
-        </scene>
         <!--Featured Table View Controller-->
         <scene sceneID="oqg-np-ehq">
             <objects>
                 <tableViewController id="JBs-06-Urw" customClass="FeaturedTableViewController" customModule="ArtAtGVSU" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U7D-Bx-Pft">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -697,7 +663,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ZzY-HS-WMP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qNL-Q9-nlX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnb-Lu-7H9">
