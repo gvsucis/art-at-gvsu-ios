@@ -15,7 +15,7 @@ deps:
 
 .PHONY: bump-version
 bump-version:
-	bumpver update
+	bumpver update --commit-message '[skip ci] bump version {old_version} -> {new_version}'
 
 ci-test: ci-secrets
 	$(FASTLANE) test

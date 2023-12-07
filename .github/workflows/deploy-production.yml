@@ -21,7 +21,7 @@ jobs:
           git config user.name "GV Bot"
           git config user.email "137118308+gvcis-bot@users.noreply.github.com"
       - name: Bump version
-        run: bumpver update
+        run: make bump-version
       - name: Deploy App to Production
         env:
           FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
