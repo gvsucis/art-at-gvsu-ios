@@ -15,53 +15,7 @@ import SceneKit
 import ARKit
 
 
-struct Circl: View {
-    var isAnimated: Binding<Bool>
-    var backgroundColors: [Color]
-    var size: CGFloat? = 20
-    var animationDelay: Double?
-    
-    
-    var body: some View {
-        Circle()
-            .background(
-                LinearGradient(gradient: Gradient(colors: backgroundColors),
-                               startPoint: .leading, endPoint: .trailing)
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            )
-            .shadow(color: .purple.opacity(0.5), radius: 5, x: 1, y: 1)
-            .foregroundColor(.clear)
-            .frame(width: size, height: size)
-            .scaleEffect(isAnimated.wrappedValue ? 1.0 : 0.5)
-            .animation(.easeInOut(duration: 1.0))
-//            .animation(Animation.linear(duration: 0.5).repeatForever().delay(animationDelay ?? 0.0))
-    }
-}
 
-struct Anim: View {
-    @State private var isAnimated = false
-    var color1 = Color(red: 0.09, green: 0.14, blue: 0.14, opacity: 1)
-    var color2 = Color(red: 0.27, green: 0.27, blue: 0.52, opacity: 1)
-    var color11 = Color(red: 0.129, green: 0.137, blue: 0.349, opacity: 1)
-    var color22 = Color(red: 0.05, green: 0.64, blue: 0.9, opacity: 1)
-//    var color1 = Color(red: 0.09, green: 0.14, blue: 0.14, opacity: 1)
-//    var color2 = Color(red: 0.027, green: 0.027, blue: 0.052, opacity: 1)
-    var co3 = Color("#172554")
-    
-    var body: some View {
-        HStack {
-            Circl(isAnimated: $isAnimated, backgroundColors: [color1, color11], size: 12, animationDelay: 0.1)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color2, .purple], size: 16, animationDelay: 0.3)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color1, color11], size: 20, animationDelay: 0.4)
-            Circl(isAnimated: $isAnimated, backgroundColors: [color2, .purple], size: 24, animationDelay: 0.6)
-        }
-        .onAppear{
-            withAnimation {
-                isAnimated = true
-            }
-        }
-    }
-}
 
 struct LoadingExperience: View {
     var body: some View {
@@ -70,30 +24,7 @@ struct LoadingExperience: View {
     }
 }
 
-struct closeButton: View {
-    @State var tapped: Bool = false
-    var action: DismissAction
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .fill(.black)
-                .frame(width: 50, height: 50)
-                .opacity(0.6)
-                .shadow(color: .gray.opacity(0.5), radius: 4, x: 0, y: 4)
-            Image(systemName: "xmark")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .light))
-        }
-        
-        .scaleEffect(tapped ? 0.95 : 1)
-        .onTapGesture {
-            tapped = true
-            self.action()
-        }
-        .padding(10)
-    }
-}
+
 
 
 struct ARSplashView: View {
@@ -113,7 +44,7 @@ struct ARSplashView: View {
                 VStack {
                     Text("Loading Experience")
                         .font(.title)
-                    Anim()
+                    AnimatedDotSequence()
                 }
                 .frame(alignment: .bottom)
             } else {
@@ -131,7 +62,7 @@ struct ARSplashView: View {
                 }
             }
             HStack {
-                closeButton(action: self.dismiss)
+                CloseButton(action: self.dismiss)
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                 .transition(.asymmetric(insertion: .scale, removal: .opacity))

@@ -47,7 +47,6 @@ extension ARArtwork {
         
         let dirname = "ArtAtGvsu/\(artwork.id)"
         
-        
         arAsset.video = await downloadFile(url: artwork.arDigitalAsset!, dirname: dirname)
         
         arAsset.referenceImage = await downloadFile(url: artwork.mediaMedium!, dirname: dirname)
