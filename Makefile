@@ -2,16 +2,21 @@ SHELL:=/usr/bin/env bash
 
 FASTLANE ?= bundle exec fastlane
 SECRETS_DIR ?= ../art-at-gvsu-secrets/ios
+PIP ?= pip3
 
 secrets:
 	cp -v $(SECRETS_DIR)/ArtAtGVSU/GoogleService-Info.plist ./ArtAtGVSU/GoogleService-Info.plist
 	cp -v $(SECRETS_DIR)/ArtAtGVSU/Secrets.plist ./ArtAtGVSU/Secrets.plist
 
-.PHONY: ci-test ci-secrets deploy-beta deploy-production deps secrets
+.PHONY: ci-test ci-secrets deploy-beta deploy-production deps secrets bootstrap
 
 deps:
 	bundle install
-	pip3 install bumpver==2023.1125
+	$(PIP) install bumpver==2023.1125
+	$(PIP) install pre-commit==3.6.2
+
+bootstrap: deps
+	pre-commit install
 
 .PHONY: bump-version
 bump-version:
