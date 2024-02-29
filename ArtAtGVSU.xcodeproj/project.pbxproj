@@ -315,13 +315,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AADE70B265DCE43005D86F0 /* SDWebImageSwiftUI in Frameworks */,
-				8AB8BDF6263612EE00A13EAD /* RSWeb in Frameworks */,
-				8A659EE32A47778B00214141 /* DequeModule in Frameworks */,
-				8A64687B2A94473F008487A1 /* FirebaseCrashlytics in Frameworks */,
-				8A6468792A94473F008487A1 /* FirebaseAnalytics in Frameworks */,
 				3641523C2B1A58EA00300301 /* CodeScanner in Frameworks */,
+				8A659EE32A47778B00214141 /* DequeModule in Frameworks */,
+				8A6468792A94473F008487A1 /* FirebaseAnalytics in Frameworks */,
+				8A64687B2A94473F008487A1 /* FirebaseCrashlytics in Frameworks */,
 				8A9BD322263E0B3500B816BA /* ImageViewer in Frameworks */,
+				8AB8BDF6263612EE00A13EAD /* RSWeb in Frameworks */,
+				8AADE70B265DCE43005D86F0 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,9 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				3641523D2B1A5AB200300301 /* QRCodeReader.swift */,
+				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
 				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
 				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
-				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -342,8 +342,8 @@
 		36EE2A7C2AE5BEC500ABB8D3 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */,
 				36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */,
+				8A37B27A2A76F836000E7459 /* FavoritesIndexView.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -358,9 +358,9 @@
 		8A659EC02A453D0800214141 /* Tours */ = {
 			isa = PBXGroup;
 			children = (
-				8A659ECD2A454E3F00214141 /* TourIndexView.swift */,
-				8A3F765B2A4A841200B2BCB0 /* TourDetailView.swift */,
 				8A3F76592A4A805E00B2BCB0 /* TourAnnotation.swift */,
+				8A3F765B2A4A841200B2BCB0 /* TourDetailView.swift */,
+				8A659ECD2A454E3F00214141 /* TourIndexView.swift */,
 				8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */,
 			);
 			path = Tours;
@@ -369,8 +369,8 @@
 		8A659EC12A453D4900214141 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				8A00C61626501F4800A591C2 /* LocationIndexView.swift */,
 				8AAAD9492650C7670081837B /* LocationDetailView.swift */,
+				8A00C61626501F4800A591C2 /* LocationIndexView.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -378,10 +378,10 @@
 		8A659EC22A453D5600214141 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8A010EBE26A65DBD00EEFAF1 /* HomeScreen.swift */,
 				8A9F2BD0266081FF00C40F2F /* FeaturedIndexView.swift */,
-				8AADE707265B441A005D86F0 /* HomeView.swift */,
 				8A9F2BCC265DE15E00C40F2F /* HomeLoadedView.swift */,
+				8A010EBE26A65DBD00EEFAF1 /* HomeScreen.swift */,
+				8AADE707265B441A005D86F0 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -389,8 +389,8 @@
 		8A659EC52A4544A200214141 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				8A9F2BC6265DDD2200C40F2F /* DynamicCodingKeys.swift */,
 				8A00C6222650333400A591C2 /* DecodedArray.swift */,
+				8A9F2BC6265DDD2200C40F2F /* DynamicCodingKeys.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -419,10 +419,10 @@
 				8A87BFC8265AA12700511B3B /* EntityDetail+Parsing.swift */,
 				8A9F2BD2266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift */,
 				8AAAD94F2651BC690081837B /* LocationDetail+Parsing.swift */,
+				8A659EDA2A47726700214141 /* LocationGeoreferenceParsing.swift */,
 				8AA047222640DEC300AA512A /* ObjectDetail+Parsing.swift */,
 				8AC76C46265976C000F76221 /* RelatedObjectsParsing.swift */,
 				8A659ED72A4554B000214141 /* TourStopDetail+Parsing.swift */,
-				8A659EDA2A47726700214141 /* LocationGeoreferenceParsing.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -430,11 +430,11 @@
 		8A659EDE2A47728400214141 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				8ACF7FF52623ECD0006DA945 /* ObjectDetailParsingTest.swift */,
-				8AAAD9512651BC9B0081837B /* LocationDetailParsingTest.swift */,
 				8AC76C4A265A9E5200F76221 /* EntityDetailParsingTest.swift */,
-				8A659ED32A4553B300214141 /* TourStopDetailParsingTest.swift */,
+				8AAAD9512651BC9B0081837B /* LocationDetailParsingTest.swift */,
 				8A659EDC2A47727F00214141 /* LocationGeoreferenceParsingTest.swift */,
+				8ACF7FF52623ECD0006DA945 /* ObjectDetailParsingTest.swift */,
+				8A659ED32A4553B300214141 /* TourStopDetailParsingTest.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -463,10 +463,10 @@
 		8ACF7FE52623ECA5006DA945 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8ACF80032623ED1F006DA945 /* Info.plist */,
 				8A659EDE2A47728400214141 /* Adapters */,
 				8A00C6262650389400A591C2 /* CampusSearchResultTest.swift */,
 				8ACF0C9326C0573400358673 /* EntitySearchResultTest.swift */,
+				8ACF80032623ED1F006DA945 /* Info.plist */,
 				8ACF0C9726C07C5A00358673 /* ObjectSearchResultTest.swift */,
 				8A659ECA2A45476400214141 /* TourSearchResultTest.swift */,
 			);
@@ -476,7 +476,12 @@
 		8AFEF15B263DDA0800835F6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
+				8A659ECC2A454C1500214141 /* Artworks */,
+				36EE2A7C2AE5BEC500ABB8D3 /* Favorites */,
+				8A659EC22A453D5600214141 /* Home */,
+				8A659EC12A453D4900214141 /* Locations */,
+				364152392B1A540C00300301 /* Search */,
+				8A659EC02A453D0800214141 /* Tours */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
 				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
 				8A87BFCE265AA5F200511B3B /* Async.swift */,
@@ -484,7 +489,9 @@
 				8A87BFD6265ACBE900511B3B /* DetailDivider.swift */,
 				8A87BFD0265AA98500511B3B /* DetailHeading.swift */,
 				8AFEF161263DDA0800835F6D /* DetailTextRow.swift */,
+				8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */,
 				8AADE6FF265AF0EB005D86F0 /* LoadingView.swift */,
+				8AFEF16B263DDA0800835F6D /* Main.storyboard */,
 				8A9F2BCE265DEB9000C40F2F /* OpaqueButtonStyle.swift */,
 				8A9F2BD62664296400C40F2F /* SettingsView.swift */,
 				8A010EC426B71FE400EEFAF1 /* SwiftlySearch.swift */,
@@ -493,13 +500,6 @@
 				8AAAD94D265169F60081837B /* ThumbnailTitleRow.swift */,
 				8A9F2BDA26643EE700C40F2F /* UserColorTheme.swift */,
 				8A659EBE2A453CFB00214141 /* WideTitleCard.swift */,
-				8A659ECC2A454C1500214141 /* Artworks */,
-				36EE2A7C2AE5BEC500ABB8D3 /* Favorites */,
-				8A659EC22A453D5600214141 /* Home */,
-				8A659EC12A453D4900214141 /* Locations */,
-				8AFEF16B263DDA0800835F6D /* Main.storyboard */,
-				364152392B1A540C00300301 /* Search */,
-				8A659EC02A453D0800214141 /* Tours */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,9 +508,9 @@
 			isa = PBXGroup;
 			children = (
 				D22803441C7A588B008B630A /* ArtAtGVSU */,
-				8ACF7FE52623ECA5006DA945 /* Tests */,
-				D22803431C7A588B008B630A /* Products */,
 				6CFB989706B71A28158DE823 /* Frameworks */,
+				D22803431C7A588B008B630A /* Products */,
+				8ACF7FE52623ECA5006DA945 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -526,31 +526,31 @@
 		D22803441C7A588B008B630A /* ArtAtGVSU */ = {
 			isa = PBXGroup;
 			children = (
-				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
-				D22803541C7A588B008B630A /* Info.plist */,
-				8A7E5F4A2A589318009F89E8 /* Secrets.plist */,
+				8A659ED92A47722500214141 /* Adapters */,
+				8AB8BDE42635FECC00A13EAD /* ArtGalleryClient */,
+				D28A5D351C7BDB3000DDC170 /* Models */,
+				8AFEF15B263DDA0800835F6D /* Views */,
 				C4CEC60F29019E43007440BA /* art.scnassets */,
 				8A598F2926501CF3001C4968 /* ArtGalleryApp.swift */,
+				D228034F1C7A588B008B630A /* Assets.xcassets */,
 				D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */,
 				8A659EDF2A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift */,
 				8A9BD334263F332700B816BA /* Color+ArtGallery.swift */,
+				36D643042ADC8FAF00104838 /* GoogleService-Info.plist */,
+				D22803541C7A588B008B630A /* Info.plist */,
 				36830FA02B1A7CCB009304B8 /* Links.swift */,
+				8AFEF15F263DDA0800835F6D /* Localizable.strings */,
 				36830F9E2B1A7BC8009304B8 /* Logging.swift */,
+				8AFEF15D263DDA0800835F6D /* Main.strings */,
 				8A00C61E26502F6500A591C2 /* OptionalURL.swift */,
 				8A7E5F482A5892A7009F89E8 /* Properties.swift */,
 				8A9F2BC0265DD79300C40F2F /* RemoteImage.swift */,
+				8A7E5F4A2A589318009F89E8 /* Secrets.plist */,
 				8ACF0C9B26C2029600358673 /* ShareFavorites.swift */,
 				8A3E55A62623E59A009E9BFA /* String+Parsing.swift */,
 				8A010EC826B7649600EEFAF1 /* Translate.swift */,
 				8AC76C442659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift */,
 				8A9BD330263E699E00B816BA /* URL+PathExtensionCheck.swift */,
-				D228034F1C7A588B008B630A /* Assets.xcassets */,
-				8A659ED92A47722500214141 /* Adapters */,
-				8AB8BDE42635FECC00A13EAD /* ArtGalleryClient */,
-				8AFEF15F263DDA0800835F6D /* Localizable.strings */,
-				8AFEF15D263DDA0800835F6D /* Main.strings */,
-				D28A5D351C7BDB3000DDC170 /* Models */,
-				8AFEF15B263DDA0800835F6D /* Views */,
 			);
 			path = ArtAtGVSU;
 			sourceTree = "<group>";
@@ -559,14 +559,14 @@
 			isa = PBXGroup;
 			children = (
 				C44099F22911719F00718803 /* ARAsset.swift */,
+				C4C3141C28FD9E9800538B99 /* ARAsset.swift */,
 				8A87BFCA265AA2EA00511B3B /* Artist.swift */,
-				8AB8BDAC2635F69700A13EAD /* Artwork.swift */,
 				8A9F2BC8265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift */,
+				8AB8BDAC2635F69700A13EAD /* Artwork.swift */,
 				8AADE705265B01E2005D86F0 /* FavoritesStore.swift */,
 				8A00C61A26502C9900A591C2 /* Location.swift */,
 				8A659EC32A45430800214141 /* Tour.swift */,
 				8A659ED12A45534100214141 /* TourStop.swift */,
-				C4C3141C28FD9E9800538B99 /* ARAsset.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -611,13 +611,13 @@
 			);
 			name = ArtAtGVSU;
 			packageProductDependencies = (
-				8AB8BDF5263612EE00A13EAD /* RSWeb */,
-				8A9BD321263E0B3500B816BA /* ImageViewer */,
-				8AADE70A265DCE43005D86F0 /* SDWebImageSwiftUI */,
+				3641523B2B1A58EA00300301 /* CodeScanner */,
 				8A659EE22A47778B00214141 /* DequeModule */,
 				8A6468782A94473F008487A1 /* FirebaseAnalytics */,
 				8A64687A2A94473F008487A1 /* FirebaseCrashlytics */,
-				3641523B2B1A58EA00300301 /* CodeScanner */,
+				8A9BD321263E0B3500B816BA /* ImageViewer */,
+				8AB8BDF5263612EE00A13EAD /* RSWeb */,
+				8AADE70A265DCE43005D86F0 /* SDWebImageSwiftUI */,
 			);
 			productName = ArtAtGVSU;
 			productReference = D22803421C7A588B008B630A /* ArtAtGVSU.app */;
@@ -659,20 +659,20 @@
 			);
 			mainGroup = D22803391C7A588B008B630A;
 			packageReferences = (
-				8AB8BDF4263612EE00A13EAD /* XCRemoteSwiftPackageReference "RSWeb" */,
-				8A9BD320263E0B3500B816BA /* XCRemoteSwiftPackageReference "ImageViewer" */,
-				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				8A9BD320263E0B3500B816BA /* XCRemoteSwiftPackageReference "ImageViewer" */,
+				8AB8BDF4263612EE00A13EAD /* XCRemoteSwiftPackageReference "RSWeb" */,
+				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = D22803431C7A588B008B630A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D22803411C7A588B008B630A /* ArtAtGVSU */,
-				8ACF7FE32623ECA5006DA945 /* Tests */,
 				36D643062ADC907F00104838 /* PreBuildActions */,
+				8ACF7FE32623ECA5006DA945 /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -689,14 +689,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */,
-				8AFEF174263DDA0800835F6D /* Localizable.strings in Resources */,
-				36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */,
-				8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */,
-				8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */,
 				C4CEC61029019E44007440BA /* art.scnassets in Resources */,
 				D22803501C7A588B008B630A /* Assets.xcassets in Resources */,
+				36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */,
+				8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */,
+				8AFEF174263DDA0800835F6D /* Localizable.strings in Resources */,
+				8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */,
 				8AFEF173263DDA0800835F6D /* Main.strings in Resources */,
+				8A7E5F4B2A589318009F89E8 /* Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,15 +750,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AC76C4B265A9E5200F76221 /* EntityDetailParsingTest.swift in Sources */,
-				8AAAD9522651BC9B0081837B /* LocationDetailParsingTest.swift in Sources */,
-				8A659ED42A4553B300214141 /* TourStopDetailParsingTest.swift in Sources */,
-				8A659ECB2A45476400214141 /* TourSearchResultTest.swift in Sources */,
-				8ACF7FF62623ECD0006DA945 /* ObjectDetailParsingTest.swift in Sources */,
 				8A00C6272650389400A591C2 /* CampusSearchResultTest.swift in Sources */,
+				8AC76C4B265A9E5200F76221 /* EntityDetailParsingTest.swift in Sources */,
 				8ACF0C9426C0573400358673 /* EntitySearchResultTest.swift in Sources */,
-				8ACF0C9826C07C5A00358673 /* ObjectSearchResultTest.swift in Sources */,
+				8AAAD9522651BC9B0081837B /* LocationDetailParsingTest.swift in Sources */,
 				8A659EDD2A47727F00214141 /* LocationGeoreferenceParsingTest.swift in Sources */,
+				8ACF7FF62623ECD0006DA945 /* ObjectDetailParsingTest.swift in Sources */,
+				8ACF0C9826C07C5A00358673 /* ObjectSearchResultTest.swift in Sources */,
+				8A659ECB2A45476400214141 /* TourSearchResultTest.swift in Sources */,
+				8A659ED42A4553B300214141 /* TourStopDetailParsingTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,93 +766,93 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A87BFD1265AA98500511B3B /* DetailHeading.swift in Sources */,
-				8A598F2C26501D39001C4968 /* TabNavigationView.swift in Sources */,
-				8A659ED82A4554B000214141 /* TourStopDetail+Parsing.swift in Sources */,
-				8AAAD9502651BC690081837B /* LocationDetail+Parsing.swift in Sources */,
-				8A3E55842623DE67009E9BFA /* ObjectDetail.swift in Sources */,
-				8AADE708265B441A005D86F0 /* HomeView.swift in Sources */,
-				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
-				8AADE706265B01E2005D86F0 /* FavoritesStore.swift in Sources */,
-				8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */,
-				8AC76C452659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift in Sources */,
-				8A659EBF2A453CFB00214141 /* WideTitleCard.swift in Sources */,
-				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
-				8A9F2BCF265DEB9000C40F2F /* OpaqueButtonStyle.swift in Sources */,
-				8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */,
-				8AADE700265AF0EB005D86F0 /* LoadingView.swift in Sources */,
-				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
-				36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */,
-				8A87BFCF265AA5F200511B3B /* Async.swift in Sources */,
-				8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */,
-				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
-				8A598F2A26501CF3001C4968 /* ArtGalleryApp.swift in Sources */,
-				8A9F2BC7265DDD2200C40F2F /* DynamicCodingKeys.swift in Sources */,
-				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
-				8A9F2BC9265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift in Sources */,
-				8A3E55A72623E59A009E9BFA /* String+Parsing.swift in Sources */,
-				8A9BD335263F332700B816BA /* Color+ArtGallery.swift in Sources */,
-				8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */,
-				8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */,
-				8A659EDB2A47726700214141 /* LocationGeoreferenceParsing.swift in Sources */,
-				C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */,
-				8ACF0C9626C07C2100358673 /* ObjectSearchResult.swift in Sources */,
-				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
-				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
-				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
-				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
-				8A00C6232650333400A591C2 /* DecodedArray.swift in Sources */,
-				D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */,
-				8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */,
-				8AAAD94C26515F8B0081837B /* LocationDetail.swift in Sources */,
-				8A659ED62A45543700214141 /* TourStopDetail.swift in Sources */,
-				D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */,
-				8AA047232640DEC300AA512A /* ObjectDetail+Parsing.swift in Sources */,
-				8A87BFCD265AA55100511B3B /* ArtistDetailView.swift in Sources */,
-				8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */,
-				8A87BFCB265AA2EA00511B3B /* Artist.swift in Sources */,
-				8A37B27B2A76F836000E7459 /* FavoritesIndexView.swift in Sources */,
-				8A9BD337263F33D900B816BA /* ArtworkDetailRelatedWorks.swift in Sources */,
 				8A9F2BDD2664535F00C40F2F /* Appearance.swift in Sources */,
-				36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */,
-				8A87BFD7265ACBE900511B3B /* DetailDivider.swift in Sources */,
-				8A9F2BD1266081FF00C40F2F /* FeaturedIndexView.swift in Sources */,
-				8ACF0C9C26C2029600358673 /* ShareFavorites.swift in Sources */,
-				8A9F2BC3265DDB1900C40F2F /* FeaturedArtResult.swift in Sources */,
-				8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */,
-				8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */,
-				8A87BFD5265AC91300511B3B /* ArtistDetailBiographyView.swift in Sources */,
-				8A00C61F26502F6500A591C2 /* OptionalURL.swift in Sources */,
-				8A9BD331263E699E00B816BA /* URL+PathExtensionCheck.swift in Sources */,
-				8AAAD94A2650C7670081837B /* LocationDetailView.swift in Sources */,
-				8ACF0C9226C056C800358673 /* EntitySearchResult.swift in Sources */,
-				8A00C61B26502C9900A591C2 /* Location.swift in Sources */,
+				C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */,
+				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
+				8A598F2A26501CF3001C4968 /* ArtGalleryApp.swift in Sources */,
 				8AB8BDD82635FD8500A13EAD /* ArtGalleryClient.swift in Sources */,
-				8A010EC326B70AE900EEFAF1 /* ArtworkDetailVideoPlaceholder.swift in Sources */,
-				8A010EC926B7649600EEFAF1 /* Translate.swift in Sources */,
-				8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */,
-				8A659EC42A45430800214141 /* Tour.swift in Sources */,
-				8A9F2BDB26643EE700C40F2F /* UserColorTheme.swift in Sources */,
-				8A9F2BD3266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift in Sources */,
-				8A9F2BD5266414B900C40F2F /* ArtworkDetailTabImage.swift in Sources */,
-				8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */,
-				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
-				8A00C6212650321300A591C2 /* CampusSearchResult.swift in Sources */,
-				8A7E5F492A5892A7009F89E8 /* Properties.swift in Sources */,
-				8A9F2BCD265DE15E00C40F2F /* HomeLoadedView.swift in Sources */,
-				8AAAD94E265169F60081837B /* ThumbnailTitleRow.swift in Sources */,
-				8A9BD333263E76E900B816BA /* ArtworkDetailModel.swift in Sources */,
-				8A010EC526B71FE400EEFAF1 /* SwiftlySearch.swift in Sources */,
+				8A87BFCB265AA2EA00511B3B /* Artist.swift in Sources */,
+				8A87BFD5265AC91300511B3B /* ArtistDetailBiographyView.swift in Sources */,
+				8A87BFCD265AA55100511B3B /* ArtistDetailView.swift in Sources */,
+				8A9F2BC9265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift in Sources */,
 				8AB8BDAD2635F69700A13EAD /* Artwork.swift in Sources */,
-				8A659EE02A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
-				8A9F2BC1265DD79300C40F2F /* RemoteImage.swift in Sources */,
+				D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */,
+				8A9BD333263E76E900B816BA /* ArtworkDetailModel.swift in Sources */,
 				8AADE704265B000D005D86F0 /* ArtworkDetailNavigationLink.swift in Sources */,
-				36182AB02AE5C617000497FF /* TabManager.swift in Sources */,
-				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
+				8A9BD337263F33D900B816BA /* ArtworkDetailRelatedWorks.swift in Sources */,
+				8A9F2BD5266414B900C40F2F /* ArtworkDetailTabImage.swift in Sources */,
 				8A010EBD26A5189800EEFAF1 /* ArtworkDetailTitleRow.swift in Sources */,
-				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
+				8A010EC326B70AE900EEFAF1 /* ArtworkDetailVideoPlaceholder.swift in Sources */,
+				8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */,
+				8A87BFCF265AA5F200511B3B /* Async.swift in Sources */,
+				D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */,
+				8A00C6212650321300A591C2 /* CampusSearchResult.swift in Sources */,
+				8A659EE02A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
+				8A9BD335263F332700B816BA /* Color+ArtGallery.swift in Sources */,
+				8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */,
+				8A00C6232650333400A591C2 /* DecodedArray.swift in Sources */,
+				8A87BFD7265ACBE900511B3B /* DetailDivider.swift in Sources */,
+				8A87BFD1265AA98500511B3B /* DetailHeading.swift in Sources */,
+				8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */,
+				8A9F2BC7265DDD2200C40F2F /* DynamicCodingKeys.swift in Sources */,
+				8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */,
+				8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */,
+				8ACF0C9226C056C800358673 /* EntitySearchResult.swift in Sources */,
+				36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */,
+				8A37B27B2A76F836000E7459 /* FavoritesIndexView.swift in Sources */,
+				8AADE706265B01E2005D86F0 /* FavoritesStore.swift in Sources */,
+				8A9F2BC3265DDB1900C40F2F /* FeaturedArtResult.swift in Sources */,
+				8A9F2BD1266081FF00C40F2F /* FeaturedIndexView.swift in Sources */,
+				8A9F2BD3266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift in Sources */,
+				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
+				8A9F2BCD265DE15E00C40F2F /* HomeLoadedView.swift in Sources */,
+				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
+				8AADE708265B441A005D86F0 /* HomeView.swift in Sources */,
+				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
+				8AADE700265AF0EB005D86F0 /* LoadingView.swift in Sources */,
+				8A00C61B26502C9900A591C2 /* Location.swift in Sources */,
+				8AAAD9502651BC690081837B /* LocationDetail+Parsing.swift in Sources */,
+				8AAAD94C26515F8B0081837B /* LocationDetail.swift in Sources */,
+				8AAAD94A2650C7670081837B /* LocationDetailView.swift in Sources */,
+				8A659EDB2A47726700214141 /* LocationGeoreferenceParsing.swift in Sources */,
+				8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */,
+				8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */,
+				36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */,
+				8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */,
+				8AA047232640DEC300AA512A /* ObjectDetail+Parsing.swift in Sources */,
+				8A3E55842623DE67009E9BFA /* ObjectDetail.swift in Sources */,
+				8ACF0C9626C07C2100358673 /* ObjectSearchResult.swift in Sources */,
+				8A9F2BCF265DEB9000C40F2F /* OpaqueButtonStyle.swift in Sources */,
+				8A00C61F26502F6500A591C2 /* OptionalURL.swift in Sources */,
+				8A7E5F492A5892A7009F89E8 /* Properties.swift in Sources */,
 				3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */,
+				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
+				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
+				8A9F2BC1265DD79300C40F2F /* RemoteImage.swift in Sources */,
+				8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */,
+				8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */,
+				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
+				8ACF0C9C26C2029600358673 /* ShareFavorites.swift in Sources */,
+				8A3E55A72623E59A009E9BFA /* String+Parsing.swift in Sources */,
+				8A010EC526B71FE400EEFAF1 /* SwiftlySearch.swift in Sources */,
+				36182AB02AE5C617000497FF /* TabManager.swift in Sources */,
+				8A598F2C26501D39001C4968 /* TabNavigationView.swift in Sources */,
+				8AAAD94E265169F60081837B /* ThumbnailTitleRow.swift in Sources */,
+				8A659EC42A45430800214141 /* Tour.swift in Sources */,
+				8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */,
+				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
+				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
+				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
+				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
+				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
 				8A659ED22A45534100214141 /* TourStop.swift in Sources */,
+				8A659ED82A4554B000214141 /* TourStopDetail+Parsing.swift in Sources */,
+				8A659ED62A45543700214141 /* TourStopDetail.swift in Sources */,
+				8A010EC926B7649600EEFAF1 /* Translate.swift in Sources */,
+				8AC76C452659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift in Sources */,
+				8A9BD331263E699E00B816BA /* URL+PathExtensionCheck.swift in Sources */,
+				8A9F2BDB26643EE700C40F2F /* UserColorTheme.swift in Sources */,
+				8A659EBF2A453CFB00214141 /* WideTitleCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

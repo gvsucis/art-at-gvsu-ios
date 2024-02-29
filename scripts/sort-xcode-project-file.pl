@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 
 # Copyright (C) 2007-2021 Apple Inc.  All rights reserved.
-# Copyright (C) 2021-2022 Nelson.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -27,9 +26,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Script to case-sensitive sort "children", "files", "buildConfigurations",
-# "targets", "packageProductDependencies" and "packageReferences" sections
-# in Xcode project.pbxproj files.
+# Script to sort "children" and "files" sections in Xcode project.pbxproj files
 
 use strict;
 use warnings;
@@ -80,6 +77,19 @@ for my $projectFile (@ARGV) {
         next;
     }
 
+    # Grab the mainGroup for the project file.
+    my $mainGroup = "";
+    open(IN, "< $projectFile") || die "Could not open $projectFile: $!";
+    while (my $line = <IN>) {
+        $mainGroup = $2 if $line =~ m#^(\s*)mainGroup = ([0-9A-F]{24}( /\* .+ \*/)?);$#;
+    }
+    close(IN);
+
+    # Guess the basename of any umbrella header, based on the project name.
+    # Umbrella headers are sorted to the top of their Headers phase to work
+    # around rdar://104432605.
+    (my $umbrellaHeaderBasename = $projectFile) =~ s/.*\/(\w+?)(Legacy)?\.xcodeproj\/project\.pbxproj$/$1/;
+
     my ($OUT, $tempFileName) = tempfile(
         basename($projectFile) . "-XXXXXXXX",
         DIR => dirname($projectFile),
@@ -93,9 +103,9 @@ for my $projectFile (@ARGV) {
         unlink($tempFileName);
     };
 
+    my @lastTwo = ();
     open(IN, "< $projectFile") || die "Could not open $projectFile: $!";
     while (my $line = <IN>) {
-        # Sort files section.
         if ($line =~ /^(\s*)files = \(\s*$/) {
             print $OUT $line;
             my $endMarker = $1 . ");";
@@ -105,16 +115,17 @@ for my $projectFile (@ARGV) {
                     $endMarker = $fileLine;
                     last;
                 }
-                push @files, $fileLine;
+                if ($fileLine =~ /$umbrellaHeaderBasename(Private)?\.h/) {
+                    # Sort umbrella headers to the top. Needed until
+                    # rdar://104432605 is fixed in all shipping Xcodes.
+                    print $OUT $fileLine;
+                } else {
+                    push @files, $fileLine;
+                }
             }
-
-            # Remove duplicate lines then sort.
-            my @uniqueLines = uniq(@files);
-            print $OUT sort sortFilesByFileName @uniqueLines;
+            print $OUT sort sortFilesByFileName @files;
             print $OUT $endMarker;
-        }
-        # Sort children, buildConfigurations, targets, packageProductDependencies, and packageReferences sections.
-        elsif ($line =~ /^(\s*)(children|buildConfigurations|targets|packageProductDependencies|packageReferences) = \(\s*$/) {
+        } elsif ($line =~ /^(\s*)children = \(\s*$/) {
             print $OUT $line;
             my $endMarker = $1 . ");";
             my @children;
@@ -125,26 +136,22 @@ for my $projectFile (@ARGV) {
                 }
                 push @children, $childLine;
             }
-
-            # Remove duplicate lines then sort.
-            my @uniqueLines = uniq(@children);
-            print $OUT sort sortChildrenByFileName @uniqueLines;
-            print $OUT $endMarker;
-        }
-        # Ignore whole PBXFrameworksBuildPhase section.
-        elsif ($line =~ /^(.*)Begin PBXFrameworksBuildPhase section(.*)$/) {
-            print $OUT $line;
-            while (my $ignoreLine = <IN>) {
-                print $OUT $ignoreLine;
-                if ($ignoreLine =~ /^(.*)End PBXFrameworksBuildPhase section(.*)$/) {
-                    last;
-                }
+            if ($lastTwo[0] =~ m#^\s+\Q$mainGroup\E = \{$#) {
+                # Don't sort mainGroup
+                print $OUT @children;
+            } elsif ($lastTwo[0] =~ m#\Q/* Products */\E = \{$#) {
+                # Don't sort Products
+                print $OUT @children;
+            } else {
+                print $OUT sort sortChildrenByFileName @children;
             }
-        }
-        # Ignore other lines.
-        else {
+            print $OUT $endMarker;
+        } else {
             print $OUT $line;
         }
+
+        push @lastTwo, $line;
+        shift @lastTwo if scalar(@lastTwo) > 2;
     }
     close(IN);
     close($OUT);
@@ -170,8 +177,7 @@ sub sortChildrenByFileName($$)
         my $bNumber = $1 if $bFileName =~ /^UnifiedSource(\d+)/;
         return $aNumber <=> $bNumber if $aNumber != $bNumber;
     }
-    # Uncomment below line to have case-insensitive sorting.
-    # return lc($aFileName) cmp lc($bFileName) if lc($aFileName) ne lc($bFileName);
+    return lc($aFileName) cmp lc($bFileName) if lc($aFileName) ne lc($bFileName);
     return $aFileName cmp $bFileName;
 }
 
@@ -185,14 +191,6 @@ sub sortFilesByFileName($$)
         my $bNumber = $1 if $bFileName =~ /^UnifiedSource(\d+)/;
         return $aNumber <=> $bNumber if $aNumber != $bNumber;
     }
-    # Uncomment below line to have case-insensitive sorting.
-    # return lc($aFileName) cmp lc($bFileName) if lc($aFileName) ne lc($bFileName);
+    return lc($aFileName) cmp lc($bFileName) if lc($aFileName) ne lc($bFileName);
     return $aFileName cmp $bFileName;
-}
-
-# Subroutine to remove duplicate items in an array.
-# https://perlmaven.com/unique-values-in-an-array-in-perl
-sub uniq {
-  my %seen;
-  return grep { !$seen{$_}++ } @_;
 }

@@ -9,6 +9,6 @@ repos:
     hooks:
       - id: sort-xcode-project-file
         name: Sort Xcode Project File
-        entry: ./scripts/sort-xcode-project-file.pl
-        language: perl
+        entry: ./scripts/sort-xcode-project-file.sh
+        language: script
         files: .*\.pbxproj
