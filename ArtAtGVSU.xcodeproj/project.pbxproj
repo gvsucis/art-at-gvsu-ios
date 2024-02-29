@@ -611,9 +611,9 @@
 			);
 			name = ArtAtGVSU;
 			packageProductDependencies = (
+				8A6468782A94473F008487A1 /* FirebaseAnalytics */,
 				3641523B2B1A58EA00300301 /* CodeScanner */,
 				8A659EE22A47778B00214141 /* DequeModule */,
-				8A6468782A94473F008487A1 /* FirebaseAnalytics */,
 				8A64687A2A94473F008487A1 /* FirebaseCrashlytics */,
 				8A9BD321263E0B3500B816BA /* ImageViewer */,
 				8AB8BDF5263612EE00A13EAD /* RSWeb */,
