@@ -13,7 +13,7 @@ import RealityKit
 final class CupEntity: Entity {
 //    var path: URL?
     var model: Entity?
-    
+
     static func loadAsync(path: URL) -> AnyPublisher<CupEntity, Error> {
         print("Entity path: ", path)
         return Entity.loadAsync(named: "cup_saucer_set")

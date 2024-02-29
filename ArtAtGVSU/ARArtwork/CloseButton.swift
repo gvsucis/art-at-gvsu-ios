@@ -12,7 +12,7 @@ import SwiftUI
 struct CloseButton: View {
     @State var tapped: Bool = false
     var action: DismissAction
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -24,7 +24,7 @@ struct CloseButton: View {
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .light))
         }
-        
+
         .scaleEffect(tapped ? 0.95 : 1)
         .onTapGesture {
             tapped = true

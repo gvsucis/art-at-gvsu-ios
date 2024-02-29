@@ -14,7 +14,7 @@ struct Dot: View {
     var backgroundColors: [Color]
     var size: CGFloat? = 20
     var animationDelay: Double?
-    
+
     var body: some View {
         Circle()
             .background(

@@ -14,13 +14,13 @@ import RealityKit
 
 class ResourceLoader {
     typealias LoadCompletion = (Result<CupEntity, Error>) -> Void
-    
+
     private var loadCancellable: AnyCancellable?
     private var cupEntity: CupEntity?
-    
+
     func loadResources(path: URL, completion: @escaping LoadCompletion) -> AnyCancellable? {
         guard let cupEntity else {
-        
+
             loadCancellable = CupEntity.loadAsync(path: path).sink { result in
                 print("Path to cup: ", path)
                 if case let .failure(error) = result {
@@ -39,7 +39,7 @@ class ResourceLoader {
         completion(.success(cupEntity))
         return loadCancellable
     }
-        
+
     func createCup(path: URL) throws -> Entity {
         Entity.loadAsync(named: "cup_saucer_set")
             .map { loadedCup -> CupEntity in
@@ -49,7 +49,7 @@ class ResourceLoader {
                 return cup
             }
             .eraseToAnyPublisher()
-        
+
         guard let cup = cupEntity?.model else {
             throw ResourceLoaderError.resourceNotLoaded
         }

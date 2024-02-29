@@ -24,6 +24,17 @@
 		36182AB02AE5C617000497FF /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36182AAF2AE5C617000497FF /* TabManager.swift */; };
 		3641523C2B1A58EA00300301 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3641523B2B1A58EA00300301 /* CodeScanner */; };
 		3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3641523D2B1A5AB200300301 /* QRCodeReader.swift */; };
+		3671E3E82B912BCB009F664D /* ARArtworkContainerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E12B912BCB009F664D /* ARArtworkContainerViewManager.swift */; };
+		3671E3E92B912BCB009F664D /* ArtworkCustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E22B912BCB009F664D /* ArtworkCustomARView.swift */; };
+		3671E3EA2B912BCB009F664D /* ARArtworkContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E32B912BCB009F664D /* ARArtworkContainerView.swift */; };
+		3671E3EB2B912BCB009F664D /* ARArtworkButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E42B912BCB009F664D /* ARArtworkButtonsView.swift */; };
+		3671E3EC2B912BCB009F664D /* ARArtworkContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E52B912BCB009F664D /* ARArtworkContentView.swift */; };
+		3671E3ED2B912BCB009F664D /* ARSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E62B912BCB009F664D /* ARSplashView.swift */; };
+		3671E3EE2B912BCB009F664D /* ARArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3E72B912BCB009F664D /* ARArtwork.swift */; };
+		3671E3F62B912BFC009F664D /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3F42B912BFC009F664D /* CloseButton.swift */; };
+		3671E3F72B912BFC009F664D /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3F52B912BFC009F664D /* Loading.swift */; };
+		3671E3FA2B912C0C009F664D /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3F82B912C0C009F664D /* Entity.swift */; };
+		3671E3FB2B912C0C009F664D /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671E3F92B912C0C009F664D /* ResourceLoader.swift */; };
 		36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */; };
 		36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9E2B1A7BC8009304B8 /* Logging.swift */; };
 		36830FA12B1A7CCB009304B8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830FA02B1A7CCB009304B8 /* Links.swift */; };
@@ -127,8 +138,6 @@
 		8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16B263DDA0800835F6D /* Main.storyboard */; };
 		8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */; };
 		8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */; };
-		9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E05669528AD4384009D0C8C /* ARAssetViewController.swift */; };
-		C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3141C28FD9E9800538B99 /* ARAsset.swift */; };
 		C4CEC61029019E44007440BA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CEC60F29019E43007440BA /* art.scnassets */; };
 		D22803501C7A588B008B630A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D228034F1C7A588B008B630A /* Assets.xcassets */; };
 		D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254BAAF1C83963F0066AF00 /* ArtworkDetailController.swift */; };
@@ -190,6 +199,17 @@
 /* Begin PBXFileReference section */
 		36182AAF2AE5C617000497FF /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		3641523D2B1A5AB200300301 /* QRCodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
+		3671E3E12B912BCB009F664D /* ARArtworkContainerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARArtworkContainerViewManager.swift; path = ArtAtGVSU/ARArtwork/ARArtworkContainerViewManager.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E22B912BCB009F664D /* ArtworkCustomARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtworkCustomARView.swift; path = ArtAtGVSU/ARArtwork/ArtworkCustomARView.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E32B912BCB009F664D /* ARArtworkContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARArtworkContainerView.swift; path = ArtAtGVSU/ARArtwork/ARArtworkContainerView.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E42B912BCB009F664D /* ARArtworkButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARArtworkButtonsView.swift; path = ArtAtGVSU/ARArtwork/ARArtworkButtonsView.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E52B912BCB009F664D /* ARArtworkContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARArtworkContentView.swift; path = ArtAtGVSU/ARArtwork/ARArtworkContentView.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E62B912BCB009F664D /* ARSplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARSplashView.swift; path = ArtAtGVSU/ARArtwork/ARSplashView.swift; sourceTree = SOURCE_ROOT; };
+		3671E3E72B912BCB009F664D /* ARArtwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARArtwork.swift; path = ArtAtGVSU/ARArtwork/ARArtwork.swift; sourceTree = SOURCE_ROOT; };
+		3671E3F42B912BFC009F664D /* CloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloseButton.swift; path = ArtAtGVSU/ARArtwork/CloseButton.swift; sourceTree = SOURCE_ROOT; };
+		3671E3F52B912BFC009F664D /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loading.swift; path = ArtAtGVSU/ARArtwork/Loading.swift; sourceTree = SOURCE_ROOT; };
+		3671E3F82B912C0C009F664D /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entity.swift; path = ArtAtGVSU/ARArtwork/Entity.swift; sourceTree = SOURCE_ROOT; };
+		3671E3F92B912C0C009F664D /* ResourceLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceLoader.swift; path = ArtAtGVSU/ARArtwork/ResourceLoader.swift; sourceTree = SOURCE_ROOT; };
 		36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderButton.swift; sourceTree = "<group>"; };
 		36830F9E2B1A7BC8009304B8 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		36830FA02B1A7CCB009304B8 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
@@ -292,9 +312,6 @@
 		8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9E05669528AD4384009D0C8C /* ARAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetViewController.swift; sourceTree = "<group>"; };
-		C44099F22911719F00718803 /* ARAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
-		C4C3141C28FD9E9800538B99 /* ARAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
 		C4CEC60F29019E43007440BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D22803421C7A588B008B630A /* ArtAtGVSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtAtGVSU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D228034F1C7A588B008B630A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -337,6 +354,24 @@
 				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		3671E3E02B912BB7009F664D /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				3671E3E72B912BCB009F664D /* ARArtwork.swift */,
+				3671E3E42B912BCB009F664D /* ARArtworkButtonsView.swift */,
+				3671E3E32B912BCB009F664D /* ARArtworkContainerView.swift */,
+				3671E3E12B912BCB009F664D /* ARArtworkContainerViewManager.swift */,
+				3671E3E52B912BCB009F664D /* ARArtworkContentView.swift */,
+				3671E3E62B912BCB009F664D /* ARSplashView.swift */,
+				3671E3E22B912BCB009F664D /* ArtworkCustomARView.swift */,
+				3671E3F42B912BFC009F664D /* CloseButton.swift */,
+				3671E3F82B912C0C009F664D /* Entity.swift */,
+				3671E3F52B912BFC009F664D /* Loading.swift */,
+				3671E3F92B912C0C009F664D /* ResourceLoader.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		36EE2A7C2AE5BEC500ABB8D3 /* Favorites */ = {
@@ -483,7 +518,6 @@
 				364152392B1A540C00300301 /* Search */,
 				8A659EC02A453D0800214141 /* Tours */,
 				8A9F2BDC2664535E00C40F2F /* Appearance.swift */,
-				9E05669528AD4384009D0C8C /* ARAssetViewController.swift */,
 				8A87BFCE265AA5F200511B3B /* Async.swift */,
 				8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */,
 				8A87BFD6265ACBE900511B3B /* DetailDivider.swift */,
@@ -527,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				8A659ED92A47722500214141 /* Adapters */,
+				3671E3E02B912BB7009F664D /* AR */,
 				8AB8BDE42635FECC00A13EAD /* ArtGalleryClient */,
 				D28A5D351C7BDB3000DDC170 /* Models */,
 				8AFEF15B263DDA0800835F6D /* Views */,
@@ -558,8 +593,6 @@
 		D28A5D351C7BDB3000DDC170 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C44099F22911719F00718803 /* ARAsset.swift */,
-				C4C3141C28FD9E9800538B99 /* ARAsset.swift */,
 				8A87BFCA265AA2EA00511B3B /* Artist.swift */,
 				8A9F2BC8265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift */,
 				8AB8BDAC2635F69700A13EAD /* Artwork.swift */,
@@ -767,8 +800,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A9F2BDD2664535F00C40F2F /* Appearance.swift in Sources */,
-				C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */,
-				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
+				3671E3EE2B912BCB009F664D /* ARArtwork.swift in Sources */,
+				3671E3EB2B912BCB009F664D /* ARArtworkButtonsView.swift in Sources */,
+				3671E3EA2B912BCB009F664D /* ARArtworkContainerView.swift in Sources */,
+				3671E3E82B912BCB009F664D /* ARArtworkContainerViewManager.swift in Sources */,
+				3671E3EC2B912BCB009F664D /* ARArtworkContentView.swift in Sources */,
+				3671E3ED2B912BCB009F664D /* ARSplashView.swift in Sources */,
 				8A598F2A26501CF3001C4968 /* ArtGalleryApp.swift in Sources */,
 				8AB8BDD82635FD8500A13EAD /* ArtGalleryClient.swift in Sources */,
 				8A87BFCB265AA2EA00511B3B /* Artist.swift in Sources */,
@@ -776,6 +813,7 @@
 				8A87BFCD265AA55100511B3B /* ArtistDetailView.swift in Sources */,
 				8A9F2BC9265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift in Sources */,
 				8AB8BDAD2635F69700A13EAD /* Artwork.swift in Sources */,
+				3671E3E92B912BCB009F664D /* ArtworkCustomARView.swift in Sources */,
 				D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */,
 				8A9BD333263E76E900B816BA /* ArtworkDetailModel.swift in Sources */,
 				8AADE704265B000D005D86F0 /* ArtworkDetailNavigationLink.swift in Sources */,
@@ -788,6 +826,7 @@
 				D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */,
 				8A00C6212650321300A591C2 /* CampusSearchResult.swift in Sources */,
 				8A659EE02A4774E200214141 /* CLLocationCoordinate2D+Equatable.swift in Sources */,
+				3671E3F62B912BFC009F664D /* CloseButton.swift in Sources */,
 				8A9BD335263F332700B816BA /* Color+ArtGallery.swift in Sources */,
 				8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */,
 				8A00C6232650333400A591C2 /* DecodedArray.swift in Sources */,
@@ -795,6 +834,7 @@
 				8A87BFD1265AA98500511B3B /* DetailHeading.swift in Sources */,
 				8AFEF175263DDA0800835F6D /* DetailTextRow.swift in Sources */,
 				8A9F2BC7265DDD2200C40F2F /* DynamicCodingKeys.swift in Sources */,
+				3671E3FA2B912C0C009F664D /* Entity.swift in Sources */,
 				8A87BFC9265AA12700511B3B /* EntityDetail+Parsing.swift in Sources */,
 				8A87BFC7265AA05300511B3B /* EntityDetail.swift in Sources */,
 				8ACF0C9226C056C800358673 /* EntitySearchResult.swift in Sources */,
@@ -809,6 +849,7 @@
 				8A010EBF26A65DBD00EEFAF1 /* HomeScreen.swift in Sources */,
 				8AADE708265B441A005D86F0 /* HomeView.swift in Sources */,
 				36830FA12B1A7CCB009304B8 /* Links.swift in Sources */,
+				3671E3F72B912BFC009F664D /* Loading.swift in Sources */,
 				8AADE700265AF0EB005D86F0 /* LoadingView.swift in Sources */,
 				8A00C61B26502C9900A591C2 /* Location.swift in Sources */,
 				8AAAD9502651BC690081837B /* LocationDetail+Parsing.swift in Sources */,
@@ -829,6 +870,7 @@
 				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
 				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
 				8A9F2BC1265DD79300C40F2F /* RemoteImage.swift in Sources */,
+				3671E3FB2B912C0C009F664D /* ResourceLoader.swift in Sources */,
 				8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */,
 				8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */,
 				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
