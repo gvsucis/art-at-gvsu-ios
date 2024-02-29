@@ -5,7 +5,10 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/psf/black
-    rev: 22.10.0
+  - repo: local
     hooks:
-      - id: black
+      - id: sort-xcode-project-file
+        name: Sort Xcode Project File
+        entry: ./scripts/sort-xcode-project-file.pl
+        language: perl
+        files: .*\.pbxproj
