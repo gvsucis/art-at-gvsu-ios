@@ -16,6 +16,17 @@
 [img_version]: https://img.shields.io/static/v1.svg?label=CalVer&message=2023.12.1012&color=blue
 [url_version]: https://github.com/gvsucis/art-at-gvsu-v3
 
+## Committing
+
+Run the following command before adding a new commit
+
+```
+make bootstrap
+```
+
+This will install several Git commit hooks via [pre-commit](https://pre-commit.com/) to ensure
+the Xcode project file is sorted among other code quality checks.
+
 ## Release
 
 ### Testflight
