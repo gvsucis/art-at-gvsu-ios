@@ -12,7 +12,7 @@ import RSWeb
 struct ArtGalleryClient {
     let baseURL: String
     let transport: Transport
-    
+
     init(transport: Transport = URLSession.shared, baseURL: String = Properties.shared.art_gallery_base_url) {
         self.transport = transport
         self.baseURL = baseURL
@@ -37,7 +37,7 @@ struct ArtGalleryClient {
     func fetchCampuses(completion: @escaping (Result<CampusSearchResult?, Error>) -> Void) {
         sendRequest(resource: "locationcampusSearch?q=*", completion: completion)
     }
-    
+
     func fetchTours(completion: @escaping (Result<TourSearchResult?, Error>) -> Void) {
         sendRequest(resource: "tourSearch?q=*", completion: completion)
     }
@@ -45,7 +45,7 @@ struct ArtGalleryClient {
     func fetchTourStop(id: String, completion: @escaping (Result<TourStopDetail?, Error>) -> Void) {
         sendRequest(resource: "tourstopsDetail?id=\(id)", completion: completion)
     }
-    
+
     func searchEntities(term: String, completion:  @escaping (Result<EntitySearchResult?, Error>) -> Void) {
         sendRequest(resource: "entitySearch?q=\(sanitizeTerm(term))", completion: completion)
     }
@@ -53,21 +53,16 @@ struct ArtGalleryClient {
     func searchObjects(term: String, completion:  @escaping (Result<ObjectSearchResult?, Error>) -> Void) {
         sendRequest(resource: "objectSearch?q=\(sanitizeTerm(term))", completion: completion)
     }
-    
+
     func downloadFile(_ url: URL, path: URL, completion: @escaping (URL, Error?) -> Void) {
-        
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
-            // check for and handle errors:
-            // * errorOrNil should be nil
-            // * responseOrNil should be an HTTPURLResponse with statusCode in 200..<299
-            
             if errorOrNil != nil {
                 completion(url, errorOrNil)
                 return
             }
-            
-            
+
+
             guard let fileURL = urlOrNil else { return }
             do {
                 let documentsURL = try
@@ -75,7 +70,7 @@ struct ArtGalleryClient {
                                             in: .userDomainMask,
                                             appropriateFor: nil,
                                             create: true)
-              
+
                 try FileManager.default.moveItem(at: fileURL, to: path)
                 completion(path, nil)
             } catch {

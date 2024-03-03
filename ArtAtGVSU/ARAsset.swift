@@ -23,7 +23,7 @@ struct ARAsset: Equatable {
     static func == (lhs: ARAsset, rhs: ARAsset) -> Bool {
         lhs.id == rhs.id
     }
-    
+
     var id: String = ""
     var referenceImage: URL?
     var video: URL?
@@ -31,7 +31,7 @@ struct ARAsset: Equatable {
 }
 
 extension ARAsset {
-    
+
     static func getARResources(artwork: Artwork) async throws -> ARAsset {
         var arAsset = ARAsset(
             id: artwork.id,
@@ -39,63 +39,59 @@ extension ARAsset {
             video: artwork.arDigitalAsset,
             models: artwork.ar3dModels
         )
-        
+
         let dirname = "ArtAtGvsu/\(artwork.id)"
-        
-        
+
+
         arAsset.video = await downloadFile(url: artwork.arDigitalAsset!, dirname: dirname)
-        
+
         arAsset.referenceImage = await downloadFile(url: artwork.mediaMedium!, dirname: dirname)
-        
+
         var models: [Model] = []
-        
+
         for model in artwork.ar3dModels {
             let n = await downloadFile(url: model.url, dirname: dirname)
             models.append(Model(url: n, metadata: model.metadata))
         }
-        
+
         arAsset.models = models
-                
+
         return arAsset
     }
-    
+
     static func downloadFile(url: URL, dirname: String) async -> URL {
         await withCheckedContinuation { continuation in
             downloadFile(url: url, dirname: dirname) { url in
-                print("[DEBUG] [ARAsset::downloadFile] returned url: \(url)")
                 continuation.resume(returning: url)
             }
         }
     }
-    
+
     static func downloadFile(url: URL, dirname: String, transport: Transport = URLSession.shared, _ completion: @escaping (URL) -> Void) {
         let filename = url.lastPathComponent
-        
+
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-        
+
         if !createIntermediate(dirname: dirname) {
-            print("Unable to create intermediate directories for: \(dirname)")
             completion(url)
             return
         }
-        
+
         let localPath = documentsDirectory.appendingPathComponent("\(dirname)/\(filename)")
-        
+
         let filePath = localPath.path
-        
+
         if FileManager.default.fileExists(atPath: filePath)  {
-            print("[DEBUG] [ARAsset::downloadFile] Path to file already exists.")
             completion(localPath)
         } else {
-            print("[DEBUG] [ARAsset::downloadFile] Making request")
             ArtGalleryClient.init(transport: transport).downloadFile(url, path: localPath, completion: { url, error in
                 completion(url)
             })
         }
     }
-    
+
     static func createIntermediate(dirname: String) -> Bool{
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
@@ -104,10 +100,8 @@ extension ARAsset {
         if !FileManager.default.fileExists(atPath: dataPath.path) {
             do {
                 try FileManager.default.createDirectory(atPath: dataPath.path, withIntermediateDirectories: true, attributes: nil)
-                print("Directories created: ")
                 return true
             } catch {
-                print(error.localizedDescription)
                 return false
             }
         }

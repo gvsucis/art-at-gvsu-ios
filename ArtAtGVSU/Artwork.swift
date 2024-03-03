@@ -89,16 +89,16 @@ extension Artwork {
             ar3dModels: self.getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
         )
     }
-    
+
     static func getModel(file: String?, matrix: String?) -> [Model] {
-        if (file == nil) {
+        guard let file = file else {
             return []
         }
-        
+
         var m: [Float] = []
-        
+
         var t: SCNMatrix4? = nil
-        
+
         do {
             m = try mapToARCoordinates(String(matrix ?? ""))
             if m.count == 16 {
@@ -109,15 +109,13 @@ extension Artwork {
                     m41:m[12],m42:m[12],m43:m[14],m44:m[15]
                 )
             }
-            print("That transformation matrix is good!")
         } catch {
-            print("Invalid transformation matrix.")
+            return []
         }
-        
 
         return [
             Model(
-                url: URL(string: file!)!,
+                url: URL(string: file)!,
                 metadata: Metadata(
                     transform: t
                 )

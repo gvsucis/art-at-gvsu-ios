@@ -293,7 +293,6 @@
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E05669528AD4384009D0C8C /* ARAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetViewController.swift; sourceTree = "<group>"; };
-		C44099F22911719F00718803 /* ARAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
 		C4C3141C28FD9E9800538B99 /* ARAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
 		C4CEC60F29019E43007440BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D22803421C7A588B008B630A /* ArtAtGVSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtAtGVSU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -558,7 +557,6 @@
 		D28A5D351C7BDB3000DDC170 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C44099F22911719F00718803 /* ARAsset.swift */,
 				C4C3141C28FD9E9800538B99 /* ARAsset.swift */,
 				8A87BFCA265AA2EA00511B3B /* Artist.swift */,
 				8A9F2BC8265DDFA400C40F2F /* Artwork+FeaturedArtworks.swift */,
