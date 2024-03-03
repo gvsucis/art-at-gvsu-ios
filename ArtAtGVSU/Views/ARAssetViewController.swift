@@ -34,11 +34,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
 
         sceneView.scene = SCNScene(named: "art.scnassets/artwork.scn")!
-
         sceneView.delegate = self
-
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
 
         self.loadImageFrom() { (result) in
@@ -50,7 +46,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
             arImage.name = "ARImage-\(self.arAsset.id)"
 
             arImage.validate { [weak self] (error) in
-                if let error = error {
+                if error != nil {
                     return
                 }
             }
@@ -79,7 +75,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         }
     }
 
-    /// - Tag: ImageTrackingSession
+    // MARK: - ImageTrackingSession
     private func runImageTrackingSession(with trackingImages: Set<ARReferenceImage>,
                                          runOptions: ARSession.RunOptions = [.removeExistingAnchors]) {
         let configuration = ARWorldTrackingConfiguration()
@@ -103,8 +99,8 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
 
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
-                node.removeFromParentNode()
-            }
+            node.removeFromParentNode()
+        }
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -144,7 +140,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
 
         video.position = node.position
 
-//         For Animation
         guard let videoContainer = container.childNode(withName: "videoContainer", recursively: false) else { return }
         videoContainer.geometry?.firstMaterial?.shininess = 0
 
@@ -155,8 +150,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         guard let imageAnchor = (anchor as? ARImageAnchor) else { return }
 
         if self.objNode != nil {
-
-            self.objNode?.scale = SCNVector3(1,-1,-1)
+            self.objNode?.scale = SCNVector3(1, -1, -1)
             self.objNode?.position = SCNVector3(node.position.x, node.position.y, node.position.z)
             self.objNode?.rotation = node.rotation
         }
