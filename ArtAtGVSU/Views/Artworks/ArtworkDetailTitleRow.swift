@@ -98,11 +98,7 @@ struct ARAssetVCView: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: ARAssetViewController, context: Context) {
-
-        // update code
-
     }
-
 }
 
 struct ArtworkDetailTitleRow_Previews: PreviewProvider {

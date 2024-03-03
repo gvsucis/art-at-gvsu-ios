@@ -33,8 +33,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("[DEBUG] [ARAssetViewController::viewDidLoad] arAsset: \(arAsset)")
-
         sceneView.scene = SCNScene(named: "art.scnassets/artwork.scn")!
 
         sceneView.delegate = self
@@ -48,14 +46,11 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
 
             let imageWidth = CGFloat(cgImage.width) * 0.0002645833
 
-            print("Image width: \(imageWidth)")
-
             let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: imageWidth)
             arImage.name = "ARImage-\(self.arAsset.id)"
 
             arImage.validate { [weak self] (error) in
                 if let error = error {
-                    print("Reference image validation failed: \(error.localizedDescription)")
                     return
                 }
             }
@@ -77,7 +72,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
             if let data = try? Data(contentsOf: self!.arAsset.referenceImage!) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        print("LOADED IMAGE ASSET: \(String(describing: self!.arAsset.referenceImage))");
                         completionHandler(image);
                     }
                 }
@@ -92,39 +86,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         configuration.maximumNumberOfTrackedImages = 1
         configuration.detectionImages = trackingImages
         sceneView.session.run(configuration, options: runOptions)
-    }
-
-    func usdzNodeFrom(physicalSize: CGSize) {
-        DispatchQueue.main.async {
-            do {
-                if self.arAsset.models.count > 0 {
-                    let objectContainer = self.sceneView.scene.rootNode.childNode(withName: "modelContainer", recursively: true)!
-                    objectContainer.removeFromParentNode()
-                    objectContainer.geometry?.materials.first?.lightingModel = .physicallyBased
-
-                    for model in self.arAsset.models {
-                        let scene = try SCNScene(url: model.url, options: [.checkConsistency: true])
-
-                        let node = scene.rootNode.childNodes[0]
-                        node.removeFromParentNode()
-                        node.isHidden = false
-
-                        if model.metadata.transform != nil {
-                            node.setWorldTransform(model.metadata.transform!)
-                        }
-
-                        node.geometry?.materials.first?.lightingModel = .physicallyBased
-
-                        objectContainer.addChildNode(node)
-
-                    }
-                    self.sceneView.scene.rootNode.addChildNode(objectContainer)
-                    self.objNode = objectContainer
-                }
-            } catch {
-                print("Error while getting model \(error)")
-            }
-        }
     }
 
     @IBAction func dismissARView(_ sender: UIButton) {
@@ -152,17 +113,12 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         guard let referenceImage = ((anchor as? ARImageAnchor)?.referenceImage) else { return }
 
         guard let container = sceneView.scene.rootNode.childNode(withName: "container", recursively: true) else {
-            print("Unable to create container childNode")
             return
         }
 
         container.removeFromParentNode()
         node.addChildNode(container)
         container.isHidden = false
-
-        DispatchQueue.main.async {
-            self.usdzNodeFrom(physicalSize: referenceImage.physicalSize)
-        }
 
         let asset = AVAsset(url: arAsset!.video!)
         let item = AVPlayerItem(asset: asset)
@@ -223,7 +179,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
 
             DispatchQueue.main.async {
               self.timer = Timer.scheduledTimer(withTimeInterval: 40, repeats: false) { timer in
-                print(timer)
                 self.objNode?.isHidden = true
               }
             }
