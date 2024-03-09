@@ -17,16 +17,14 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     var arAsset: ARAsset!
 
-    var newReferenceImages: Set<ARReferenceImage> = Set<ARReferenceImage>()
+    var referenceImages: Set<ARReferenceImage> = Set<ARReferenceImage>()
 
     var videoNode: SKVideoNode!
     var videoPlayer: AVQueuePlayer!
     var videoLooper: AVPlayerLooper?
 
     var asset: MDLAsset?
-    var objNode: SCNNode?
-
-    let angle = CGFloat(10) * CGFloat.pi / 182.0
+    var artModel: SCNNode?
 
     private var timer: Timer!
 
@@ -51,16 +49,16 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
                 }
             }
 
-            self.newReferenceImages.insert(arImage)
+            self.referenceImages.insert(arImage)
 
-            self.runImageTrackingSession(with: self.newReferenceImages, runOptions: [.resetTracking, .removeExistingAnchors])
+            self.runImageTrackingSession(with: self.referenceImages, runOptions: [.resetTracking, .removeExistingAnchors])
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        runImageTrackingSession(with: self.newReferenceImages)
+        runImageTrackingSession(with: self.referenceImages)
     }
 
     func loadImageFrom(completionHandler: @escaping(UIImage)->()) {
@@ -73,6 +71,31 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
                 }
             }
         }
+    }
+
+    func placeForegroundObject(_ imageAnchor: ARImageAnchor, _ node: SCNNode) {
+        guard let modelParent = sceneContainer?.childNode(withName: "model", recursively: true) else  {
+            return
+        }
+
+        guard let arModel = self.arAsset.models.first else {
+            return
+        }
+
+        guard let model = try? SCNScene(url: arModel.url, options: [.checkConsistency: true]).rootNode.childNodes.first else {
+            return
+        }
+
+        modelParent.addChildNode(model)
+        modelParent.geometry?.firstMaterial?.lightingModel = .physicallyBased
+
+        self.artModel = modelParent
+
+        if let transform = arModel.metadata.transform {
+            modelParent.transform = transform
+        }
+
+        modelParent.isHidden = false
     }
 
     // MARK: - ImageTrackingSession
@@ -88,7 +111,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         if self.timer != nil {
             timer.invalidate()
         }
-        self.objNode = nil
+        self.artModel = nil
 
         self.dismiss(animated: true)
     }
@@ -104,11 +127,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard anchor is ARImageAnchor else { return }
-
-        guard let referenceImage = ((anchor as? ARImageAnchor)?.referenceImage) else { return }
-
-        guard let container = sceneView.scene.rootNode.childNode(withName: "container", recursively: true) else {
+        guard let container = sceneContainer else {
             return
         }
 
@@ -116,52 +135,27 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         node.addChildNode(container)
         container.isHidden = false
 
-        let asset = AVAsset(url: arAsset!.video!)
-        let item = AVPlayerItem(asset: asset)
-        videoPlayer = AVQueuePlayer(playerItem: item)
-        videoLooper = AVPlayerLooper(player: videoPlayer, templateItem: item)
+        guard let imageAnchor = anchor as? ARImageAnchor else {
+            return
+        }
 
-        let videoScene = SKScene(size: CGSize(width: 720.0, height: 1280.0))
-        videoNode = SKVideoNode(avPlayer: videoPlayer)
-
-        videoNode.position = CGPoint(x: videoScene.size.width/2, y: videoScene.size.height/2)
-        videoNode.size = videoScene.size
-        videoNode.yScale = -1
-        videoNode.play()
-        videoScene.addChild(videoNode)
-
-        guard let video = container.childNode(withName: "video", recursively: true) else { return }
-        video.geometry?.firstMaterial?.diffuse.contents = videoScene
-        video.geometry?.firstMaterial?.shininess = 0
-        video.geometry?.materials.first?.diffuse.intensity = 1
-        video.geometry?.materials.first?.lightingModel = .phong
-
-        video.scale = SCNVector3(x: Float(referenceImage.physicalSize.width), y: Float(referenceImage.physicalSize.height), z: 1.0)
-
-        video.position = node.position
-
-        guard let videoContainer = container.childNode(withName: "videoContainer", recursively: false) else { return }
-        videoContainer.geometry?.firstMaterial?.shininess = 0
-
-        videoContainer.runAction(SCNAction.sequence([SCNAction.wait(duration: 1.0), SCNAction.scale(to: 1.0, duration: 0.5)]))
+        placeLivingPainting(imageAnchor, node)
+        DispatchQueue.main.async {
+            self.placeForegroundObject(imageAnchor, node)
+        }
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let imageAnchor = (anchor as? ARImageAnchor) else { return }
-
-        if self.objNode != nil {
-            self.objNode?.scale = SCNVector3(1, -1, -1)
-            self.objNode?.position = SCNVector3(node.position.x, node.position.y, node.position.z)
-            self.objNode?.rotation = node.rotation
+        guard let imageAnchor = anchor as? ARImageAnchor else {
+            return
         }
-
 
         if imageAnchor.isTracked {
             if videoNode != nil {
                 videoNode.play()
             }
 
-            self.objNode?.isHidden = false
+            self.artModel?.isHidden = false
 
             if self.timer != nil {
                 timer.invalidate()
@@ -173,9 +167,44 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
 
             DispatchQueue.main.async {
               self.timer = Timer.scheduledTimer(withTimeInterval: 40, repeats: false) { timer in
-                self.objNode?.isHidden = true
+                self.artModel?.isHidden = true
               }
             }
         }
+    }
+
+    private func placeLivingPainting(_ imageAnchor: ARImageAnchor, _ node: SCNNode) {
+        guard let video = sceneContainer?.childNode(withName: "video", recursively: true) else {
+            return
+        }
+
+        let referenceImage = imageAnchor.referenceImage
+        guard let assetVideo = arAsset?.video else {
+            return
+        }
+
+        let asset = AVAsset(url: assetVideo)
+        let playerItem = AVPlayerItem(asset: asset)
+        videoPlayer = AVQueuePlayer(playerItem: playerItem)
+        videoLooper = AVPlayerLooper(player: videoPlayer, templateItem: playerItem)
+        videoNode = SKVideoNode(avPlayer: videoPlayer)
+
+        let videoScene = SKScene(size: CGSize(width: 720.0, height: 1280.0))
+        videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
+        videoNode.size = videoScene.size
+        videoNode.play()
+        videoScene.addChild(videoNode)
+
+        video.geometry?.firstMaterial?.diffuse.contents = videoScene
+        video.geometry?.firstMaterial?.shininess = 0
+        video.geometry?.materials.first?.diffuse.intensity = 1
+        video.geometry?.materials.first?.lightingModel = .phong
+        video.scale = SCNVector3(x: Float(referenceImage.physicalSize.width), y: Float(referenceImage.physicalSize.height), z: 1.0)
+        video.position = node.position
+        video.isHidden = false
+    }
+
+    var sceneContainer: SCNNode? {
+        sceneView.scene.rootNode.childNode(withName: "container", recursively: true)
     }
 }

@@ -37,7 +37,7 @@ extension ARAsset {
             id: artwork.id,
             referenceImage: artwork.mediaMedium,
             video: artwork.arDigitalAsset,
-            models: artwork.ar3dModels
+            models: artwork.arTransform
         )
 
         let dirname = "ArtAtGvsu/\(artwork.id)"
@@ -49,7 +49,7 @@ extension ARAsset {
 
         var models: [Model] = []
 
-        for model in artwork.ar3dModels {
+        for model in artwork.arTransform {
             let n = await downloadFile(url: model.url, dirname: dirname)
             models.append(Model(url: n, metadata: model.metadata))
         }
