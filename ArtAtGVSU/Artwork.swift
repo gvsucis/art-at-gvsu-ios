@@ -31,7 +31,7 @@ struct Artwork: Equatable {
     var mediaLarge: URL?
     var thumbnail: URL?
     var arDigitalAsset: URL?
-    var ar3dModels: [Model] = []
+    var arTransform: [Model] = []
 
     static func == (lhs: Artwork, rhs: Artwork) -> Bool {
         lhs.id == rhs.id
@@ -86,7 +86,7 @@ extension Artwork {
             mediaMedium: optionalURL(objectDetail.media_medium_url),
             mediaLarge: optionalURL(objectDetail.media_large_url),
             arDigitalAsset: optionalURL(objectDetail.ar_digital_asset),
-            ar3dModels: self.getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
+            arTransform: getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
         )
     }
 
@@ -103,10 +103,10 @@ extension Artwork {
             m = try mapToARCoordinates(String(matrix ?? ""))
             if m.count == 16 {
                 t = SCNMatrix4(
-                    m11:m[0],m12:m[1],m13:m[2],m14:m[3],
-                    m21:m[4],m22:m[5],m23:m[6],m24:m[7],
-                    m31:m[8],m32:m[9],m33:m[10],m34:m[11],
-                    m41:m[12],m42:m[12],m43:m[14],m44:m[15]
+                    m11: m[0], m12: m[1], m13: m[2], m14: m[3],
+                    m21: m[4], m22: m[5], m23: m[6], m24: m[7],
+                    m31: m[8], m32: m[9], m33: m[10], m34: m[11],
+                    m41: m[12], m42: m[13], m43: m[14], m44: m[15]
                 )
             }
         } catch {
