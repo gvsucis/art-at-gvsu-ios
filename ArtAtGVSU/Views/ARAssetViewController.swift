@@ -43,7 +43,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
             let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: imageWidth)
             arImage.name = "ARImage-\(self.arAsset.id)"
 
-            arImage.validate { [weak self] (error) in
+            arImage.validate { error in
                 if error != nil {
                     return
                 }
@@ -90,10 +90,6 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         modelParent.geometry?.firstMaterial?.lightingModel = .physicallyBased
 
         self.artModel = modelParent
-
-        if let transform = arModel.metadata.transform {
-            modelParent.transform = transform
-        }
 
         modelParent.isHidden = false
     }
