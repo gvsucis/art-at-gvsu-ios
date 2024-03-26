@@ -77,12 +77,14 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
         guard let modelParent = sceneContainer?.childNode(withName: "model", recursively: true) else  {
             return
         }
+//
+//        guard let arModel = self.arAsset.models.first else {
+//            return
+//        }
 
-        guard let arModel = self.arAsset.models.first else {
-            return
-        }
+        let urlPath = Bundle.main.url(forResource: "threedee", withExtension: "usdz")!
 
-        guard let model = try? SCNScene(url: arModel.url, options: [.checkConsistency: true]).rootNode.childNodes.first else {
+        guard let model = try? SCNScene(url: urlPath).rootNode.childNodes.first else {
             return
         }
 
