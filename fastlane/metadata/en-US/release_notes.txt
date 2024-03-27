@@ -1,1 +1,1 @@
-Updates visuals for the artwork QR code scanner in search.
+Adds AR functionality to make paintings come to life!
