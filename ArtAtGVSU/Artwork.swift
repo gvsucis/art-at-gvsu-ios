@@ -85,6 +85,7 @@ extension Artwork {
             mediaSmall: optionalURL(objectDetail.media_small_url),
             mediaMedium: optionalURL(objectDetail.media_medium_url),
             mediaLarge: optionalURL(objectDetail.media_large_url),
+            thumbnail: optionalURL(objectDetail.media_small_url),
             arDigitalAsset: optionalURL(objectDetail.ar_digital_asset),
             arTransform: getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
         )
