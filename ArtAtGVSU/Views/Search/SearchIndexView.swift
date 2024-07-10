@@ -28,7 +28,7 @@ struct SearchIndexView: View {
             case .success(let searchResults):
                 SearchIndexLoadedView(searchResults: searchResults, query: query)
             case .loading:
-                LoadingView()
+                LoadingView(showProgress: true)
             default:
                 SearchIndexEmptyView()
             }
