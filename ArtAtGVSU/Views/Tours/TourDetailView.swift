@@ -19,7 +19,7 @@ struct TourDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             if (stops.isEmpty) {
-                 LoadingView()
+                 LoadingView(showProgress: true)
             } else {
                 TourMapView(pins: $annotations, selectedPin: $selected)
                 ScrollViewReader { reader in
@@ -50,12 +50,12 @@ struct TourDetailView: View {
         }
         .onAppear(perform: fetchStops)
     }
-    
+
     func fetchStops() {
         if !annotations.isEmpty {
             return
         }
-        
+
         tour.fetchTourStops { stops in
             DispatchQueue.main.async {
                 self.stops = stops
@@ -68,7 +68,7 @@ struct TourDetailView: View {
 struct SquareImage: View {
     var url: URL?
     var selected: Bool = false
-    
+
     var body: some View {
         GeometryReader { geo in
             WebImage(url: url)

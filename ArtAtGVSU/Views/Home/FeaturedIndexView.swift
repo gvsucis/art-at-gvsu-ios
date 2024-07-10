@@ -2,36 +2,54 @@
 //  FeaturedIndexView.swift
 //  ArtAtGVSU
 //
-//  Created by Josiah Campbell on 5/27/21.
-//  Copyright © 2021 Applied Computing Institute. All rights reserved.
+//  Created by Josiah Campbell on 7/10/24.
+//  Copyright © 2024 Applied Computing Institute. All rights reserved.
 //
 
 import SwiftUI
 
 struct FeaturedIndexView: View {
-    let artworks: [Artwork]
+    let collection: ArtworkCollection
+    @State var data: Async<[Artwork]> = .uninitialized
 
     var body: some View {
-        List {
-            ForEach(artworks, id: \.id) { artwork in
-                ArtworkDetailNavigationLink(artwork: artwork)
-                    .listRowBackground(Color.background)
+        VStack {
+            switch data {
+            case .success(let artworks):
+                FeaturedIndexLoadedView(artworks: artworks)
+            case .loading:
+                LoadingView()
+            default:
+                EmptyView()
             }
         }
-        .listStyle(PlainListStyle())
+        .onAppear(perform: fetchArtworks)
         .background(Color.background)
-        .navigationBarTitle("featuredIndex_NavigationTitle", displayMode: .inline)
+        .navigationBarTitle(
+            LocalizedStringKey(title),
+            displayMode: .inline
+        )
+    }
+
+    private func fetchArtworks() {
+        if data.isLoading || data.isSuccess { return }
+
+        data = .loading
+        Artwork.search(term: collection.slug) { artworks in
+            data = .success(artworks)
+        }
+    }
+
+    private var title: String {
+        switch collection {
+        case .featuredArt:
+            "featuredIndex_ArtNavigationTitle"
+        default:
+            "featuredIndex_ARNavigationTitle"
+        }
     }
 }
 
-struct FeaturedIndexView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeaturedIndexView(artworks: [
-            Artwork(
-                id: "3818",
-                name: "Dutch Woodcutter",
-                thumbnail: URL(string: "https://artgallery.gvsu.edu/admin/media/collectiveaccess/images/1/7/3/56084_ca_object_representations_media_17364_small.jpg")
-            )
-        ])
-    }
+#Preview {
+    FeaturedIndexView(collection: .featuredAR)
 }

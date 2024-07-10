@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var data: Async<[Artwork]> = .uninitialized
-    let collectionSlug = ArtworkCollection.featuredArtwork.slug
+    let collectionSlug = ArtworkCollection.featuredArt.slug
 
     var body: some View {
         VStack {

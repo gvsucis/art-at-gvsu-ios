@@ -9,8 +9,8 @@
 import Foundation
 
 enum ArtworkCollection: String {
-    case featuredArtwork = "featured_art"
-    case ar = "AR_Alten_2022"
+    case featuredArt = "featured_art"
+    case featuredAR = "featured_ar"
 
     var slug: String {
         rawValue
