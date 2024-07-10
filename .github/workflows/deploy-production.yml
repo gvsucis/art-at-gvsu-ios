@@ -16,6 +16,7 @@ jobs:
         uses: ruby/setup-ruby@v1.187.0
         with:
           bundler-cache: true
+      - uses: actions/setup-python@v5
       - name: Setup build dependencies
         run: make py-deps
       - name: Configure Git user
