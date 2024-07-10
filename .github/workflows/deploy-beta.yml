@@ -6,13 +6,15 @@ on:
 
 jobs:
   beta:
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.1.7
       - name: Set up Ruby
-        uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+        uses: ruby/setup-ruby@v1.187.0
+        with:
+          bundler-cache: true
       - name: Setup build dependencies
-        run: make deps
+        run: make py-deps
       - name: Bump beta version
         run: bumpver update --no-commit
       - name: Deploy Beta to Test Flight

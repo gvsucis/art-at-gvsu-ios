@@ -9,12 +9,27 @@
 import SwiftUI
 
 struct LoadingView: View {
+    @State var showProgress = false
+
     var body: some View {
         VStack {
-            ProgressView()
+            if showProgress {
+                ProgressView()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)
+        .onAppear(perform: startDelayCountdown)
+    }
+
+    func startDelayCountdown() {
+        if showProgress {
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            showProgress = true
+        }
     }
 }
 

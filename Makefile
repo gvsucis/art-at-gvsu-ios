@@ -8,10 +8,12 @@ secrets:
 	cp -v $(SECRETS_DIR)/ArtAtGVSU/GoogleService-Info.plist ./ArtAtGVSU/GoogleService-Info.plist
 	cp -v $(SECRETS_DIR)/ArtAtGVSU/Secrets.plist ./ArtAtGVSU/Secrets.plist
 
-.PHONY: ci-test ci-secrets deploy-beta deploy-production deps secrets bootstrap
+.PHONY: ci-test ci-secrets deploy-beta deploy-production deps py-deps secrets bootstrap
 
-deps:
+deps: py-deps
 	bundle install
+
+py-deps:
 	$(PIP) install bumpver==2023.1125
 	$(PIP) install pre-commit==3.6.2
 

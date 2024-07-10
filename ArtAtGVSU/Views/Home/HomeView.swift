@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var data: Async<[Artwork]> = .uninitialized
+    let collectionSlug = ArtworkCollection.featuredArt.slug
 
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct HomeView: View {
         if data.isLoading || data.isSuccess { return }
 
         data = .loading
-        Artwork.featured { artworks in
+        Artwork.search(term: collectionSlug) { artworks in
             data = .success(artworks)
         }
     }

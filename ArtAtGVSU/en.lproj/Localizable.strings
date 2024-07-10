@@ -78,9 +78,11 @@
 /** Home */
 "home_browseCampuses" = "Browse Campuses";
 "home_featuredIndex" = "View All Featured";
+"home_featuredAR" = "Explore Artworks in AR";
 
 /** Featured Index */
-"featuredIndex_NavigationTitle" = "All Featured";
+"featuredIndex_ArtNavigationTitle" = "All Featured";
+"featuredIndex_ARNavigationTitle" = "Augmented Reality Artworks";
 
 /** Search */
 "search_Placeholder" = "Artworks, Artists";

@@ -15,25 +15,32 @@ struct HomeLoadedView: View {
     var body: some View {
         VStack(alignment: .leading) {
             RotatingFeaturedImage(artworks: artworks, featuredWork: featuredWork)
-            BrowseLink(destination: FeaturedIndexView(artworks: artworks), title: "home_featuredIndex")
-            BrowseLink(destination: LocationIndexView(), title: "home_browseCampuses")
+            BrowseLink(title: "home_featuredIndex") {
+                FeaturedIndexView(collection: .featuredArt)
+            }
+            BrowseLink(title: "home_featuredAR") {
+                FeaturedIndexView(collection: .featuredAR)
+            }
+            BrowseLink(title: "home_browseCampuses") {
+                LocationIndexView()
+            }
             Spacer()
         }
         .padding()
     }
-    
+
     var featuredWork: Artwork {
         return artworks.randomElement()!
     }
 }
 
 struct BrowseLink<V: View>: View {
-    let destination: V
     let title: LocalizedStringKey
+    let destination: () -> V
 
     var body: some View {
         VStack {
-            NavigationLink(destination: destination) {
+            NavigationLink(destination: destination()) {
                 HStack{
                     Text(title)
                     Spacer()
