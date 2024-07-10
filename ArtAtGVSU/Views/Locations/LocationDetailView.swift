@@ -50,35 +50,41 @@ private struct LocationLoadedView: View {
     let location: Location
 
     var body: some View {
-        let isCompletelyEmpty = location.locations.isEmpty && location.artworks.isEmpty
         if isCompletelyEmpty {
-            Text("locationDetail_Empty")
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
+            ZStack {
+                Text("locationDetail_Empty")
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
+            List {
+                if !location.locations.isEmpty {
+                    Section(header: Text("locationDetail_ChildLocations")) {
+                        ForEach(location.locations, id: \.id) { childLocation in
+                            NavigationLink(
+                                destination: LocationDetailView(id: childLocation.id, navigationTitle: childLocation.name)
+                            ) {
+                                Text(childLocation.name)
+                                    .foregroundColor(Color(UIColor.label))
+                            }
+                        }
+                    }
+                }
 
-        List {
-            if !location.locations.isEmpty {
-                Section(header: Text("locationDetail_ChildLocations")) {
-                    ForEach(location.locations, id: \.id) { childLocation in
-                        NavigationLink(
-                            destination: LocationDetailView(id: childLocation.id, navigationTitle: childLocation.name)
-                        ) {
-                            Text(childLocation.name)
-                                .foregroundColor(Color(UIColor.label))
+                if !location.artworks.isEmpty {
+                    Section(header: Text("locationDetail_Artworks")) {
+                        ForEach(location.artworks, id: \.id) { artwork in
+                            ArtworkDetailNavigationLink(artwork: artwork)
                         }
                     }
                 }
             }
-
-            if !location.artworks.isEmpty {
-                Section(header: Text("locationDetail_Artworks")) {
-                    ForEach(location.artworks, id: \.id) { artwork in
-                        ArtworkDetailNavigationLink(artwork: artwork)
-                    }
-                }
-            }
+            .listStyle(GroupedListStyle())
         }
-        .listStyle(GroupedListStyle())
+    }
+
+    private var isCompletelyEmpty: Bool {
+        location.locations.isEmpty &&
+            location.artworks.isEmpty
     }
 }
 
