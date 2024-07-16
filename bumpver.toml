@@ -1,5 +1,5 @@
 [bumpver]
-current_version = "2024.03.1013"
+current_version = "2024.07.1014"
 version_pattern = "YYYY.0M.BUILD"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
@@ -25,4 +25,3 @@ push = false
 "Tests/Info.plist" = [
     '<string>BUILD</string>'
 ]
-
