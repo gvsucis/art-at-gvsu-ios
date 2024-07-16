@@ -1,1 +1,1 @@
-Adds AR functionality to make paintings come to life!
+Add featured page for Augment Reality artworks

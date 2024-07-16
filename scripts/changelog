@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+path = "fastlane/metadata/en-US/release_notes.txt"
+File.new(path, "w").truncate(0)
+
+exec("nano", path)

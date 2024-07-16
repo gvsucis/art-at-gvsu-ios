@@ -20,6 +20,10 @@ py-deps:
 bootstrap: deps
 	pre-commit install
 
+.PHONY: changelog
+changelog:
+	./scripts/changelog
+
 .PHONY: bump-version
 bump-version:
 	bumpver update --commit-message '[skip ci] bump version {old_version} -> {new_version}'
