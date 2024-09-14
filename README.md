@@ -1,6 +1,12 @@
 # Art At GVSU
 
-[![CalVer 2024.07.1015][img_version]][url_version]
+![Tests](https://github.com/gvsucis/art-at-gvsu-ios/actions/workflows/ci.yml/badge.svg) [![CalVer 2024.07.1015][img_version]][url_version]
+
+## Download
+
+<a href="https://apple.co/3XI4pvu">
+    <img src="./site/app-store-download.svg" width="150px">
+</a>
 
 ## Getting Started
 
