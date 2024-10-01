@@ -6,11 +6,11 @@ on:
 
 jobs:
   beta:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.0
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.187.0
+        uses: ruby/setup-ruby@v1.194.0
         with:
           bundler-cache: true
       - uses: actions/setup-python@v5
