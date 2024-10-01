@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,79 +62,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etz-aJ-y4v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2255" y="1256"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Xmt-Yl-Y59">
-            <objects>
-                <navigationController id="0Sw-fd-yfh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QzJ-sP-Efw">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0SH-5V-UQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1069" y="1048"/>
-        </scene>
-        <!--Artwork Image View Controller-->
-        <scene sceneID="Ar3-Gl-z4c">
-            <objects>
-                <viewController id="CPF-Bn-Jcd" customClass="ArtworkImageViewController" customModule="ArtAtGVSU" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tlx-7p-Z8G"/>
-                        <viewControllerLayoutGuide type="bottom" id="rHM-cJ-uNG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sk7-4D-e65">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVJ-ub-gmm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-4J-CQz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="uW4-4J-CQz" firstAttribute="top" secondItem="yVJ-ub-gmm" secondAttribute="top" id="0EV-u3-wgP"/>
-                                    <constraint firstItem="uW4-4J-CQz" firstAttribute="centerX" secondItem="yVJ-ub-gmm" secondAttribute="centerX" id="5XA-7k-Q6h"/>
-                                    <constraint firstAttribute="bottom" secondItem="uW4-4J-CQz" secondAttribute="bottom" id="FaG-Pe-36N"/>
-                                    <constraint firstAttribute="trailing" secondItem="uW4-4J-CQz" secondAttribute="trailing" id="JZR-8A-LHG"/>
-                                    <constraint firstItem="uW4-4J-CQz" firstAttribute="centerY" secondItem="yVJ-ub-gmm" secondAttribute="centerY" id="OvM-v0-40I"/>
-                                    <constraint firstItem="uW4-4J-CQz" firstAttribute="leading" secondItem="yVJ-ub-gmm" secondAttribute="leading" id="ire-rF-wp2"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="CPF-Bn-Jcd" id="Qhv-VC-4a0"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="yVJ-ub-gmm" secondAttribute="trailing" id="0yq-bV-9Nl"/>
-                            <constraint firstItem="yVJ-ub-gmm" firstAttribute="leading" secondItem="sk7-4D-e65" secondAttribute="leading" id="GH7-41-Nld"/>
-                            <constraint firstItem="yVJ-ub-gmm" firstAttribute="bottom" secondItem="rHM-cJ-uNG" secondAttribute="top" id="aNi-JS-gGQ"/>
-                            <constraint firstItem="yVJ-ub-gmm" firstAttribute="top" secondItem="sk7-4D-e65" secondAttribute="top" id="n9J-A3-8rv"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="0jk-VJ-rWr"/>
-                    <connections>
-                        <outlet property="artworkImage" destination="uW4-4J-CQz" id="P4k-GC-IGe"/>
-                        <outlet property="artworkScrollview" destination="yVJ-ub-gmm" id="FHb-wy-EcZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iPi-dN-M4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5825" y="68"/>
-        </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="Xkr-59-g8O">
-            <objects>
-                <hostingController id="FnT-Ka-jms" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="2KR-VH-lqF"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X36-Qc-cdS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-186" y="2111"/>
         </scene>
     </scenes>
     <resources>
