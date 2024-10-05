@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RSWeb
+import Web
 
 struct ArtGalleryClient {
     let baseURL: String

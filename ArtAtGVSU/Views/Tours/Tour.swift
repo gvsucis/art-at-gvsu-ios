@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RSWeb
+import Web
 
 struct Tour {
     var id: String
@@ -28,9 +28,9 @@ extension Tour {
                         return await fetchTourStop(id: id, transport: transport)
                     }
                 }
-                
+
                 let details = await group.reduce(into: [TourStopDetail?]()) { $0.append($1) }
-            
+
                 let stops = details
                     .filter { !($0?.stop_objects_id ?? "").isEmpty }
                     .compactMap { $0?.toDomainModel()  }
@@ -41,7 +41,7 @@ extension Tour {
             }
         }
     }
-    
+
     private func fetchTourStop(id: String, transport: Transport) async -> TourStopDetail? {
         return await withCheckedContinuation { continuation in
             ArtGalleryClient(transport: transport).fetchTourStop(id: id) { result in
@@ -54,7 +54,7 @@ extension Tour {
             }
         }
     }
-    
+
     static func fetchAll(transport: Transport = URLSession.shared, _ completion: @escaping ([Tour]) -> Void) {
         ArtGalleryClient(transport: transport).fetchTours { result in
             switch result {

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RSWeb
+import Web
 
 struct Location: Equatable {
     var id: String = ""
