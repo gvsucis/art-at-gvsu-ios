@@ -1,24 +1,27 @@
-// swift-tools-version: 6.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version: 5.10
 
 import PackageDescription
 
 let package = Package(
-    name: "Web",
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "Web",
-            targets: ["Web"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "Web"),
-        .testTarget(
-            name: "WebTests",
-            dependencies: ["Web"]
-        ),
-    ]
+	name: "Web",
+	platforms: [.macOS(.v14), .iOS(.v17)],
+	products: [
+		.library(
+			name: "Web",
+			type: .dynamic,
+			targets: ["Web"]),
+	],
+	targets: [
+		.target(
+			name: "Web",
+			dependencies: [],
+			swiftSettings: [
+				.define("SWIFT_PACKAGE"),
+				.enableExperimentalFeature("StrictConcurrency")
+			]
+		),
+		.testTarget(
+			name: "WebTests",
+			dependencies: ["Web"]),
+	]
 )
