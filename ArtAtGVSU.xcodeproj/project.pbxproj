@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -29,6 +29,7 @@
 		36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9E2B1A7BC8009304B8 /* Logging.swift */; };
 		36830FA12B1A7CCB009304B8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830FA02B1A7CCB009304B8 /* Links.swift */; };
 		36A597782C30B90700D9AE6A /* ArtworkCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A597772C30B90700D9AE6A /* ArtworkCollection.swift */; };
+		36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
 		8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61626501F4800A591C2 /* LocationIndexView.swift */; };
@@ -108,8 +109,6 @@
 		8AADE70B265DCE43005D86F0 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AADE70A265DCE43005D86F0 /* SDWebImageSwiftUI */; };
 		8AB8BDAD2635F69700A13EAD /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8BDAC2635F69700A13EAD /* Artwork.swift */; };
 		8AB8BDD82635FD8500A13EAD /* ArtGalleryClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8BDD72635FD8500A13EAD /* ArtGalleryClient.swift */; };
-		8AB8BDF6263612EE00A13EAD /* RSWeb in Frameworks */ = {isa = PBXBuildFile; productRef = 8AB8BDF5263612EE00A13EAD /* RSWeb */; };
-		8AB8BDF7263612EE00A13EAD /* RSWeb in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8AB8BDF5263612EE00A13EAD /* RSWeb */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8AC76C452659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76C442659620900F76221 /* UIStoryboard+MainStoryboardInstance.swift */; };
 		8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76C46265976C000F76221 /* RelatedObjectsParsing.swift */; };
 		8AC76C4B265A9E5200F76221 /* EntityDetailParsingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC76C4A265A9E5200F76221 /* EntityDetailParsingTest.swift */; };
@@ -180,7 +179,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8AB8BDF7263612EE00A13EAD /* RSWeb in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,8 +318,8 @@
 				8A6468792A94473F008487A1 /* FirebaseAnalytics in Frameworks */,
 				8A64687B2A94473F008487A1 /* FirebaseCrashlytics in Frameworks */,
 				8A9BD322263E0B3500B816BA /* ImageViewer in Frameworks */,
-				8AB8BDF6263612EE00A13EAD /* RSWeb in Frameworks */,
 				8AADE70B265DCE43005D86F0 /* SDWebImageSwiftUI in Frameworks */,
+				36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,8 +614,8 @@
 				8A6468782A94473F008487A1 /* FirebaseAnalytics */,
 				8A64687A2A94473F008487A1 /* FirebaseCrashlytics */,
 				8A9BD321263E0B3500B816BA /* ImageViewer */,
-				8AB8BDF5263612EE00A13EAD /* RSWeb */,
 				8AADE70A265DCE43005D86F0 /* SDWebImageSwiftUI */,
+				36CA5DA02CB1DC3600B00E69 /* Web */,
 			);
 			productName = ArtAtGVSU;
 			productReference = D22803421C7A588B008B630A /* ArtAtGVSU.app */;
@@ -661,10 +659,10 @@
 			packageReferences = (
 				3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				8A9BD320263E0B3500B816BA /* XCRemoteSwiftPackageReference "ImageViewer" */,
-				8AB8BDF4263612EE00A13EAD /* XCRemoteSwiftPackageReference "RSWeb" */,
 				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */,
 			);
 			productRefGroup = D22803431C7A588B008B630A /* Products */;
 			projectDirPath = "";
@@ -940,7 +938,7 @@
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -973,7 +971,7 @@
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1113,7 +1111,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1143,7 +1141,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1201,6 +1199,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/Web;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1242,14 +1247,6 @@
 				minimumVersion = 2.2.3;
 			};
 		};
-		8AB8BDF4263612EE00A13EAD /* XCRemoteSwiftPackageReference "RSWeb" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Ranchero-Software/RSWeb";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1257,6 +1254,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3641523A2B1A58EA00300301 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		36CA5DA02CB1DC3600B00E69 /* Web */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Web;
 		};
 		8A6468782A94473F008487A1 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1282,11 +1283,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
-		};
-		8AB8BDF5263612EE00A13EAD /* RSWeb */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AB8BDF4263612EE00A13EAD /* XCRemoteSwiftPackageReference "RSWeb" */;
-			productName = RSWeb;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

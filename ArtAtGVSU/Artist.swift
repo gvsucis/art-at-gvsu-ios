@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import RSWeb
+import Web
 
 struct Artist {
     var id: String
@@ -15,7 +15,7 @@ struct Artist {
     var lifeDatesSummary: String = ""
     var nationality: String = ""
     var biography: String = ""
-    var relatedWorks: [Artwork] = []    
+    var relatedWorks: [Artwork] = []
 }
 
 extension Artist {

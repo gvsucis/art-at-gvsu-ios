@@ -7,7 +7,7 @@
 //
 import Foundation
 import MapKit
-import RSWeb
+import Web
 import SceneKit
 
 struct Artwork: Equatable {
