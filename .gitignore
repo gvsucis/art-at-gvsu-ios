@@ -41,6 +41,7 @@ fastlane/test_output
 art-at-gvsu-1fa0c-fd455a14a334.json
 
 Package.resolved
+!ArtAtGVSU.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 .env*
 

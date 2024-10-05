@@ -12,3 +12,8 @@ repos:
         entry: ./scripts/sort-xcode-project-file.sh
         language: script
         files: .*\.pbxproj
+      - id: update-lockfile
+        name: Update lockfile
+        entry: ./scripts/update-lockfile.sh
+        language: script
+        files: .*\.pbxproj
