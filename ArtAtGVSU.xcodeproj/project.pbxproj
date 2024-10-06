@@ -1228,7 +1228,7 @@
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
+				minimumVersion = 1.1.4;
 			};
 		};
 		8A9BD320263E0B3500B816BA /* XCRemoteSwiftPackageReference "ImageViewer" */ = {
