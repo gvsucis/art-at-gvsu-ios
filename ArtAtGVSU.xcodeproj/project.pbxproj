@@ -1212,7 +1212,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.3;
+				minimumVersion = 2.5.1;
 			};
 		};
 		8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
