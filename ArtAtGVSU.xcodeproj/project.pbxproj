@@ -1212,7 +1212,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.3;
+				minimumVersion = 2.5.1;
 			};
 		};
 		8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1220,7 +1220,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				minimumVersion = 11.3.0;
 			};
 		};
 		8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
@@ -1228,7 +1228,7 @@
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
+				minimumVersion = 1.1.4;
 			};
 		};
 		8A9BD320263E0B3500B816BA /* XCRemoteSwiftPackageReference "ImageViewer" */ = {
@@ -1244,7 +1244,7 @@
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.3;
+				minimumVersion = 3.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
