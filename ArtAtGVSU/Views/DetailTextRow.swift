@@ -11,6 +11,7 @@ import SwiftUI
 struct DetailTextRow: View {
     let title: String
     let description: String
+    var showIndicator: Bool = false
 
     var body: some View {
         HStack {
@@ -19,10 +20,15 @@ struct DetailTextRow: View {
                     .font(.title3)
                     .foregroundColor(Color(UIColor.secondaryLabel))
                 Text(description)
+                    .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(Color(UIColor.label))
             }
             Spacer()
+            if showIndicator {
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color(UIColor.label))
+            }
         }
     }
 }
