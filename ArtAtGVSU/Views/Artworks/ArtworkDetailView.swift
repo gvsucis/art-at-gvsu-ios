@@ -79,7 +79,11 @@ struct ArtworkDetailContent: View {
             ForEach(nonEmptyTextRows(artwork), id: \.title ) { row in
                 if row.isArtistName {
                     NavigationLink(destination: ArtistDetailView(id: artwork.artistID)) {
-                        DetailTextRow(title: row.title, description: row.description)
+                        DetailTextRow(
+                            title: row.title,
+                            description: row.description,
+                            showIndicator: true
+                        )
                     }
                 } else {
                     DetailTextRow(title: row.title, description: row.description)
@@ -229,4 +233,3 @@ struct ArtworkDetail_Previews: PreviewProvider {
         func presentArtworkDetail(artworkID: String) {}
     }
 }
-
