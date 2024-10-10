@@ -1,6 +1,6 @@
 # Art At GVSU
 
-![Tests](https://github.com/gvsucis/art-at-gvsu-ios/actions/workflows/ci.yml/badge.svg) [![CalVer 2024.07.1015][img_version]][url_version]
+![Tests](https://github.com/gvsucis/art-at-gvsu-ios/actions/workflows/ci.yml/badge.svg) [![CalVer 2024.10.1016][img_version]][url_version]
 
 ## Download
 
@@ -19,7 +19,7 @@
 1. On the "Signing & Capabilities" tab, Enter the Team account info for the project. You'll need to get these credentials from a current team member.
 1. Hit <kbd>Command+R</kbd> and run the app using an iPhone or a simulator.
 
-[img_version]: https://img.shields.io/static/v1.svg?label=CalVer&message=2024.07.1015&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=CalVer&message=2024.10.1016&color=blue
 [url_version]: https://github.com/gvsucis/art-at-gvsu-v3
 
 ## Committing
