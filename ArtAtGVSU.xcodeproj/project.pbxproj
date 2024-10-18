@@ -29,6 +29,7 @@
 		36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9E2B1A7BC8009304B8 /* Logging.swift */; };
 		36830FA12B1A7CCB009304B8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830FA02B1A7CCB009304B8 /* Links.swift */; };
 		36A597782C30B90700D9AE6A /* ArtworkCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A597772C30B90700D9AE6A /* ArtworkCollection.swift */; };
+		36A63F192CC1FD1B009B0510 /* Web in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
@@ -179,6 +180,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				36A63F192CC1FD1B009B0510 /* Web in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
