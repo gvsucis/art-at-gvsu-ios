@@ -1109,7 +1109,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1016;
+				CURRENT_PROJECT_VERSION = 1017;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
@@ -1118,7 +1118,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2024.10.1016;
+				MARKETING_VERSION = 2024.10.1017;
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.gvsu.cis.masl.Art-at-GVSU";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1139,7 +1139,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1016;
+				CURRENT_PROJECT_VERSION = 1017;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
@@ -1148,7 +1148,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2024.10.1016;
+				MARKETING_VERSION = 2024.10.1017;
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.gvsu.cis.masl.Art-at-GVSU";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
