@@ -1,1 +1,1 @@
-Update app to be compatible with iOS 18
+Fix crash on app startup
