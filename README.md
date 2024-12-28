@@ -44,3 +44,19 @@ Testflight builds will automatically on new commits to the main branch.
 App Store releases are handled by the GitHub Action called "Deploy Production."
 
 Before creating a new release, update the [fastlane/metadata/en-US/release_notes.txt](./fastlane/metadata/en-US/release_notes.txt) file with a description of the important changes made since the last release.
+
+## Structure
+
+The app structure is comprised mostly of the `ArtAtGVSU` directory. This contains app models and SwiftUI views.
+
+The `ArtAtGVSU` model depends on the `ArtGalleryClient` which is responsible for HTTP requests to the Art Gallery's Collective Access API instance.
+
+```mermaid
+flowchart TB
+Models --> ArtAtGVSU
+Views --> ArtAtGVSU
+ArtAtGVSU --> ArtGalleryClient
+
+ArtGalleryClient --> API
+API[(Collective Access)]
+```
