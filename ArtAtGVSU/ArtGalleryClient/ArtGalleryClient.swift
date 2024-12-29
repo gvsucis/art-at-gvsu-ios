@@ -65,7 +65,7 @@ struct ArtGalleryClient {
 
             guard let fileURL = urlOrNil else { return }
             do {
-                let documentsURL = try
+                _ = try
                     FileManager.default.url(for: .documentDirectory,
                                             in: .userDomainMask,
                                             appropriateFor: nil,
@@ -74,7 +74,7 @@ struct ArtGalleryClient {
                 try FileManager.default.moveItem(at: fileURL, to: path)
                 completion(path, nil)
             } catch {
-                print ("file error: \(errorOrNil)")
+                print ("file error: \(String(describing: errorOrNil))")
                 completion(url, errorOrNil)
             }
         }

@@ -115,7 +115,7 @@ extension DownloadSession: URLSessionTaskDelegate {
 		}
 	}
 
-	nonisolated public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+    nonisolated public func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping @Sendable (URLRequest?) -> Void) {
 
 		MainActor.assumeIsolated {
 			if response.statusCode == HTTPResponseCode.redirectTemporary || response.statusCode == HTTPResponseCode.redirectVeryTemporary {
@@ -133,7 +133,7 @@ extension DownloadSession: URLSessionTaskDelegate {
 
 extension DownloadSession: URLSessionDataDelegate {
 
-	nonisolated public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+    nonisolated public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping @Sendable (URLSession.ResponseDisposition) -> Void) {
 
 		MainActor.assumeIsolated {
 
