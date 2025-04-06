@@ -56,7 +56,7 @@ struct ImageResultsView: View {
 
                     // Grid Container for Related Images (Currently Empty)
                     LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(0..<10, id: \.self) { _ in
+                        ForEach(0..<6, id: \.self) { _ in
                             Rectangle()
                                 .fill(Color.gray.opacity(0.3))
                                 .frame(height: 100)

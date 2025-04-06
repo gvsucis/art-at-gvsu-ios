@@ -29,7 +29,7 @@ struct AIReaderButton: View {
 
                 // AI Button to open the camera
                 Button(action: openModal) {
-                    Image(systemName: "brain.head.profile")
+                    Image(systemName: "sparkles")
                         .font(.system(size: 15))
                         .padding(6)
                 }
