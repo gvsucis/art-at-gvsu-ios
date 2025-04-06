@@ -25,64 +25,70 @@ struct TabNavigationView: View {
     }
 
     var body: some View {
-        TabView(selection: selectionValue) {
-            NavigationView {
-                HomeView()
-                    .navigationBarTitle("navigation_Featured", displayMode: .large)
-                    .toolbar {
-                        NavigationLink(
-                            destination: SettingsView()
-                                .navigationBarTitle("navigation_Settings", displayMode: .inline)
-                        ) {
-                            Image(systemName: "gearshape")
+        NavigationStack {
+            TabView(selection: selectionValue) {
+                NavigationView {
+                    HomeView()
+                        .navigationBarTitle("navigation_Featured", displayMode: .large)
+                        .toolbar {
+                            NavigationLink(
+                                destination: SettingsView()
+                                    .navigationBarTitle("navigation_Settings", displayMode: .inline)
+                            ) {
+                                Image(systemName: "gearshape")
+                            }
                         }
-                    }
-                    .id(tabIDs[Tab.home])
-            }
-            .tabItem {
-                Label("navigation_Browse", systemImage: "books.vertical.fill")
-            }
-            .tag(Tab.home)
-            NavigationView {
-                TourIndexView()
-                    .navigationBarTitle("navigation_Tours", displayMode: .inline)
-                    .id(tabIDs[Tab.tours])
-            }
-            .tabItem {
-                Label("navigation_Tours", systemImage: "map.fill")
-            }
-            .tag(Tab.tours)
-            NavigationView {
-                SearchIndexView()
-                    .navigationBarTitle("navigation_Search", displayMode: .inline)
-                    .toolbar {
-                        QRCodeReaderButton()
-                    }
-            }
-            .tabItem {
-                Label("navigation_Search", systemImage: "magnifyingglass")
-            }
-            .id(tabIDs[Tab.search])
-            .tag(Tab.search)
-            NavigationView {
-                FavoritesIndexView()
-                    .navigationBarTitle("navigation_Favorites", displayMode: .inline)
-                    .toolbar {
-                        Button(action: shareFavorites) {
-                            Image(systemName: "square.and.arrow.up")
+                        .id(tabIDs[Tab.home])
+                }
+                .tabItem {
+                    Label("navigation_Browse", systemImage: "books.vertical.fill")
+                }
+                .tag(Tab.home)
+                NavigationView {
+                    TourIndexView()
+                        .navigationBarTitle("navigation_Tours", displayMode: .inline)
+                        .id(tabIDs[Tab.tours])
+                }
+                .tabItem {
+                    Label("navigation_Tours", systemImage: "map.fill")
+                }
+                .tag(Tab.tours)
+                NavigationView {
+                    SearchIndexView()
+                        .navigationBarTitle("navigation_Search", displayMode: .inline)
+                        .navigationBarItems(
+                            trailing: HStack (spacing: -5) {
+                                AIReaderButton() // AI Button
+                                QRCodeReaderButton()
+                            }
+                        )
+                        
+                }
+                .tabItem {
+                    Label("navigation_Search", systemImage: "magnifyingglass")
+                }
+                .id(tabIDs[Tab.search])
+                .tag(Tab.search)
+                NavigationView {
+                    FavoritesIndexView()
+                        .navigationBarTitle("navigation_Favorites", displayMode: .inline)
+                        .toolbar {
+                            Button(action: shareFavorites) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
-                    }
+                }
+                .tabItem {
+                    Label("navigation_Favorites", systemImage: "heart.fill")
+                }
+                .id(tabIDs[Tab.favorites])
+                .tag(Tab.favorites)
             }
-            .tabItem {
-                Label("navigation_Favorites", systemImage: "heart.fill")
-            }
-            .id(tabIDs[Tab.favorites])
-            .tag(Tab.favorites)
+            .navigationViewStyle(StackNavigationViewStyle())
+            .userColorTheme()
+            .onAppear(perform: configureBarAppearances)
+            .environmentObject(tabs)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .userColorTheme()
-        .onAppear(perform: configureBarAppearances)
-        .environmentObject(tabs)
     }
 }
 
@@ -102,7 +108,9 @@ func shareFavorites() {
         activityItems: [exportFavorites()],
         applicationActivities: nil
     )
-    if let root = UIApplication.shared.windows.first?.rootViewController{
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first,
+       let root = window.rootViewController {
         root.present(activity, animated: true, completion: nil)
     }
 }
