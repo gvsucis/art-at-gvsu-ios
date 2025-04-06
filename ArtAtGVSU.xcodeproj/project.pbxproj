@@ -127,6 +127,10 @@
 		8AFEF17D263DDA0800835F6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16B263DDA0800835F6D /* Main.storyboard */; };
 		8AFEF17E263DDA0800835F6D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF16D263DDA0800835F6D /* CustomTableViewCell.swift */; };
 		8AFEF17F263DDA0800835F6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */; };
+		970E0E582D876200003F3712 /* AIReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E0E572D8761DB003F3712 /* AIReader.swift */; };
+		970E0E5A2D876215003F3712 /* AIReaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E0E592D876207003F3712 /* AIReaderButton.swift */; };
+		970E0E5C2D876454003F3712 /* ImageResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E0E5B2D87644E003F3712 /* ImageResultsView.swift */; };
+		970E0E5E2D8778A3003F3712 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E0E5D2D87789C003F3712 /* CameraView.swift */; };
 		9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E05669528AD4384009D0C8C /* ARAssetViewController.swift */; };
 		C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C3141C28FD9E9800538B99 /* ARAsset.swift */; };
 		C4CEC61029019E44007440BA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C4CEC60F29019E43007440BA /* art.scnassets */; };
@@ -293,6 +297,10 @@
 		8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		970E0E572D8761DB003F3712 /* AIReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIReader.swift; sourceTree = "<group>"; };
+		970E0E592D876207003F3712 /* AIReaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIReaderButton.swift; sourceTree = "<group>"; };
+		970E0E5B2D87644E003F3712 /* ImageResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResultsView.swift; sourceTree = "<group>"; };
+		970E0E5D2D87789C003F3712 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		9E05669528AD4384009D0C8C /* ARAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetViewController.swift; sourceTree = "<group>"; };
 		C4C3141C28FD9E9800538B99 /* ARAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
 		C4CEC60F29019E43007440BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -331,7 +339,11 @@
 		364152392B1A540C00300301 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				970E0E5D2D87789C003F3712 /* CameraView.swift */,
+				970E0E5B2D87644E003F3712 /* ImageResultsView.swift */,
+				970E0E592D876207003F3712 /* AIReaderButton.swift */,
 				3641523D2B1A5AB200300301 /* QRCodeReader.swift */,
+				970E0E572D8761DB003F3712 /* AIReader.swift */,
 				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
 				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
 				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
@@ -781,6 +793,7 @@
 				8AADE704265B000D005D86F0 /* ArtworkDetailNavigationLink.swift in Sources */,
 				8A9BD337263F33D900B816BA /* ArtworkDetailRelatedWorks.swift in Sources */,
 				8A9F2BD5266414B900C40F2F /* ArtworkDetailTabImage.swift in Sources */,
+				970E0E5E2D8778A3003F3712 /* CameraView.swift in Sources */,
 				8A010EBD26A5189800EEFAF1 /* ArtworkDetailTitleRow.swift in Sources */,
 				8A010EC326B70AE900EEFAF1 /* ArtworkDetailVideoPlaceholder.swift in Sources */,
 				8AFEF17C263DDA0800835F6D /* ArtworkDetailView.swift in Sources */,
@@ -804,6 +817,8 @@
 				8A9F2BC3265DDB1900C40F2F /* FeaturedArtResult.swift in Sources */,
 				8A9F2BD1266081FF00C40F2F /* FeaturedIndexLoadedView.swift in Sources */,
 				3678ED012C3F39FB00BE0771 /* FeaturedIndexView.swift in Sources */,
+				970E0E5A2D876215003F3712 /* AIReaderButton.swift in Sources */,
+				970E0E582D876200003F3712 /* AIReader.swift in Sources */,
 				8A9F2BD3266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift in Sources */,
 				8A9F2BC5265DDC7E00C40F2F /* FeaturedObjectDetail.swift in Sources */,
 				8A9F2BCD265DE15E00C40F2F /* HomeLoadedView.swift in Sources */,
@@ -845,6 +860,7 @@
 				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
 				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
+				970E0E5C2D876454003F3712 /* ImageResultsView.swift in Sources */,
 				8A659ED22A45534100214141 /* TourStop.swift in Sources */,
 				8A659ED82A4554B000214141 /* TourStopDetail+Parsing.swift in Sources */,
 				8A659ED62A45543700214141 /* TourStopDetail.swift in Sources */,
@@ -1111,7 +1127,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1017;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 984FU6FGBN;
+				DEVELOPMENT_TEAM = 4NVGM66G3J;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1119,7 +1135,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2024.10.1017;
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.gvsu.cis.masl.Art-at-GVSU";
+				PRODUCT_BUNDLE_IDENTIFIER = com.franciscorona.ArtAtGVSU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1149,7 +1165,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2024.10.1017;
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.gvsu.cis.masl.Art-at-GVSU";
+				PRODUCT_BUNDLE_IDENTIFIER = com.franciscorona.ArtAtGVSU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
