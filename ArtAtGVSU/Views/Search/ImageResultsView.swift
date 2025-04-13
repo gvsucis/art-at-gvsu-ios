@@ -13,67 +13,95 @@
 import SwiftUI
 
 struct ImageResultsView: View {
-    var image: UIImage?
+    // The image that was captured and will be displayed at the top
+    var image: UIImage? = nil
 
-    let columns = [GridItem(.flexible()), GridItem(.flexible())] // Two-column grid
+    // State variable to store the images returned from the query
+    @State private var relatedImages: [UIImage] = []
+
+    // Tracks whether the images are still loading
+    @State private var isLoading = true
+
+    // Layout definition for the grid of related images (2 columns)
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            // Set background color
+            Color(UIColor.systemBackground).ignoresSafeArea()
+
             ScrollView {
                 VStack {
-                    // Image Display
+                    // Display the captured image
                     if let image = image {
-                        TabView {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()  // Ensures the image fills the space
-                                .frame(height: UIScreen.main.bounds.height / 2) // Takes half of the screen
-                                .clipped()
-                                .cornerRadius(15) // Rounded corners
-                                .tag(0)
-                        }
-                        .frame(height: UIScreen.main.bounds.height / 2)
-                        .tabViewStyle(PageTabViewStyle())
-                        .indexViewStyle(PageIndexViewStyle())
-
-                        // Bold Title under Image
-                        Text("Related Images")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding(.top, 10)
-                            .padding(.horizontal)
-                    } else {
-                        Rectangle()
-                            .fill(Color(UIColor.systemGray2))
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
                             .frame(height: UIScreen.main.bounds.height / 2)
-                            .cornerRadius(15) // Rounded corners for placeholder
-                            .aspectRatio(contentMode: .fill)
+                            .clipped()
+                            .cornerRadius(15)
+                    }
 
-                        ProgressView()
+                    // Title for the related images section
+                    Text("Related Images")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.top, 10)
+
+                    // Show a loading spinner while images are loading
+                    if isLoading {
+                        ProgressView("Loading images...")
                             .padding()
                     }
 
-                    // Grid Container for Related Images (Currently Empty)
+                    // Display the grid of related images
                     LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(0..<6, id: \.self) { _ in
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.3))
+                        // Show a fallback message if no results were found
+                        if relatedImages.isEmpty && !isLoading {
+                            Text("No related images found.")
+                                .foregroundColor(.gray)
+                                .padding()
+                        }
+
+                        // Loop through and show each related image
+                        ForEach(relatedImages.indices, id: \.self) { index in
+                            Image(uiImage: relatedImages[index])
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
                                 .frame(height: 100)
-                                .cornerRadius(8) // Rounded corners for grid items
+                                .cornerRadius(8)
+                                .clipped()
                         }
                     }
                     .padding()
                 }
             }
         }
+        // Trigger image search when view appears
+        .onAppear(perform: loadImages)
         .navigationTitle("AI Image Search")
         .navigationBarTitleDisplayMode(.inline)
     }
-}
 
-struct ImageResultsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageResultsView(image: UIImage(systemName: "photo"))
+    // Loads related images by sending the captured image to the backend
+    func loadImages() {
+        guard let img = image else {
+            print("No image to send to /query.")
+            self.isLoading = false
+            return
+        }
+
+        NetworkManager.shared.sendImageToQueryEndpoint(img) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let imgs):
+                    print("Received \(imgs.count) images")
+                    self.relatedImages = imgs
+                case .failure(let error):
+                    print("Failed to load images: \(error.localizedDescription)")
+                }
+                self.isLoading = false
+            }
+        }
     }
 }

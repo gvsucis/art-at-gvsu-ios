@@ -18,5 +18,25 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1017</string>
+
+	<!-- This key defines the message shown to users when the app requests access to the local network -->
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app needs access to your local network to connect to the backend server.</string>
+
+	<!-- This key specifies the Bonjour service types that the app may browse or publish.
+	     "_http._tcp" is the service type for discovering HTTP servers on the local network -->
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_http._tcp</string>
+	</array>
+
+	<!-- This configures App Transport Security (ATS) settings.
+	     NSAllowsArbitraryLoads = true allows the app to make HTTP requests to non-secure (non-HTTPS) endpoints.
+	     REMOVE BEFORE PROD -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
