@@ -16,6 +16,7 @@ struct ImageResultsView: View {
     var image: UIImage? = nil
 
     @State private var relatedArtworks: [Artwork] = []
+    @State private var hasLoadedImages = false
     @State private var isLoading = true
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -90,11 +91,15 @@ struct ImageResultsView: View {
     }
 
     private func loadImages() {
+        guard !hasLoadedImages else { return }
+        
         guard let img = image else {
             print("No image to send to /query.")
             self.isLoading = false
             return
         }
+        
+        hasLoadedImages = true
 
         NetworkManager.shared.sendImageToQueryEndpoint(img) { result in
             DispatchQueue.main.async {
