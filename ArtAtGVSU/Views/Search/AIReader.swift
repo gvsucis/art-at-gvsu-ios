@@ -30,17 +30,8 @@ struct AIReader: View {
                         confirmImage(image: newImage)
                     }
                 }
-
-            // Close button in the top left corner
-            HStack {
-                Button(action: onClose) {
-                    Image(systemName: "xmark")
-                        .frame(width: 44, height: 44)
-                        .foregroundColor(.white)
-                }
-            }
-            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // Confirms the selected image and passes it to the callback function

@@ -16,14 +16,15 @@ class NetworkManager {
     // Private initializer to enforce singleton usage
     private init() {}
 
-    /// Sends a given image to the backend `/query` endpoint
-    /// The backend returns a list of related image URLs, which are fetched and returned as UIImages
-    func sendImageToQueryEndpoint(_ image: UIImage, completion: @escaping (Result<[UIImage], Error>) -> Void) {
+    // Sends a given image to the backend `/query` endpoint
+    // The backend returns a list of related image URLs, which are fetched and returned as UIImages
+    func sendImageToQueryEndpoint(_ image: UIImage, completion: @escaping (Result<[String], Error>) -> Void) {
         // Ensure the URL is valid
-        guard let url = URL(string: "http://192.168.0.232:8000/query") else {
-            completion(.failure(NSError(domain: "Invalid URL", code: -1)))
-            return
-        }
+        let endpoint = Properties.shared.ai_search_base_url + "query"
+            guard let url = URL(string: endpoint) else {
+                completion(.failure(NSError(domain: "Invalid URL", code: -1)))
+                return
+            }
 
         // Create a POST request with multipart/form-data
         var request = URLRequest(url: url)
@@ -59,37 +60,40 @@ class NetworkManager {
             }
 
             do {
-                // Parse the JSON response: expected format is { "results": ["http://...", ...] }
                 let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                guard let urlStrings = json?["results"] as? [String] else {
+                guard let ids = json?["results"] as? [String] else {
                     completion(.failure(NSError(domain: "No results found in response", code: -1)))
                     return
                 }
 
-                var images: [UIImage] = []
-                let group = DispatchGroup()
-
-                // For each image URL returned, download the image asynchronously
-                for urlString in urlStrings {
-                    if let imageUrl = URL(string: urlString) {
-                        group.enter()
-                        URLSession.shared.dataTask(with: imageUrl) { data, _, _ in
-                            if let data = data, let img = UIImage(data: data) {
-                                images.append(img)
-                            }
-                            group.leave()
-                        }.resume()
-                    }
-                }
-
-                // When all downloads are complete, return the images
-                group.notify(queue: .main) {
-                    completion(.success(images))
-                }
+                completion(.success(ids))
+                
             } catch {
                 // Handle JSON parsing error
                 completion(.failure(error))
             }
         }.resume()
+    }
+}
+
+extension Artwork {
+    static func fetchMany(ids: [String], completion: @escaping ([Artwork]) -> Void) {
+        let group = DispatchGroup()
+        var artworks: [String: Artwork] = [:]
+
+        for id in ids {
+            group.enter()
+            Artwork.fetch(id: id) { artwork, error in
+                if let artwork = artwork {
+                    artworks[id] = artwork
+                }
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            let orderedArtworks = ids.compactMap { artworks[$0] }
+            completion(orderedArtworks)
+        }
     }
 }

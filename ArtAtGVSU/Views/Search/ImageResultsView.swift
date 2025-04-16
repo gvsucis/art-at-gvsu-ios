@@ -13,78 +13,83 @@
 import SwiftUI
 
 struct ImageResultsView: View {
-    // The image that was captured and will be displayed at the top
     var image: UIImage? = nil
 
-    // State variable to store the images returned from the query
-    @State private var relatedImages: [UIImage] = []
-
-    // Tracks whether the images are still loading
+    @State private var relatedArtworks: [Artwork] = []
     @State private var isLoading = true
 
-    // Layout definition for the grid of related images (2 columns)
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         ZStack {
-            // Set background color
             Color(UIColor.systemBackground).ignoresSafeArea()
 
             ScrollView {
                 VStack {
-                    // Display the captured image
                     if let image = image {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
-                            .frame(height: UIScreen.main.bounds.height / 2)
+                            .frame(height: UIScreen.main.bounds.height / 2.5)
                             .clipped()
                             .cornerRadius(15)
+                            .padding(.horizontal)
                     }
 
-                    // Title for the related images section
-                    Text("Related Images")
-                        .font(.title)
+                    Text("Related Artwork")
+                        .font(.title2)
                         .fontWeight(.bold)
                         .padding(.top, 10)
 
-                    // Show a loading spinner while images are loading
                     if isLoading {
-                        ProgressView("Loading images...")
+                        ProgressView("Loading artworks...")
                             .padding()
-                    }
+                    } else if relatedArtworks.isEmpty {
+                        Text("No related artworks found.")
+                            .foregroundColor(.gray)
+                            .padding()
+                    } else {
+                        LazyVGrid(columns: columns, spacing: 16) {
+                            ForEach(relatedArtworks, id: \.id) { artwork in
+                                NavigationLink(destination: ArtworkDetailRepresentable(artworkID: artwork.id)) {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        AsyncImage(url: artwork.thumbnail) { image in
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                        } placeholder: {
+                                            Rectangle()
+                                                .fill(Color.gray.opacity(0.2))
+                                        }
+                                        .frame(width: 160, height: 120)
+                                        .cornerRadius(8)
+                                        .clipped()
 
-                    // Display the grid of related images
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        // Show a fallback message if no results were found
-                        if relatedImages.isEmpty && !isLoading {
-                            Text("No related images found.")
-                                .foregroundColor(.gray)
-                                .padding()
-                        }
+                                        Text(artwork.name)
+                                            .font(.caption)
+                                            .lineLimit(1)
+                                            .frame(width: 160, alignment: .leading)
 
-                        // Loop through and show each related image
-                        ForEach(relatedImages.indices, id: \.self) { index in
-                            Image(uiImage: relatedImages[index])
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(height: 100)
-                                .cornerRadius(8)
-                                .clipped()
+                                        Text(artwork.artistName)
+                                            .font(.caption2)
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                            .frame(width: 160, alignment: .leading)
+                                    }
+                                }
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
                 }
             }
         }
-        // Trigger image search when view appears
         .onAppear(perform: loadImages)
         .navigationTitle("AI Image Search")
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    // Loads related images by sending the captured image to the backend
-    func loadImages() {
+    private func loadImages() {
         guard let img = image else {
             print("No image to send to /query.")
             self.isLoading = false
@@ -94,13 +99,16 @@ struct ImageResultsView: View {
         NetworkManager.shared.sendImageToQueryEndpoint(img) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let imgs):
-                    print("Received \(imgs.count) images")
-                    self.relatedImages = imgs
+                case .success(let ids):
+                    Artwork.fetchMany(ids: ids) { artworks in
+                        self.relatedArtworks = artworks
+                        self.isLoading = false
+                    }
                 case .failure(let error):
-                    print("Failed to load images: \(error.localizedDescription)")
+                    print("Failed to fetch related artworks: \(error)")
+                    self.relatedArtworks = []
+                    self.isLoading = false
                 }
-                self.isLoading = false
             }
         }
     }

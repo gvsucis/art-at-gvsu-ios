@@ -12,6 +12,7 @@ import Foundation
 //  inside the Secrets.plist file which is tracked outside version control.
 class Properties: Codable {
     var art_gallery_base_url: String
+    var ai_search_base_url: String
     
     static let shared: Properties = {
         let secretsURL = Bundle.main.url(forResource: "Secrets", withExtension: "plist")!

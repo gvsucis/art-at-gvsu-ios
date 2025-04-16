@@ -137,6 +137,7 @@
 		D22803501C7A588B008B630A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D228034F1C7A588B008B630A /* Assets.xcassets */; };
 		D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254BAAF1C83963F0066AF00 /* ArtworkDetailController.swift */; };
 		D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */; };
+		FA1B08442DADD3EB00B10E05 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B08432DADD3EB00B10E05 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -309,6 +310,7 @@
 		D22803541C7A588B008B630A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D254BAAF1C83963F0066AF00 /* ArtworkDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailController.swift; sourceTree = "<group>"; };
 		D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVReachability.swift; sourceTree = "<group>"; };
+		FA1B08432DADD3EB00B10E05 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,6 +433,7 @@
 				8A87BFC8265AA12700511B3B /* EntityDetail+Parsing.swift */,
 				8A9F2BD2266083F700C40F2F /* FeaturedObjectDetail+Parsing.swift */,
 				8AAAD94F2651BC690081837B /* LocationDetail+Parsing.swift */,
+				FA1B08432DADD3EB00B10E05 /* NetworkManager.swift */,
 				8A659EDA2A47726700214141 /* LocationGeoreferenceParsing.swift */,
 				8AA047222640DEC300AA512A /* ObjectDetail+Parsing.swift */,
 				8AC76C46265976C000F76221 /* RelatedObjectsParsing.swift */,
@@ -676,7 +679,7 @@
 				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */,
+				FA1B08422DADCE7300B10E05 /* XCLocalSwiftPackageReference "Modules/Web" */,
 			);
 			productRefGroup = D22803431C7A588B008B630A /* Products */;
 			projectDirPath = "";
@@ -778,6 +781,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1B08442DADD3EB00B10E05 /* NetworkManager.swift in Sources */,
 				8A9F2BDD2664535F00C40F2F /* Appearance.swift in Sources */,
 				C4C3141D28FD9E9800538B99 /* ARAsset.swift in Sources */,
 				9E05669628AD4384009D0C8C /* ARAssetViewController.swift in Sources */,
@@ -1127,7 +1131,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1017;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 4NVGM66G3J;
+				DEVELOPMENT_TEAM = RVXM8628XC;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1218,7 +1222,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */ = {
+		FA1B08422DADCE7300B10E05 /* XCLocalSwiftPackageReference "Modules/Web" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/Web;
 		};

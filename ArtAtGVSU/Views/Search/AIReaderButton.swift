@@ -49,7 +49,7 @@ struct AIReaderButton: View {
         }
     }
 
-    /// Handles the image selected from the AIReader and prepares for navigation
+    // Handles the image selected from the AIReader and prepares for navigation
     func selectImage(_ image: UIImage) {
         self.selectedImage = image
         self.showModal = false
@@ -60,9 +60,9 @@ struct AIReaderButton: View {
         }
     }
 
-    /// Opens the full-screen AIReader modal
+    // Opens the full-screen AIReader modal
     func openModal() { showModal = true }
     
-    /// Closes the full-screen AIReader modal
+    // Closes the full-screen AIReader modal
     func closeModal() { showModal = false }
 }
