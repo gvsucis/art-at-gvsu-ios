@@ -1,1 +1,1 @@
-Fix crash on app startup
+Add support for more artwork video formats
