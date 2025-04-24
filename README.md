@@ -49,7 +49,7 @@ Before creating a new release, update the [fastlane/metadata/en-US/release_notes
 
 The app structure is comprised mostly of the `ArtAtGVSU` directory. This contains app models and SwiftUI views.
 
-The `ArtAtGVSU` model depends on the `ArtGalleryClient` which is responsible for HTTP requests to the Art Gallery's Collective Access API instance.
+The `ArtAtGVSU` model depends on the `ArtGalleryClient` which is responsible for HTTP requests to the Art Museum's Collective Access API instance.
 
 ```mermaid
 flowchart TB
