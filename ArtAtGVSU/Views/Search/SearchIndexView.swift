@@ -41,12 +41,12 @@ struct SearchIndexView: View {
             placeholder: translate("search_Placeholder"),
             hidesSearchBarWhenScrolling: false
         )
-        .onChange(of: filterIndex, perform: { f in
+        .onChange(of: filterIndex) { _, f in
             viewModel.search(query: query, category: f)
-        })
-        .onChange(of: query, perform: { q in
+        }
+        .onChange(of: query) { _, q in
             viewModel.search(query: q, category: filterIndex)
-        })
+        }
     }
 }
 

@@ -12,14 +12,15 @@ import Foundation
 //  inside the Secrets.plist file which is tracked outside version control.
 class Properties: Codable {
     var art_gallery_base_url: String
-    
+    var vision_search_base_url: String
+
     static let shared: Properties = {
         let secretsURL = Bundle.main.url(forResource: "Secrets", withExtension: "plist")!
         let data = try! Data(contentsOf: secretsURL)
         let decoder = PropertyListDecoder()
-        
+
         let instance = try! decoder.decode(Properties.self, from: data)
-        
+
         return instance
     }()
 }

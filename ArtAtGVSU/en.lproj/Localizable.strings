@@ -57,6 +57,7 @@
 "navigation_Favorites" = "Favorites";
 "navigation_Campuses" = "Campuses";
 "navigation_Settings" = "Settings";
+"navigation_SimilarWorks" = "Similar Works";
 
 /** Artwork Detail */
 "artworkDetail_Title" = "Title";
