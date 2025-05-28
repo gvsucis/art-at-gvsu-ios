@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TabNavigationView: View {
     @StateObject private var tabs = TabController()
+    @State private var navPath = NavigationPath()
 
     @State private var tabIDs = buildTabIDs()
     var selectionValue: Binding<Tab> {
@@ -26,7 +27,7 @@ struct TabNavigationView: View {
 
     var body: some View {
         TabView(selection: selectionValue) {
-            NavigationView {
+            NavigationStack {
                 HomeView()
                     .navigationBarTitle("navigation_Featured", displayMode: .large)
                     .toolbar {
@@ -56,6 +57,7 @@ struct TabNavigationView: View {
                 SearchIndexView()
                     .navigationBarTitle("navigation_Search", displayMode: .inline)
                     .toolbar {
+                        VisionCameraButton()
                         QRCodeReaderButton()
                     }
             }
@@ -88,12 +90,12 @@ struct TabNavigationView: View {
 
 func buildTabIDs() -> [Tab:UUID] {
     var tabIDs: [Tab:UUID] = [:]
-    
+
     tabIDs.updateValue(UUID(), forKey: Tab.home)
     tabIDs.updateValue(UUID(), forKey: Tab.home)
     tabIDs.updateValue(UUID(), forKey: Tab.home)
     tabIDs.updateValue(UUID(), forKey: Tab.home)
-    
+
     return tabIDs
 }
 

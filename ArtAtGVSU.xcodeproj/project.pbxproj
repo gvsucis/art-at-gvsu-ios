@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -303,6 +303,11 @@
 		D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVReachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		363C02062DE4FCDF00958741 /* VisionSearchClient */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VisionSearchClient; sourceTree = "<group>"; };
+		363C02202DE505DE00958741 /* VisionSearch */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VisionSearch; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		8ACF7FE12623ECA5006DA945 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -331,6 +336,7 @@
 		364152392B1A540C00300301 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				363C02202DE505DE00958741 /* VisionSearch */,
 				3641523D2B1A5AB200300301 /* QRCodeReader.swift */,
 				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
 				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
@@ -531,6 +537,7 @@
 				8AB8BDE42635FECC00A13EAD /* ArtGalleryClient */,
 				D28A5D351C7BDB3000DDC170 /* Models */,
 				8AFEF15B263DDA0800835F6D /* Views */,
+				363C02062DE4FCDF00958741 /* VisionSearchClient */,
 				C4CEC60F29019E43007440BA /* art.scnassets */,
 				8A598F2926501CF3001C4968 /* ArtGalleryApp.swift */,
 				D228034F1C7A588B008B630A /* Assets.xcassets */,
@@ -608,6 +615,10 @@
 			);
 			dependencies = (
 				36D6430E2ADC914A00104838 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				363C02062DE4FCDF00958741 /* VisionSearchClient */,
+				363C02202DE505DE00958741 /* VisionSearch */,
 			);
 			name = ArtAtGVSU;
 			packageProductDependencies = (
