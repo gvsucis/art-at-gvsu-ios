@@ -21,6 +21,7 @@ struct Artwork: Equatable {
     var workDescription: String = ""
     var workDate: String = ""
     var workMedium: String = ""
+    var locationID: String = ""
     var location: String = ""
     var identifier: String = ""
     var creditLine: String = ""
@@ -77,6 +78,7 @@ extension Artwork {
             workDescription: objectDetail.work_description ?? "",
             workDate: objectDetail.work_date ?? "",
             workMedium: objectDetail.work_medium ?? "",
+            locationID: objectDetail.location_id ?? "",
             location: objectDetail.location ?? "",
             identifier: objectDetail.idno ?? "",
             creditLine: objectDetail.credit_line ?? "",
