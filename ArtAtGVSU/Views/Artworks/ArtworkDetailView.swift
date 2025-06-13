@@ -76,19 +76,33 @@ struct ArtworkDetailContent: View {
             ArtworkDetailTitleRow(artwork: artwork, favorite: favorite)
             Divider().background(Color(UIColor.secondaryLabel))
 
-            ForEach(nonEmptyTextRows(artwork), id: \.title ) { row in
-                if row.isArtistName {
-                    NavigationLink(destination: ArtistDetailView(id: artwork.artistID)) {
-                        DetailTextRow(
-                            title: row.title,
-                            description: row.description,
-                            showIndicator: true
-                        )
-                    }
-                } else {
-                    DetailTextRow(title: row.title, description: row.description)
+            if !artwork.artistName.isEmpty {
+                NavigationLink(destination: ArtistDetailView(id: artwork.artistID)) {
+                    DetailTextRow(
+                        title: "artworkDetail_Artist",
+                        description: artwork.artistName,
+                        showIndicator: true
+                    )
                 }
-                Divider().background(Color(UIColor.secondaryLabel))
+                DetailDivider()
+            }
+
+            ForEach(nonEmptyTextRows(artwork)) { row in
+                DetailTextRow(title: row.title, description: row.description)
+                DetailDivider()
+            }
+
+            if !artwork.location.isEmpty {
+                NavigationLink(
+                    destination: LocationDetailView(id: artwork.locationID, navigationTitle: artwork.location)
+                ) {
+                    DetailTextRow(
+                        title: "artworkDetail_Location",
+                        description: artwork.location,
+                        showIndicator: true
+                    )
+                }
+                DetailDivider()
             }
 
             if let coordinate = artwork.locationGeoreference {
@@ -111,53 +125,23 @@ struct ArtworkDetailContent: View {
 
 private func nonEmptyTextRows(_ artwork: Artwork) -> [ArtworkDetailRow] {
     let rows: [ArtworkDetailRow] = [
-        .artistName(RowValue(title: "artworkDetail_Artist", description: artwork.artistName)),
-        .text(RowValue(title: "artworkDetail_WorkDescription", description: artwork.workDescription)),
-        .text(RowValue(title: "artworkDetail_HistoricalContext", description: artwork.historicalContext)),
-        .text(RowValue(title: "artworkDetail_WorkMedium", description: artwork.workMedium)),
-        .text(RowValue(title: "artworkDetail_WorkDate", description: artwork.workDate)),
-        .text(RowValue(title: "artworkDetail_Location", description: artwork.location)),
-        .text(RowValue(title: "artworkDetail_Identifier", description: artwork.identifier)),
-        .text(RowValue(title: "artworkDetail_CreditLine", description: artwork.creditLine))
+        ArtworkDetailRow(title: "artworkDetail_WorkDescription", description: artwork.workDescription),
+        ArtworkDetailRow(title: "artworkDetail_HistoricalContext", description: artwork.historicalContext),
+        ArtworkDetailRow(title: "artworkDetail_WorkMedium", description: artwork.workMedium),
+        ArtworkDetailRow(title: "artworkDetail_WorkDate", description: artwork.workDate),
+        ArtworkDetailRow(title: "artworkDetail_Identifier", description: artwork.identifier),
+        ArtworkDetailRow(title: "artworkDetail_CreditLine", description: artwork.creditLine)
     ]
 
     return rows.filter { !$0.description.isEmpty }
 }
 
-private struct RowValue {
+private struct ArtworkDetailRow: Identifiable {
     let title: String
     let description: String
-}
 
-private enum ArtworkDetailRow {
-    case artistName(RowValue)
-    case text(RowValue)
-
-    var title: String {
-        switch self {
-        case .artistName(let value):
-            return value.title
-        case .text(let value):
-            return value.title
-        }
-    }
-
-    var description: String {
-        switch self {
-        case .artistName(let value):
-            return value.description
-        case .text(let value):
-            return value.description
-        }
-    }
-
-    var isArtistName: Bool {
-        switch self {
-        case .artistName:
-            return true
-        default:
-            return false
-        }
+    var id: String {
+        return title
     }
 }
 
