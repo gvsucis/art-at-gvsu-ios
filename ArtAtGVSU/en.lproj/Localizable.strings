@@ -91,6 +91,10 @@
 "search_filter_Artworks" = "Artworks";
 "search_noResultsFound" = "No results found";
 
+/** Vision Search */
+"vision_search_call_to_action" = "Take a photo to find\nsimilar artworks";
+"vision_search_cancel" = "Cancel";
+
 /** Favorites */
 "favorites_empty_Explainer" = "Favorites will show up here.";
 "favorites_empty_Description" = "Select the heart icon on a work to favorite it.";
