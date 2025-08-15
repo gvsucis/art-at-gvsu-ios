@@ -21,7 +21,7 @@ struct ArtworkDetailView: View {
                         ForEach(orderedRepresentations(), id: \.url) { representation in
                             VStack {
                                 if representation.url.hasVideoExtension {
-                                    ArtworkDetailVideoPlaceholder(url: artwork.mediaSmall)
+                                    ArtworkMultimediaThumbnail(url: artwork.mediaSmall)
                                         .onTapGesture(perform: viewModel.delegate.presentImageViewer)
                                 } else {
                                     ArtworkDetailTabImage(
@@ -40,7 +40,8 @@ struct ArtworkDetailView: View {
                     ArtworkDetailContent(
                         artwork: artwork,
                         favorite: viewModel.favorite,
-                        presentRelatedArtwork: viewModel.delegate.presentArtworkDetail
+                        presentRelatedArtwork: viewModel.delegate.presentArtworkDetail,
+                        presentImageViewer: viewModel.delegate.presentImageViewer
                     )
                 } else {
                     VStack {
@@ -70,6 +71,7 @@ struct ArtworkDetailContent: View {
     let artwork: Artwork
     @ObservedObject var favorite: FavoritesStore
     let presentRelatedArtwork: (_ artworkID: String) -> Void
+    let presentImageViewer: (URL) -> Void
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -83,6 +85,13 @@ struct ArtworkDetailContent: View {
                         description: artwork.artistName,
                         showIndicator: true
                     )
+                }
+                DetailDivider()
+            }
+
+            if !artwork.secondaryMedia.isEmpty {
+                ArtworkMultimediaRow(mediaItems: artwork.secondaryMedia) { url in
+                    presentImageViewer(url)
                 }
                 DetailDivider()
             }
@@ -181,6 +190,16 @@ struct ArtworkDetail_Previews: PreviewProvider {
         mediaRepresentations: [
             "https:/artgallery.gvsu.edu/admin/media/collectiveaccess/images/1/4/4/5337_ca_object_representations_media_14448_large.jpg"
         ].map { URL(string: $0)! },
+        secondaryMedia: [
+            SecondaryMedia(
+                url: URL(string: "https://example.com/video1.mp4")!,
+                thumbnailURL: URL(string: "https://artgallery.gvsu.edu/admin/media/collectiveaccess/images/1/1/9/20822_ca_object_representations_media_11909_small.jpg")!
+            ),
+            SecondaryMedia(
+                url: URL(string: "https://example.com/video2.mp4")!,
+                thumbnailURL: URL(string: "https://artgallery.gvsu.edu/admin/media/collectiveaccess/images/1/1/9/20822_ca_object_representations_media_11909_small.jpg")!
+            )
+        ],
         name: "Duo (Two)",
         artistName: "Judith Brown",
         historicalContext: "Judith Brown employed scrap metal in much of her work, ranging from small religious ceremonial objects such as a Hanukkah lamp in the collection of The Jewish Museum, to monumental sculptures and public art projects like the installation commissioned for the Federal Courthouse building in Trenton, New Jersey.",
@@ -214,6 +233,7 @@ struct ArtworkDetail_Previews: PreviewProvider {
 
     struct Viewer: ArtworkDetailDelegate {
         func presentImageViewer() {}
+        func presentImageViewer(url: URL) {}
         func presentArtworkDetail(artworkID: String) {}
     }
 }

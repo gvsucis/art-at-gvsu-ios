@@ -29,6 +29,33 @@ extension ObjectDetail {
         return entity_name.split(separator: ";").joined(separator: ", ")
     }
 
+    func parseSecondaryMedia() -> [SecondaryMedia] {
+        guard let mediaRepresentations = secondary_media_reps,
+              let thumbnails = secondary_media_rep_thumbnails,
+              !mediaRepresentations.isEmpty,
+              !thumbnails.isEmpty else {
+            return []
+        }
+
+        let mediaList = mediaRepresentations.splitOnSemicolons()
+        let thumbnailList = thumbnails.splitOnSemicolons()
+
+        guard mediaList.count == thumbnailList.count else {
+            return []
+        }
+
+        var results: [SecondaryMedia] = []
+
+        for (media, thumbnail) in zip(mediaList, thumbnailList) {
+            guard let mediaURL = URL(string: media), let thumbnailURL = URL(string: thumbnail) else {
+                return []
+            }
+            results.append(SecondaryMedia(url: mediaURL, thumbnailURL: thumbnailURL))
+        }
+
+        return results
+    }
+
     var isPublic: Bool {
         access == "1"
     }

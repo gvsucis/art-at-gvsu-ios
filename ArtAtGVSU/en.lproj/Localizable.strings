@@ -62,6 +62,7 @@
 /** Artwork Detail */
 "artworkDetail_Title" = "Title";
 "artworkDetail_Artist" = "Artist";
+"artworkDetail_Multimedia" = "Multimedia";
 "artworkDetail_WorkDescription" = "Physical Description";
 "artworkDetail_HistoricalContext" = "Historical Context";
 "artworkDetail_WorkMedium" = "Medium";

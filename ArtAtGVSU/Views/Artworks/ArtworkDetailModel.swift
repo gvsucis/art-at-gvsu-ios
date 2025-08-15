@@ -43,5 +43,6 @@ class ArtworkDetailModel: ObservableObject {
 
 protocol ArtworkDetailDelegate {
     func presentImageViewer()
+    func presentImageViewer(url: URL)
     func presentArtworkDetail(artworkID: String)
 }

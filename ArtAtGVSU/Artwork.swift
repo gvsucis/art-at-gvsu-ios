@@ -10,10 +10,16 @@ import MapKit
 import Web
 import SceneKit
 
+struct SecondaryMedia: Equatable {
+    let url: URL
+    let thumbnailURL: URL
+}
+
 struct Artwork: Equatable {
     var id: String = ""
     var isPublic: Bool = false
     var mediaRepresentations: [URL] = []
+    var secondaryMedia: [SecondaryMedia] = []
     var name: String = ""
     var artistID: String = ""
     var artistName: String = ""
@@ -71,6 +77,7 @@ extension Artwork {
             id: String(objectDetail.object_id!),
             isPublic: objectDetail.access == "1",
             mediaRepresentations: objectDetail.parseMediaRepresentations(),
+            secondaryMedia: objectDetail.parseSecondaryMedia(),
             name: objectDetail.object_name ?? "",
             artistID: objectDetail.entity_id ?? "",
             artistName: objectDetail.entity_name ?? "",

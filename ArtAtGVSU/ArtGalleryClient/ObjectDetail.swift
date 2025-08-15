@@ -18,6 +18,8 @@ struct ObjectDetail: Codable, Equatable {
     var media_small_url: String? = ""
     var media_icon_url: String? = ""
     var media_reps: String? = ""
+    var secondary_media_reps: String? = ""
+    var secondary_media_rep_thumbnails: String? = ""
     var object_name: String? = ""
     var entity_id: String? = ""
     var entity_name: String? = ""
@@ -59,6 +61,8 @@ struct ObjectDetail: Codable, Equatable {
         case media_small_url
         case media_icon_url
         case media_reps
+        case secondary_media_reps
+        case secondary_media_rep_thumbnails
         case object_name
         case entity_id
         case entity_name

@@ -11,4 +11,8 @@ extension String {
     func splitOnPipes() -> [String] {
         return split(separator: "|").map { String($0) }
     }
+
+    func splitOnSemicolons() -> [String] {
+        return split(separator: ";").map { String($0) }
+    }
 }
