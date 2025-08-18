@@ -43,6 +43,22 @@ class ArtworkDetailController: UIViewController, ArtworkDetailDelegate, GalleryI
         navigationController!.pushViewController(controller, animated: true)
     }
 
+    func presentImageViewer(url: URL) {
+        let controller = GalleryViewController(
+            startIndex: 0,
+            itemsDataSource: MultimediaSource(url: url),
+            configuration: GalleryConfiguration(
+                [
+                    .deleteButtonMode(.none),
+                    .thumbnailsButtonMode(.none),
+                    .videoAutoPlay(true)
+                ]
+            )
+        )
+        controller.footerView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 10))
+        presentImageGallery(controller)
+    }
+
     func presentImageViewer() {
         let controller = GalleryViewController(
             startIndex: viewModel!.index,
@@ -71,13 +87,17 @@ class ArtworkDetailController: UIViewController, ArtworkDetailDelegate, GalleryI
     func provideGalleryItem(_ index: Int) -> GalleryItem {
         let url = self.viewModel!.artwork!.mediaRepresentations[index]
 
-        if url.hasVideoExtension {
-            return GalleryItem.video(fetchPreviewImageBlock: { $0(UIImage()) }, videoURL: url)
-        } else {
-            return GalleryItem.image { callback in
-                RemoteImage.fetch(url: url) { image in
-                    callback(image)
-                }
+        return galleryItem(url: url)
+    }
+}
+
+func galleryItem(url: URL) -> GalleryItem {
+    if url.hasVideoExtension {
+        return GalleryItem.video(fetchPreviewImageBlock: { $0(UIImage()) }, videoURL: url)
+    } else {
+        return GalleryItem.image { callback in
+            RemoteImage.fetch(url: url) { image in
+                callback(image)
             }
         }
     }
@@ -93,5 +113,21 @@ struct ArtworkDetailRepresentable: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: ArtworkDetailController, context: Context) {
+    }
+}
+
+class MultimediaSource: GalleryItemsDataSource {
+    let url: URL
+
+    init(url: URL) {
+        self.url = url
+    }
+
+    func itemCount() -> Int {
+        1
+    }
+
+    func provideGalleryItem(_ index: Int) -> ImageViewer.GalleryItem {
+        return galleryItem(url: url)
     }
 }

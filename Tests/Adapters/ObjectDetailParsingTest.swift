@@ -78,14 +78,14 @@ class ObjectDetailParsingTest: XCTestCase {
     func test_parseGeoreference_it_strips_unexpected_tokens() throws {
         let object = ObjectDetail(location_georeference: "42.9000,42.10\\") // string terminates with unexpected token
         let coordinates = object.parseGeoreference()!
-        
+
         XCTAssertEqual(coordinates.latitude, 42.9)
         XCTAssertEqual(coordinates.longitude, 42.1)
     }
 
     func test_parseGeoreference_it_parses_first_pair_on_multiple_matches() throws {
         let object = ObjectDetail(location_georeference: "[42.901,-85.886] 42.901,-85.886")
-     
+
         let coordinates = object.parseGeoreference()!
 
         XCTAssertEqual(coordinates.latitude, 42.901)
@@ -118,5 +118,55 @@ class ObjectDetailParsingTest: XCTestCase {
     func test_parseArtists() {
         let object = ObjectDetail(entity_name: "Nick Cave;Bob Faust")
         XCTAssertEqual(object.joinArtists(), "Nick Cave, Bob Faust")
+    }
+
+    func test_parseSecondaryMedia_it_returns_parsed_media() {
+        let secondaryMediaReps = "https://example.com/first.mp4;https://example.com/second.mp4"
+        let secondaryMediaRepThumbnails = "https://example.com/first.jpg;https://example.com/second.jpg"
+
+        let object = ObjectDetail(
+            secondary_media_reps: secondaryMediaReps,
+            secondary_media_rep_thumbnails: secondaryMediaRepThumbnails
+        )
+
+        let expected = [
+            SecondaryMedia(
+                url: URL(string: "https://example.com/first.mp4")!,
+                thumbnailURL: URL(string: "https://example.com/first.jpg")!
+            ),
+            SecondaryMedia(
+                url: URL(string: "https://example.com/second.mp4")!,
+                thumbnailURL: URL(string: "https://example.com/second.jpg")!
+            )
+        ]
+
+        let result = object.parseSecondaryMedia()
+
+        XCTAssertEqual(result, expected)
+    }
+
+    func test_parseSecondaryMedia_returns_empty_for_mismatched_lists() {
+        let secondaryMediaReps = "https://example.com/first.mp4;https://example.com/second.mp4"
+        let secondaryMediaRepThumbnails = "https://example.com/first.jpg"
+
+        let object = ObjectDetail(
+            secondary_media_reps: secondaryMediaReps,
+            secondary_media_rep_thumbnails: secondaryMediaRepThumbnails
+        )
+
+        let result = object.parseSecondaryMedia()
+
+        XCTAssertTrue(result.isEmpty)
+    }
+
+    func test_parseSecondaryMedia_returns_empty_for_blank_lists() {
+        let object = ObjectDetail(
+            secondary_media_reps: nil,
+            secondary_media_rep_thumbnails: ""
+        )
+
+        let result = object.parseSecondaryMedia()
+
+        XCTAssertTrue(result.isEmpty)
     }
 }

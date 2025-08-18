@@ -9,7 +9,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ArtworkDetailVideoPlaceholder: View {
+struct ArtworkMultimediaThumbnail: View {
     var url: URL?
 
     var body: some View {
@@ -19,12 +19,11 @@ struct ArtworkDetailVideoPlaceholder: View {
             WebImage(url: url)
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5.0, opaque: true)
                 .overlay(DarkenOverlay())
             Image(systemName: "play.circle")
                 .resizable()
                 .foregroundColor(.icon)
-                .frame(width: 64, height: 64)
+                .frame(width: 32, height: 32)
                 .aspectRatio(contentMode: .fit)
         }
     }
@@ -42,6 +41,6 @@ struct DarkenOverlay: View {
 struct ArtworkDetailVideoPlaceholder_Previews: PreviewProvider {
     static var previews: some View {
         let url = URL(string: "https://artgallery.gvsu.edu//admin//media//collectiveaccess//images//1//1//9//20822_ca_object_representations_media_11909_small.jpg")
-        ArtworkDetailVideoPlaceholder(url: url)
+        ArtworkMultimediaThumbnail(url: url)
     }
 }
