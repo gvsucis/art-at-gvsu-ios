@@ -19,6 +19,11 @@ jobs:
       - uses: actions/setup-python@v5.2.0
       - name: Setup build dependencies
         run: make py-deps
+      - name: Patch in working Xcode + iOS version
+        run: |
+          # https://github.com/actions/runner-images/issues/12758
+          sudo xcode-select --switch /Applications/Xcode_16.2.app
+          sudo xcodebuild -downloadPlatform iOS
       - name: Configure Git user
         run: |
           git config user.name "GV Bot"
