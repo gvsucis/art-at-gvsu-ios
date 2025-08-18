@@ -6,9 +6,9 @@ jobs:
   test:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4.2.0
+      - uses: actions/checkout@v5.0.0
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.194.0
+        uses: ruby/setup-ruby@v1.255.0
         with:
           bundler-cache: true
       - name: Run tests

@@ -1,16 +1,15 @@
 name: Deploy Beta
 
-on:
-  push:
-    branches: main
+on: workflow_dispatch
 
 jobs:
   beta:
     runs-on: macos-15
+    if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4.2.0
+      - uses: actions/checkout@v5.0.0
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.194.0
+        uses: ruby/setup-ruby@v1.255.0
         with:
           bundler-cache: true
       - uses: actions/setup-python@v5
