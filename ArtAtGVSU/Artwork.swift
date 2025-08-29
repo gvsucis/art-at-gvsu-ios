@@ -123,9 +123,13 @@ extension Artwork {
             return []
         }
 
+        guard let url = URL(string: file) else {
+            return []
+        }
+
         return [
             Model(
-                url: URL(string: file)!,
+                url: url,
                 metadata: Metadata(
                     transform: t
                 )
