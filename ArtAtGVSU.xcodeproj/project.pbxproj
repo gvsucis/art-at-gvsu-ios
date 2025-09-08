@@ -40,6 +40,7 @@
 		36A597782C30B90700D9AE6A /* ArtworkCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A597772C30B90700D9AE6A /* ArtworkCollection.swift */; };
 		36A63F192CC1FD1B009B0510 /* Web in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		36B605952E2E8B1000126BB7 /* VisionSearchCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B605942E2E8B1000126BB7 /* VisionSearchCamera.swift */; };
+		36C001642E6F3F3900B44850 /* TourIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */; };
 		36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
@@ -215,6 +216,7 @@
 		368DA6392DF7A1BD004E27EF /* VisionSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSearchClient.swift; sourceTree = "<group>"; };
 		36A597772C30B90700D9AE6A /* ArtworkCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollection.swift; sourceTree = "<group>"; };
 		36B605942E2E8B1000126BB7 /* VisionSearchCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSearchCamera.swift; sourceTree = "<group>"; };
+		36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourIndexViewModel.swift; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				8A3F76592A4A805E00B2BCB0 /* TourAnnotation.swift */,
 				8A3F765B2A4A841200B2BCB0 /* TourDetailView.swift */,
 				8A659ECD2A454E3F00214141 /* TourIndexView.swift */,
+				36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */,
 				8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */,
 			);
 			path = Tours;
@@ -889,6 +892,7 @@
 				8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */,
 				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
 				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
+				36C001642E6F3F3900B44850 /* TourIndexViewModel.swift in Sources */,
 				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
 				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,

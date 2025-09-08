@@ -22,7 +22,8 @@ struct LocationIndexView: View {
                 EmptyView()
             }
         }
-        .navigationBarTitle("navigation_Campuses", displayMode: .large)
+        .navigationTitle("navigation_Campuses")
+        .toolbarTitleDisplayMode(.inlineLarge)
         .background(Color.background)
         .onAppear(perform: fetchCampuses)
     }

@@ -9,7 +9,7 @@
 import Foundation
 import Web
 
-struct Tour {
+struct Tour: Identifiable {
     var id: String
     var name: String = ""
     var mediaIcon: URL? = nil
