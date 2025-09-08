@@ -9,14 +9,7 @@
 import SwiftUI
 
 struct SearchIndexView: View {
-    let filters = [
-        translate("search_filter_Artists"),
-        translate("search_filter_Artworks")
-    ]
-
-    @State var query = ""
-    @State var filterIndex = 0
-    @ObservedObject var viewModel = SearchIndexModel()
+    @StateObject var viewModel = SearchIndexModel()
 
     init() {
         UIScrollView.appearance().keyboardDismissMode = .onDrag
@@ -26,26 +19,17 @@ struct SearchIndexView: View {
         VStack {
             switch viewModel.results {
             case .success(let searchResults):
-                SearchIndexLoadedView(searchResults: searchResults, query: query)
+                SearchIndexLoadedView(searchResults: searchResults, query: viewModel.query)
             case .loading:
                 LoadingView(showProgress: true)
             default:
                 SearchIndexEmptyView()
             }
         }
-        .background(Color.background)
-        .navigationBarSearch(
-            $query,
-            selectedScopeButtonIndex: $filterIndex,
-            scopeButtonTitles: filters,
-            placeholder: translate("search_Placeholder"),
-            hidesSearchBarWhenScrolling: false
-        )
-        .onChange(of: filterIndex) { _, f in
-            viewModel.search(query: query, category: f)
-        }
-        .onChange(of: query) { _, q in
-            viewModel.search(query: q, category: filterIndex)
+        .searchable(text: $viewModel.query)
+        .searchScopes($viewModel.scope) {
+            Text(translate("search_filter_Artworks")).tag(SearchScope.artworks)
+            Text(translate("search_filter_Artists")).tag(SearchScope.artists)
         }
     }
 }
@@ -73,15 +57,17 @@ struct SearchIndexListView: View {
 
     var body: some View {
         List(searchResults) { searchResult in
-            HStack {
+            VStack {
                 switch searchResult {
-                case .artist(let artist):
-                    SearchIndexArtistListItem(artist: artist)
-                case .artwork(let artwork):
-                    SearchIndexArtworkListItem(artwork: artwork)
-                }
+                    case .artist(let artist):
+                        SearchIndexArtistListItem(artist: artist)
+                    case .artwork(let artwork):
+                        SearchIndexArtworkListItem(artwork: artwork)
+                    }
             }
+            .listRowBackground(Color.background)
         }
+        .listStyle(PlainListStyle())
     }
 }
 

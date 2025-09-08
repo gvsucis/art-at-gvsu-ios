@@ -9,55 +9,46 @@
 import SwiftUI
 import Combine
 
-let ARTISTS = 0
-let ARTWORKS = 1
+enum SearchScope: Equatable {
+    case artists
+    case artworks
+}
 
 class SearchIndexModel: ObservableObject {
     @Published var results: Async<[SearchResult]> = .uninitialized
-    let subject = PassthroughSubject<SearchValue, Never>()
-    var subscription: Cancellable?
+    @Published var scope: SearchScope = .artworks
+    @Published var query: String = ""
     let transport = URLSession(configuration: .default)
+    private var cancellables = Set<AnyCancellable>()
 
     init() {
+        Publishers.CombineLatest($query, $scope)
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates { $0.0 == $1.0 && $0.1 == $1.1 } // Skip search if query and scope haven't changed
+            .sink { [weak self] _ in
+                self?.search()
+            }
+            .store(in: &cancellables)
     }
 
-    func search(query: String, category: Int) {
-        initSubscription()
-        subject.send(SearchValue(term: query, category: category))
-    }
-
-    private func delayedSearch(_ value: SearchValue) {
+    func search() {
         transport.cancelAll()
-        if value.term == "" {
+        if query == "" {
             results = .uninitialized
             return
         }
         results = .loading
-        switch value.category {
-        case ARTISTS:
-            Artist.search(term: value.term, transport: transport) { artists in
+        switch scope {
+        case .artists:
+            Artist.search(term: query, transport: transport) { artists in
                 self.results = .success(artists.map { SearchResult.artist($0) })
             }
         default:
-            Artwork.search(term: value.term, transport: transport) { artists in
+            Artwork.search(term: query, transport: transport) { artists in
                 self.results = .success(artists.map { SearchResult.artwork($0) })
             }
         }
     }
-
-    private func initSubscription() {
-        guard subscription == nil else { return }
-        subscription = subject
-            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
-            .sink { value in
-                self.delayedSearch(value)
-            }
-    }
-}
-
-struct SearchValue {
-    var term: String
-    var category: Int
 }
 
 enum SearchResult: Identifiable {

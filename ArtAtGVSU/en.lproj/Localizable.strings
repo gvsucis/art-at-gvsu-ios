@@ -87,7 +87,7 @@
 "featuredIndex_ARNavigationTitle" = "Augmented Reality Artworks";
 
 /** Search */
-"search_Placeholder" = "Artworks, Artists";
+"search_Placeholder" = "Search";
 "search_filter_Artists" = "Artists";
 "search_filter_Artworks" = "Artworks";
 "search_noResultsFound" = "No results found";
