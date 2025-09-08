@@ -4,11 +4,11 @@ on: pull_request
 
 jobs:
   test:
-    runs-on: macos-15
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5.0.0
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.255.0
+        uses: ruby/setup-ruby@v1.257.0
         with:
           bundler-cache: true
       - name: Run tests
