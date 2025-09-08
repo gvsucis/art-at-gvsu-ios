@@ -4,19 +4,19 @@ on: workflow_dispatch
 
 jobs:
   production:
-    runs-on: macos-15
+    runs-on: macos-latest
     permissions:
       contents: write
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4.2.0
+      - uses: actions/checkout@v5.0.0
         with:
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.194.0
+        uses: ruby/setup-ruby@v1.257.0
         with:
           bundler-cache: true
-      - uses: actions/setup-python@v5.2.0
+      - uses: actions/setup-python@v6.0.0
       - name: Setup build dependencies
         run: make py-deps
       - name: Patch in working Xcode + iOS version
