@@ -48,8 +48,6 @@ struct TabNavigationView: View {
 
             NavigationStack {
                 TourIndexView()
-                    .navigationTitle("navigation_Tours")
-                    .toolbarTitleDisplayMode(.inlineLarge)
             }
             .tabItem {
                 Label("navigation_Tours", systemImage: "map.fill")
@@ -122,18 +120,9 @@ struct TabNavigationView_Previews: PreviewProvider {
 }
 
 func configureBarAppearances() {
-    configureNavigationBarAppearance()
     configureUITabBarAppearance()
 }
 
-func configureNavigationBarAppearance() {
-    let appearance = UINavigationBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(Color.background)
-    if #available(iOS 15.0, *) {
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-}
 
 func configureUITabBarAppearance() {
     let appearance = UITabBarAppearance()

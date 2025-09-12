@@ -24,7 +24,6 @@ struct ArtistDetailView: View {
                 EmptyView()
             }
         }
-        .background(Color.background)
         .onAppear(perform: fetchArtist)
     }
 

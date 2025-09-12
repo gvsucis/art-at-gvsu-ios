@@ -25,10 +25,8 @@ struct FeaturedIndexView: View {
         }
         .onAppear(perform: fetchArtworks)
         .background(Color.background)
-        .navigationBarTitle(
-            LocalizedStringKey(title),
-            displayMode: .inline
-        )
+        .navigationTitle(LocalizedStringKey(title))
+        .toolbarTitleDisplayMode(.inline)
     }
 
     private func fetchArtworks() {

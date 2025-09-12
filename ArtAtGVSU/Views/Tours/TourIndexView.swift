@@ -12,8 +12,8 @@ struct TourIndexView: View {
     @StateObject private var viewModel = TourIndexViewModel()
 
     var body: some View {
-        VStack {
-            ScrollView {
+        ScrollView {
+            LazyVStack {
                 switch viewModel.data {
                 case .success(let tours):
                     TourIndexLoadedView(tours: tours)
@@ -23,6 +23,7 @@ struct TourIndexView: View {
             }
         }
         .background(Color.background)
+        .navigationTitle("navigation_Tours")
     }
 }
 

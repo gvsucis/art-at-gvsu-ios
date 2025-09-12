@@ -9,7 +9,7 @@
 import Foundation
 import Web
 
-struct Location: Equatable {
+struct Location: Equatable, Identifiable {
     var id: String = ""
     var name: String = ""
     var mediaMediumURL: URL?
