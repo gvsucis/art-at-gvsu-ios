@@ -28,7 +28,6 @@ struct ArtworkDetailView: View {
                                 )
                             }
                         }
-                        .scaledToFill()
                         .tag(representation.index)
                     }
                 }
