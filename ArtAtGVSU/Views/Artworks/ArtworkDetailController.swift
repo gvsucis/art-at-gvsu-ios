@@ -22,6 +22,8 @@ class ArtworkDetailController: UIViewController, ArtworkDetailDelegate, GalleryI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.largeTitleDisplayMode = .never
+
         viewModel = ArtworkDetailModel(delegate: self, artworkID: artworkID!)
         hostingController = UIHostingController(rootView: ArtworkDetailView(viewModel: viewModel!))
 
@@ -43,17 +45,23 @@ class ArtworkDetailController: UIViewController, ArtworkDetailDelegate, GalleryI
         navigationController!.pushViewController(controller, animated: true)
     }
 
-    static func presentArtworkDetail(artworkID: String) {
+    static func present(artworkID: String, modal: Bool = false) {
         DispatchQueue.main.async {
             guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
                   let keyWindow = windowScene.windows.first(where: \.isKeyWindow) else {
                 return
             }
 
-            if let navigationController = findNavigationController(from: keyWindow.rootViewController) {
-                let controller = ArtworkDetailController()
-                controller.artworkID = artworkID
-                navigationController.pushViewController(controller, animated: true)
+            let controller = ArtworkDetailController()
+            controller.artworkID = artworkID
+
+            if modal {
+                let navController = UINavigationController(rootViewController: controller)
+                keyWindow.rootViewController?.present(navController, animated: true)
+            } else {
+                if let navigationController = findNavigationController(from: keyWindow.rootViewController) {
+                    navigationController.pushViewController(controller, animated: true)
+                }
             }
         }
     }
@@ -140,19 +148,6 @@ func galleryItem(url: URL) -> GalleryItem {
                 callback(image)
             }
         }
-    }
-}
-
-struct ArtworkDetailRepresentable: UIViewControllerRepresentable {
-    var artworkID: String?
-
-    func makeUIViewController(context: Context) -> ArtworkDetailController {
-        let controller = ArtworkDetailController()
-        controller.artworkID = artworkID
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: ArtworkDetailController, context: Context) {
     }
 }
 

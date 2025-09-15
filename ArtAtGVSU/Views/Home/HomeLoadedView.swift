@@ -60,10 +60,10 @@ struct RotatingFeaturedImage: View {
     let featuredWork: Artwork
 
     var body: some View {
-        NavigationLink(
-            destination: ArtworkDetailRepresentable(artworkID: featuredWork.id)
-                .navigationBarTitleDisplayMode(.inline)
-        ) {
+
+        Button(action: {
+            ArtworkDetailController.present(artworkID: featuredWork.id)
+        }) {
             GeometryReader { geo in
                 WebImage(url: featuredWork.mediaLarge)
                     .resizable()

@@ -84,9 +84,10 @@ struct SearchIndexArtworkListItem: View {
     var artwork: Artwork
 
     var body: some View {
-        NavigationLink(destination: ArtworkDetailRepresentable(artworkID: artwork.id)) {
+        Button(action: { ArtworkDetailController.present(artworkID: artwork.id) }) {
             SearchIndexListItem(title: artwork.name, subtitle: artwork.artistName)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

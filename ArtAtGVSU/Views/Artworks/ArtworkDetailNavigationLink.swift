@@ -24,6 +24,6 @@ struct ArtworkDetailNavigationLink: View {
     }
 
     private func presentArtworkDetail() {
-        ArtworkDetailController.presentArtworkDetail(artworkID: artwork.id)
+        ArtworkDetailController.present(artworkID: artwork.id)
     }
 }

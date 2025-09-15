@@ -12,17 +12,9 @@ struct QRCodeReaderButton: View {
     @State private var showModal = false
     @State private var artworkID: String? = nil
     var onArtworkResult: () -> Void = {}
-    @State var canNavigateToArtwork = false
 
     var body: some View {
         ZStack {
-            NavigationLink(
-                destination: ArtworkDetailRepresentable(artworkID: artworkID)
-                    .navigationBarTitleDisplayMode(.inline),
-                isActive: $canNavigateToArtwork
-            ) {
-                EmptyView()
-            }
             Button(action: openModal) {
                 Image(systemName: "qrcode.viewfinder")
             }.fullScreenCover(isPresented: $showModal) {
@@ -33,17 +25,21 @@ struct QRCodeReaderButton: View {
             }
         }
     }
-    
+
     func selectArtwork(artworkID: String?) {
-        self.artworkID = artworkID
-        self.canNavigateToArtwork = artworkID != nil
-        self.showModal = false
+        if let artworkID = artworkID {
+            self.artworkID = artworkID
+
+            ArtworkDetailController.present(artworkID: artworkID, modal: true)
+
+            self.showModal = false
+        }
     }
-    
+
     func openModal() {
         showModal = true
     }
-    
+
     func closeModal() {
         showModal = false
     }

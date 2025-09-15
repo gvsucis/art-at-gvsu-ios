@@ -120,15 +120,25 @@ struct TabNavigationView_Previews: PreviewProvider {
 }
 
 func configureBarAppearances() {
+    configureNavigationBarAppearance()
     configureUITabBarAppearance()
 }
 
 
+func configureNavigationBarAppearance() {
+    if #unavailable(iOS 26.0) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color.background)
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+}
+
 func configureUITabBarAppearance() {
-    let appearance = UITabBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(Color.background)
-    if #available(iOS 15.0, *) {
+    if #unavailable(iOS 26.0) {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color.background)
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
 }
