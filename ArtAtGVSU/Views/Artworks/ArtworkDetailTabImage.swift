@@ -18,9 +18,7 @@ struct ArtworkDetailTabImage: View {
             Color.black
             if let image = image {
                 Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .clipped()
+                    .centerFilled()
                     .overlay(TextOverlay())
             }
         }
@@ -32,6 +30,21 @@ struct ArtworkDetailTabImage: View {
         RemoteImage.fetch(url: url) { image in
             self.image = image
         }
+    }
+}
+
+/**
+ * https://old.reddit.com/r/SwiftUI/comments/1d50ud2/images_spilling_over_in_tabview/l6j1cg3/
+ */
+private extension Image {
+    func centerFilled() -> some View {
+        Color.clear
+        .overlay(
+            self
+            .resizable()
+            .scaledToFill()
+        )
+        .clipped()
     }
 }
 

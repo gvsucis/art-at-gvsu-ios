@@ -21,7 +21,7 @@ struct SearchIndexView: View {
             case .success(let searchResults):
                 SearchIndexLoadedView(searchResults: searchResults, query: viewModel.query)
             case .loading:
-                LoadingView(showProgress: true)
+                ProgressView()
             default:
                 SearchIndexEmptyView()
             }
@@ -65,7 +65,6 @@ struct SearchIndexListView: View {
                         SearchIndexArtworkListItem(artwork: artwork)
                     }
             }
-            .listRowBackground(Color.background)
         }
         .listStyle(PlainListStyle())
     }
@@ -85,9 +84,10 @@ struct SearchIndexArtworkListItem: View {
     var artwork: Artwork
 
     var body: some View {
-        NavigationLink(destination: ArtworkDetailRepresentable(artworkID: artwork.id)) {
+        Button(action: { ArtworkDetailController.present(artworkID: artwork.id) }) {
             SearchIndexListItem(title: artwork.name, subtitle: artwork.artistName)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -114,7 +114,6 @@ struct SearchIndexNoResultsView: View {
             Text("search_noResultsFound")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.background)
     }
 }
 
@@ -123,7 +122,6 @@ struct SearchIndexEmptyView: View {
         VStack {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.background)
     }
 }
 

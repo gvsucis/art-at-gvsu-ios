@@ -26,6 +26,7 @@
 		3641523C2B1A58EA00300301 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 3641523B2B1A58EA00300301 /* CodeScanner */; };
 		3641523E2B1A5AB200300301 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3641523D2B1A5AB200300301 /* QRCodeReader.swift */; };
 		3678ED012C3F39FB00BE0771 /* FeaturedIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678ED002C3F39FB00BE0771 /* FeaturedIndexView.swift */; };
+		367992282E747D6B00EB5E8E /* LocationIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367992272E747D6B00EB5E8E /* LocationIndexViewModel.swift */; };
 		36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */; };
 		36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830F9E2B1A7BC8009304B8 /* Logging.swift */; };
 		36830FA12B1A7CCB009304B8 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36830FA02B1A7CCB009304B8 /* Links.swift */; };
@@ -40,6 +41,7 @@
 		36A597782C30B90700D9AE6A /* ArtworkCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A597772C30B90700D9AE6A /* ArtworkCollection.swift */; };
 		36A63F192CC1FD1B009B0510 /* Web in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		36B605952E2E8B1000126BB7 /* VisionSearchCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B605942E2E8B1000126BB7 /* VisionSearchCamera.swift */; };
+		36C001642E6F3F3900B44850 /* TourIndexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */; };
 		36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
@@ -201,6 +203,7 @@
 		36182AAF2AE5C617000497FF /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		3641523D2B1A5AB200300301 /* QRCodeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
 		3678ED002C3F39FB00BE0771 /* FeaturedIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedIndexView.swift; sourceTree = "<group>"; };
+		367992272E747D6B00EB5E8E /* LocationIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexViewModel.swift; sourceTree = "<group>"; };
 		367FAED12CB1DACA00953BE2 /* Web */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Web; path = Modules/Web; sourceTree = "<group>"; };
 		36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderButton.swift; sourceTree = "<group>"; };
 		36830F9E2B1A7BC8009304B8 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -215,6 +218,7 @@
 		368DA6392DF7A1BD004E27EF /* VisionSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSearchClient.swift; sourceTree = "<group>"; };
 		36A597772C30B90700D9AE6A /* ArtworkCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollection.swift; sourceTree = "<group>"; };
 		36B605942E2E8B1000126BB7 /* VisionSearchCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionSearchCamera.swift; sourceTree = "<group>"; };
+		36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourIndexViewModel.swift; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
@@ -403,6 +407,7 @@
 				8A3F76592A4A805E00B2BCB0 /* TourAnnotation.swift */,
 				8A3F765B2A4A841200B2BCB0 /* TourDetailView.swift */,
 				8A659ECD2A454E3F00214141 /* TourIndexView.swift */,
+				36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */,
 				8A7B8D1B2A4BD06800FCFA94 /* TourMapView.swift */,
 			);
 			path = Tours;
@@ -413,6 +418,7 @@
 			children = (
 				8AAAD9492650C7670081837B /* LocationDetailView.swift */,
 				8A00C61626501F4800A591C2 /* LocationIndexView.swift */,
+				367992272E747D6B00EB5E8E /* LocationIndexViewModel.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -862,6 +868,7 @@
 				8AAAD94A2650C7670081837B /* LocationDetailView.swift in Sources */,
 				8A659EDB2A47726700214141 /* LocationGeoreferenceParsing.swift in Sources */,
 				8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */,
+				367992282E747D6B00EB5E8E /* LocationIndexViewModel.swift in Sources */,
 				8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */,
 				36830F9F2B1A7BC8009304B8 /* Logging.swift in Sources */,
 				8AFEF179263DDA0800835F6D /* MapSnapshot.swift in Sources */,
@@ -889,6 +896,7 @@
 				8A3F765A2A4A805E00B2BCB0 /* TourAnnotation.swift in Sources */,
 				8A3F765C2A4A841200B2BCB0 /* TourDetailView.swift in Sources */,
 				8A659ECE2A454E3F00214141 /* TourIndexView.swift in Sources */,
+				36C001642E6F3F3900B44850 /* TourIndexViewModel.swift in Sources */,
 				8A7B8D1C2A4BD06800FCFA94 /* TourMapView.swift in Sources */,
 				8A659EC92A45454600214141 /* TourSearchDetail.swift in Sources */,
 				8A659EC72A4544D600214141 /* TourSearchResult.swift in Sources */,
@@ -992,7 +1000,7 @@
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1025,7 +1033,7 @@
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1165,7 +1173,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1195,7 +1203,7 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 984FU6FGBN;
 				INFOPLIST_FILE = ArtAtGVSU/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

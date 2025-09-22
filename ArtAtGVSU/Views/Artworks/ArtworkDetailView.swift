@@ -13,52 +13,48 @@ struct ArtworkDetailView: View {
     @ObservedObject var viewModel: ArtworkDetailModel
 
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
-            ScrollView {
-                if let artwork = viewModel.artwork {
-                    TabView(selection: $viewModel.index) {
-                        ForEach(orderedRepresentations(), id: \.url) { representation in
-                            VStack {
-                                if representation.url.hasVideoExtension {
-                                    ArtworkMultimediaThumbnail(url: artwork.mediaSmall)
-                                        .onTapGesture(perform: viewModel.delegate.presentImageViewer)
-                                } else {
-                                    ArtworkDetailTabImage(
-                                        url: representation.url,
-                                        onClick: viewModel.delegate.presentImageViewer
-                                    )
-                                }
+        ScrollView {
+            if let artwork = viewModel.artwork {
+                TabView(selection: $viewModel.index) {
+                    ForEach(orderedRepresentations(), id: \.url) { representation in
+                        VStack {
+                            if representation.url.hasVideoExtension {
+                                ArtworkMultimediaThumbnail(url: artwork.mediaSmall)
+                                    .onTapGesture(perform: viewModel.delegate.presentImageViewer)
+                            } else {
+                                ArtworkDetailTabImage(
+                                    url: representation.url,
+                                    onClick: viewModel.delegate.presentImageViewer
+                                )
                             }
-                            .frame(height: 300)
-                            .tag(representation.index)
                         }
+                        .tag(representation.index)
                     }
-                    .frame(height: 300)
-                    .tabViewStyle(PageTabViewStyle())
-                    .indexViewStyle(PageIndexViewStyle())
-                    ArtworkDetailContent(
-                        artwork: artwork,
-                        favorite: viewModel.favorite,
-                        presentRelatedArtwork: viewModel.delegate.presentArtworkDetail,
-                        presentImageViewer: viewModel.delegate.presentImageViewer
-                    )
-                } else {
-                    VStack {
-                        Rectangle()
-                            .fill(Color(UIColor.systemGray2))
-                            .frame(height: 300)
-                            .aspectRatio(contentMode: .fill)
+                }
+                .aspectRatio(1, contentMode: .fill)
+                .tabViewStyle(PageTabViewStyle())
+                .indexViewStyle(PageIndexViewStyle())
+                ArtworkDetailContent(
+                    artwork: artwork,
+                    favorite: viewModel.favorite,
+                    presentRelatedArtwork: viewModel.delegate.presentArtworkDetail,
+                    presentImageViewer: viewModel.delegate.presentImageViewer
+                )
+            } else {
+                VStack {
+                    Rectangle()
+                        .fill(Color(UIColor.systemGray2))
+                        .aspectRatio(1, contentMode: .fill)
 
-                        ProgressView()
-                            .padding()
+                    ProgressView()
+                        .padding()
 
-                        Spacer()
-                    }
+                    Spacer()
                 }
             }
         }
         .background(Color.background)
+        .ignoresSafeArea(edges: .top)
     }
 
     func orderedRepresentations() -> [(index: Int, url: URL)] {

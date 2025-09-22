@@ -12,21 +12,18 @@ struct ArtworkDetailNavigationLink: View {
     let artwork: Artwork
 
     var body: some View {
-        NavigationLink(destination: ArtworkDetailRepresentable(artworkID: artwork.id)) {
+        Button(action: {
+            presentArtworkDetail()
+        }) {
             ThumbnailTitleRow(
                 title: artwork.name,
                 thumbnail: artwork.thumbnail
             )
         }
+        .buttonStyle(PlainButtonStyle())
     }
-}
 
-struct ArtworkDetailNavigationLink_Previews: PreviewProvider {
-    static var previews: some View {
-        ArtworkDetailNavigationLink(artwork: Artwork(
-            id: "3818",
-            name: "Dutch Woodcutter",
-            thumbnail: URL(string: "https://artgallery.gvsu.edu/admin/media/collectiveaccess/images/1/7/3/56084_ca_object_representations_media_17364_small.jpg")
-        ))
+    private func presentArtworkDetail() {
+        ArtworkDetailController.present(artworkID: artwork.id)
     }
 }

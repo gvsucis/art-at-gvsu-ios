@@ -29,7 +29,8 @@ struct TabNavigationView: View {
         TabView(selection: selectionValue) {
             NavigationStack {
                 HomeView()
-                    .navigationBarTitle("navigation_Featured", displayMode: .large)
+                    .navigationTitle("navigation_Featured")
+                    .toolbarTitleDisplayMode(.large)
                     .toolbar {
                         NavigationLink(
                             destination: SettingsView()
@@ -38,22 +39,23 @@ struct TabNavigationView: View {
                             Image(systemName: "gearshape")
                         }
                     }
-                    .id(tabIDs[Tab.home])
             }
             .tabItem {
                 Label("navigation_Browse", systemImage: "books.vertical.fill")
             }
             .tag(Tab.home)
-            NavigationView {
+            .id(tabIDs[Tab.home])
+
+            NavigationStack {
                 TourIndexView()
-                    .navigationBarTitle("navigation_Tours", displayMode: .inline)
-                    .id(tabIDs[Tab.tours])
             }
             .tabItem {
                 Label("navigation_Tours", systemImage: "map.fill")
             }
             .tag(Tab.tours)
-            NavigationView {
+            .id(tabIDs[Tab.tours])
+
+            NavigationStack {
                 SearchIndexView()
                     .navigationBarTitle("navigation_Search", displayMode: .inline)
                     .toolbar {
@@ -64,9 +66,10 @@ struct TabNavigationView: View {
             .tabItem {
                 Label("navigation_Search", systemImage: "magnifyingglass")
             }
-            .id(tabIDs[Tab.search])
             .tag(Tab.search)
-            NavigationView {
+            .id(tabIDs[Tab.search])
+
+            NavigationStack {
                 FavoritesIndexView()
                     .navigationBarTitle("navigation_Favorites", displayMode: .inline)
                     .toolbar {
@@ -78,8 +81,8 @@ struct TabNavigationView: View {
             .tabItem {
                 Label("navigation_Favorites", systemImage: "heart.fill")
             }
-            .id(tabIDs[Tab.favorites])
             .tag(Tab.favorites)
+            .id(tabIDs[Tab.favorites])
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .userColorTheme()
@@ -92,9 +95,9 @@ func buildTabIDs() -> [Tab:UUID] {
     var tabIDs: [Tab:UUID] = [:]
 
     tabIDs.updateValue(UUID(), forKey: Tab.home)
-    tabIDs.updateValue(UUID(), forKey: Tab.home)
-    tabIDs.updateValue(UUID(), forKey: Tab.home)
-    tabIDs.updateValue(UUID(), forKey: Tab.home)
+    tabIDs.updateValue(UUID(), forKey: Tab.tours)
+    tabIDs.updateValue(UUID(), forKey: Tab.search)
+    tabIDs.updateValue(UUID(), forKey: Tab.favorites)
 
     return tabIDs
 }
@@ -121,20 +124,21 @@ func configureBarAppearances() {
     configureUITabBarAppearance()
 }
 
+
 func configureNavigationBarAppearance() {
-    let appearance = UINavigationBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(Color.background)
-    if #available(iOS 15.0, *) {
+    if #unavailable(iOS 26.0) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color.background)
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }
 
 func configureUITabBarAppearance() {
-    let appearance = UITabBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(Color.background)
-    if #available(iOS 15.0, *) {
+    if #unavailable(iOS 26.0) {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(Color.background)
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
 }

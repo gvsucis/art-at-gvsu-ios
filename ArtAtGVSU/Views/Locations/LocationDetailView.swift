@@ -17,7 +17,6 @@ struct LocationDetailView: View {
         self.id = id
         self.navigationTitle = navigationTitle
         self._data = State(initialValue: data)
-        UITableView.appearance().backgroundColor = .clear
     }
 
     var body: some View {
@@ -31,8 +30,8 @@ struct LocationDetailView: View {
                 EmptyView()
             }
         }
-        .background(Color.background)
-        .navigationBarTitle(navigationTitle, displayMode: .inline)
+        .navigationTitle(navigationTitle)
+        .toolbarTitleDisplayMode(.inline)
         .onAppear(perform: fetchLocation)
     }
 
@@ -50,35 +49,37 @@ private struct LocationLoadedView: View {
     let location: Location
 
     var body: some View {
-        if isCompletelyEmpty {
-            ZStack {
-                Text("locationDetail_Empty")
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else {
-            List {
-                if !location.locations.isEmpty {
-                    Section(header: Text("locationDetail_ChildLocations")) {
-                        ForEach(location.locations, id: \.id) { childLocation in
-                            NavigationLink(
-                                destination: LocationDetailView(id: childLocation.id, navigationTitle: childLocation.name)
-                            ) {
-                                Text(childLocation.name)
-                                    .foregroundColor(Color(UIColor.label))
+        VStack {
+            if isCompletelyEmpty {
+                ZStack {
+                    Text("locationDetail_Empty")
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List {
+                    if !location.locations.isEmpty {
+                        Section(header: Text("locationDetail_ChildLocations")) {
+                            ForEach(location.locations, id: \.id) { childLocation in
+                                NavigationLink(
+                                    destination: LocationDetailView(id: childLocation.id, navigationTitle: childLocation.name)
+                                ) {
+                                    Text(childLocation.name)
+                                        .foregroundColor(Color(UIColor.label))
+                                }
+                            }
+                        }
+                    }
+
+                    if !location.artworks.isEmpty {
+                        Section(header: Text("locationDetail_Artworks")) {
+                            ForEach(location.artworks, id: \.id) { artwork in
+                                ArtworkDetailNavigationLink(artwork: artwork)
                             }
                         }
                     }
                 }
-
-                if !location.artworks.isEmpty {
-                    Section(header: Text("locationDetail_Artworks")) {
-                        ForEach(location.artworks, id: \.id) { artwork in
-                            ArtworkDetailNavigationLink(artwork: artwork)
-                        }
-                    }
-                }
+                .listStyle(GroupedListStyle())
             }
-            .listStyle(GroupedListStyle())
         }
     }
 

@@ -21,16 +21,14 @@ struct VisionImageList: View {
             LazyVGrid(columns: columns) {
                 ForEach(images) { image in
                     GeometryReader { geo in
-                        NavigationLink(
-                            destination: ArtworkDetailRepresentable(artworkID: image.object_id)
-                                .navigationBarTitleDisplayMode(.inline)
-                        ) {
+                        Button(action: { ArtworkDetailController.present(artworkID: image.object_id) }) {
                             WebImage(url: image.imageURL)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: geo.size.width, height: geo.size.height)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
+                        .buttonStyle(PlainButtonStyle())
                     }
                     .aspectRatio(contentMode: .fit)
                 }

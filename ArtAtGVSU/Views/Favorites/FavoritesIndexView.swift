@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FavoritesIndexView: View {
     @State var favorites: [Favorite] = []
-    
+
     var body: some View {
         VStack {
             if (favorites.isEmpty) {
@@ -18,9 +18,9 @@ struct FavoritesIndexView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView {
-                    LazyVStack {                    
+                    LazyVStack {
                         ForEach(favorites) { favorite in
-                            NavigationLink(destination: ArtworkDetailRepresentable(artworkID: favorite.artworkID)) {
+                            Button(action: { ArtworkDetailController.present(artworkID: favorite.id) }) {
                                 WideTitleCard(title: favorite.artworkName, imageURL: favorite.imageURL)
                             }
                             .buttonStyle(OpaqueButtonStyle())

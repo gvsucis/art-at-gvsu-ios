@@ -18,7 +18,6 @@ struct LoadingView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.background)
         .onAppear(perform: startDelayCountdown)
     }
 

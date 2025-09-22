@@ -9,29 +9,21 @@
 import SwiftUI
 
 struct TourIndexView: View {
-    @State var data: Async<[Tour]> = .loading
+    @StateObject private var viewModel = TourIndexViewModel()
 
     var body: some View {
-        VStack {
-            switch data {
-            case .success(let tours):
-                TourIndexLoadedView(tours: tours)
-            case .loading:
-                LoadingView()
-            default:
-                EmptyView()
+        ScrollView {
+            LazyVStack {
+                switch viewModel.data {
+                case .success(let tours):
+                    TourIndexLoadedView(tours: tours)
+                default:
+                    LoadingView()
+                }
             }
         }
-        .navigationBarTitle("navigation_Tours", displayMode: .large)
         .background(Color.background)
-        .onAppear(perform: fetchTours)
-    }
-
-    func fetchTours() {
-        guard !data.isSuccess else { return }
-        Tour.fetchAll { tours in
-            self.data = .success(tours)
-        }
+        .navigationTitle("navigation_Tours")
     }
 }
 
@@ -40,22 +32,19 @@ struct TourIndexLoadedView: View {
 
     var body: some View {
         ScrollView {
-            LazyVStack {
-                ForEach(tours, id: \.id) { tour in
-                    NavigationLink(
-                        destination:
-                            TourDetailView(tour: tour)
-                              .navigationBarTitle(tour.name, displayMode: .inline)
-                    ) {
-                        WideTitleCard(
-                            title: tour.name,
-                            imageURL: tour.mediaLargeURL
-                        )
-                    }
-                    .buttonStyle(OpaqueButtonStyle())
+            ForEach(tours) { tour in
+                NavigationLink(destination:
+                        TourDetailView(tour: tour)
+                          .navigationBarTitle(tour.name, displayMode: .inline)
+                ) {
+                    WideTitleCard(
+                        title: tour.name,
+                        imageURL: tour.mediaLargeURL
+                    )
                 }
+                .buttonStyle(OpaqueButtonStyle())
             }
-            .padding()
         }
+        .padding()
     }
 }
