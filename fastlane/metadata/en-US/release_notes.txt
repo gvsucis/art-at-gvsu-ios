@@ -1,1 +1,1 @@
-Adds new multimedia row to artwork detail page
+Refresh UI for iOS 26
