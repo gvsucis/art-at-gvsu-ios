@@ -52,6 +52,3 @@ app_store_connect_api_key.json
 GoogleService-Info.plist
 Secrets.plist
 .env.default
-
-## Ignore Ruby config
-.bundle/config
