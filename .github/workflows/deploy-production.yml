@@ -23,9 +23,6 @@ jobs:
         run: |
           git config user.name "GV Bot"
           git config user.email "137118308+gvcis-bot@users.noreply.github.com"
-      - name: Debug config
-        run: |
-          cat .bundle/config
       - name: Bump version
         run: make bump-version
       - name: Deploy App to Production
