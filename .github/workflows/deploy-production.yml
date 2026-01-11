@@ -4,16 +4,16 @@ on: workflow_dispatch
 
 jobs:
   production:
-    runs-on: macos-26
+    runs-on: macos-latest
     permissions:
       contents: write
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v6.0.1
         with:
           ssh-key: ${{ secrets.RELEASE_SSH_KEY }}
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.262.0
+        uses: ruby/setup-ruby@v1.281.0
         with:
           bundler-cache: true
       - uses: actions/setup-python@v6.0.0

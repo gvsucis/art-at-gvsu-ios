@@ -30,8 +30,8 @@ extension Artist {
         })
     }
 
-    static func search(term: String, transport: Transport = URLSession.shared, _ completion: @escaping ([Artist]) -> Void) {
-        ArtGalleryClient.init(transport: transport).searchEntities(term: term, completion: { result in
+    static func search(term: String, limit: Int? = nil, transport: Transport = URLSession.shared, _ completion: @escaping ([Artist]) -> Void) {
+        ArtGalleryClient.init(transport: transport).searchEntities(term: term, limit: limit, completion: { result in
             switch result {
             case .success(let result):
                 if let result = result {

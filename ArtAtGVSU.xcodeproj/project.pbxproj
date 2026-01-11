@@ -45,6 +45,8 @@
 		36CA5DA12CB1DC3600B00E69 /* Web in Frameworks */ = {isa = PBXBuildFile; productRef = 36CA5DA02CB1DC3600B00E69 /* Web */; };
 		36D643052ADC8FAF00104838 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D643042ADC8FAF00104838 /* GoogleService-Info.plist */; };
 		36EE2A7E2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */; };
+		77F3E6BB7A185DAAE5879D16 /* SearchArtistResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E93182B9AC8CC35094A40A /* SearchArtistResultsView.swift */; };
+		7EC2BE4E19AE2315EBE27C47 /* SearchArtworkResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33A82D56849AF75341CB88A /* SearchArtworkResultsView.swift */; };
 		8A00C61726501F4800A591C2 /* LocationIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61626501F4800A591C2 /* LocationIndexView.swift */; };
 		8A00C61B26502C9900A591C2 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61A26502C9900A591C2 /* Location.swift */; };
 		8A00C61D26502E3000A591C2 /* LocationSearchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */; };
@@ -144,6 +146,7 @@
 		D22803501C7A588B008B630A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D228034F1C7A588B008B630A /* Assets.xcassets */; };
 		D254BAB01C83963F0066AF00 /* ArtworkDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254BAAF1C83963F0066AF00 /* ArtworkDetailController.swift */; };
 		D2CD74FA1DDE05F5008D01E3 /* AVReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CD74F91DDE05F5008D01E3 /* AVReachability.swift */; };
+		FDE56626225104F142B58050 /* SearchResultCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D179688896F6008DA01A76D /* SearchResultCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -221,6 +224,7 @@
 		36C001632E6F3F3800B44850 /* TourIndexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourIndexViewModel.swift; sourceTree = "<group>"; };
 		36D643042ADC8FAF00104838 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36EE2A7D2AE5BEF400ABB8D3 /* FavoritesEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesEmptyView.swift; sourceTree = "<group>"; };
+		7D179688896F6008DA01A76D /* SearchResultCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchResultCard.swift; sourceTree = "<group>"; };
 		8A00C61626501F4800A591C2 /* LocationIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationIndexView.swift; sourceTree = "<group>"; };
 		8A00C61A26502C9900A591C2 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8A00C61C26502E3000A591C2 /* LocationSearchDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchDetail.swift; sourceTree = "<group>"; };
@@ -315,7 +319,9 @@
 		8AFEF16E263DDA0800835F6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8AFEF16F263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		8AFEF170263DDA0800835F6D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		93E93182B9AC8CC35094A40A /* SearchArtistResultsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchArtistResultsView.swift; sourceTree = "<group>"; };
 		9E05669528AD4384009D0C8C /* ARAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetViewController.swift; sourceTree = "<group>"; };
+		B33A82D56849AF75341CB88A /* SearchArtworkResultsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SearchArtworkResultsView.swift; sourceTree = "<group>"; };
 		C4C3141C28FD9E9800538B99 /* ARAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAsset.swift; sourceTree = "<group>"; };
 		C4CEC60F29019E43007440BA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D22803421C7A588B008B630A /* ArtAtGVSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtAtGVSU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,8 +362,11 @@
 				368DA6312DF7A1BA004E27EF /* VisionSearch */,
 				3641523D2B1A5AB200300301 /* QRCodeReader.swift */,
 				36830F9C2B1A5F87009304B8 /* QRCodeReaderButton.swift */,
+				93E93182B9AC8CC35094A40A /* SearchArtistResultsView.swift */,
+				B33A82D56849AF75341CB88A /* SearchArtworkResultsView.swift */,
 				8A010ECA26B7756800EEFAF1 /* SearchIndexModel.swift */,
 				8A010EC626B762FF00EEFAF1 /* SearchIndexView.swift */,
+				7D179688896F6008DA01A76D /* SearchResultCard.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -713,7 +722,7 @@
 				8AADE709265DCE43005D86F0 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				8A6468772A94473F008487A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8A659EE12A47778A00214141 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */,
+				36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Web" */,
 			);
 			productRefGroup = D22803431C7A588B008B630A /* Products */;
 			projectDirPath = "";
@@ -883,9 +892,12 @@
 				36830F9D2B1A5F87009304B8 /* QRCodeReaderButton.swift in Sources */,
 				8AC76C47265976C000F76221 /* RelatedObjectsParsing.swift in Sources */,
 				8A9F2BC1265DD79300C40F2F /* RemoteImage.swift in Sources */,
+				77F3E6BB7A185DAAE5879D16 /* SearchArtistResultsView.swift in Sources */,
+				7EC2BE4E19AE2315EBE27C47 /* SearchArtworkResultsView.swift in Sources */,
 				8A010ECB26B7756800EEFAF1 /* SearchIndexModel.swift in Sources */,
 				8A010EC726B762FF00EEFAF1 /* SearchIndexView.swift in Sources */,
 				368DA63E2DF7A1BD004E27EF /* SearchResponse.swift in Sources */,
+				FDE56626225104F142B58050 /* SearchResultCard.swift in Sources */,
 				8A9F2BD72664296400C40F2F /* SettingsView.swift in Sources */,
 				8ACF0C9C26C2029600358673 /* ShareFavorites.swift in Sources */,
 				8A3E55A72623E59A009E9BFA /* String+Parsing.swift in Sources */,
@@ -1262,7 +1274,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Modules/Web" */ = {
+		36CA5D9F2CB1DC3600B00E69 /* XCLocalSwiftPackageReference "Web" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Modules/Web;
 		};

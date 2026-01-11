@@ -2,7 +2,8 @@
 
 ## Build and Development
 
-- `make ci-test` will run all tests via Fastlane.
+- `make test` will run all tests via Fastlane.
+- Run `./scripts/sort-xcode-project-file.sh` to sort the .xcodeproj entries. When adding new files, ensure their references are also added.
 
 ## Project Architecture
 
