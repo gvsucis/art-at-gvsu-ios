@@ -27,22 +27,18 @@ struct SearchIndexView: View {
             }
         }
         .searchable(text: $viewModel.query)
-        .searchScopes($viewModel.scope) {
-            Text(translate("search_filter_Artworks")).tag(SearchScope.artworks)
-            Text(translate("search_filter_Artists")).tag(SearchScope.artists)
-        }
     }
 }
 
 struct SearchIndexLoadedView: View {
-    var searchResults: [SearchResult]
+    var searchResults: UnifiedSearchResults
     var query: String
 
     var body: some View {
         VStack {
-            if query != "" && searchResults.count > 0 {
-                SearchIndexListView(searchResults: searchResults)
-            } else if query != "" {
+            if !query.isEmpty && !searchResults.isEmpty {
+                SearchIndexResultsView(searchResults: searchResults, query: query)
+            } else if !query.isEmpty {
                 SearchIndexNoResultsView()
             } else {
                 SearchIndexEmptyView()
@@ -51,59 +47,109 @@ struct SearchIndexLoadedView: View {
     }
 }
 
-
-struct SearchIndexListView: View {
-    var searchResults: [SearchResult]
+struct SearchIndexResultsView: View {
+    var searchResults: UnifiedSearchResults
+    var query: String
 
     var body: some View {
-        List(searchResults) { searchResult in
-            VStack {
-                switch searchResult {
-                    case .artist(let artist):
-                        SearchIndexArtistListItem(artist: artist)
-                    case .artwork(let artwork):
-                        SearchIndexArtworkListItem(artwork: artwork)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                if !searchResults.artworksPreview.isEmpty {
+                    SearchResultSection(
+                        title: translate("search_filter_Artworks"),
+                        showSeeMore: searchResults.hasMoreArtworks
+                    ) {
+                        SearchArtworkResultsView(query: query)
+                    } content: {
+                        SearchArtworksRow(artworks: searchResults.artworksPreview)
                     }
+                }
+
+                if !searchResults.artistsPreview.isEmpty {
+                    SearchResultSection(
+                        title: translate("search_filter_Artists"),
+                        showSeeMore: searchResults.hasMoreArtists
+                    ) {
+                        SearchArtistResultsView(query: query)
+                    } content: {
+                        SearchArtistsRow(artists: searchResults.artistsPreview)
+                    }
+                }
             }
-        }
-        .listStyle(PlainListStyle())
-    }
-}
-
-struct SearchIndexArtistListItem: View {
-    var artist: Artist
-
-    var body: some View {
-        NavigationLink(destination: ArtistDetailView(id: artist.id)) {
-            SearchIndexListItem(title: artist.name, subtitle: artist.lifeDatesSummary)
+            .padding(.vertical)
         }
     }
 }
 
-struct SearchIndexArtworkListItem: View {
-    var artwork: Artwork
+struct SearchResultSection<Destination: View, Content: View>: View {
+    let title: String
+    let showSeeMore: Bool
+    let destination: () -> Destination
+    let content: () -> Content
 
     var body: some View {
-        Button(action: { ArtworkDetailController.present(artworkID: artwork.id) }) {
-            SearchIndexListItem(title: artwork.name, subtitle: artwork.artistName)
-        }
-        .buttonStyle(PlainButtonStyle())
-    }
-}
-
-struct SearchIndexListItem: View {
-    var title: String
-    var subtitle: String
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .foregroundColor(Color(UIColor.label))
-            if subtitle != "" {
-                Text(subtitle)
-                    .foregroundColor(Color(UIColor.secondaryLabel))
-                    .font(.subheadline)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                Spacer()
+                if showSeeMore {
+                    NavigationLink(destination: destination()) {
+                        Text("search_seeMore")
+                            .font(.subheadline)
+                    }
+                }
             }
+            .padding(.horizontal)
+
+            content()
+        }
+    }
+}
+
+struct SearchArtworksRow: View {
+    let artworks: [Artwork]
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(artworks, id: \.id) { artwork in
+                    Button(action: {
+                        ArtworkDetailController.present(artworkID: artwork.id)
+                    }) {
+                        SearchResultCard(
+                            title: artwork.name,
+                            subtitle: artwork.artistName,
+                            imageURL: artwork.thumbnail
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            .padding(.horizontal)
+        }
+    }
+}
+
+struct SearchArtistsRow: View {
+    let artists: [Artist]
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(artists, id: \.id) { artist in
+                    NavigationLink(destination: ArtistDetailView(id: artist.id)) {
+                        SearchArtistCard(
+                            name: artist.name,
+                            lifeDates: artist.lifeDatesSummary,
+                            imageURL: artist.relatedWorks.first?.thumbnail
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            .padding(.horizontal)
         }
     }
 }

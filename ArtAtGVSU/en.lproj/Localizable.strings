@@ -90,6 +90,7 @@
 "search_filter_Artists" = "Artists";
 "search_filter_Artworks" = "Artworks";
 "search_noResultsFound" = "No results found";
+"search_seeMore" = "See more";
 
 /** Vision Search */
 "vision_search_call_to_action" = "Take a photo to find\nsimilar artworks";

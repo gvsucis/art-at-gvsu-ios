@@ -57,8 +57,8 @@ extension Artwork {
         })
     }
 
-    static func search(term: String, transport: Transport = URLSession.shared, _ completion: @escaping ([Artwork]) -> Void) {
-        ArtGalleryClient.init(transport: transport).searchObjects(term: term, completion: { result in
+    static func search(term: String, limit: Int? = nil, transport: Transport = URLSession.shared, _ completion: @escaping ([Artwork]) -> Void) {
+        ArtGalleryClient.init(transport: transport).searchObjects(term: term, limit: limit, completion: { result in
             switch result {
             case .success(let result):
                 if let result = result {

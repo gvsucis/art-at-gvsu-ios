@@ -46,12 +46,20 @@ struct ArtGalleryClient {
         sendRequest(resource: "tourstopsDetail?id=\(id)", completion: completion)
     }
 
-    func searchEntities(term: String, completion:  @escaping (Result<EntitySearchResult?, Error>) -> Void) {
-        sendRequest(resource: "entitySearch?q=\(sanitizeTerm(term))", completion: completion)
+    func searchEntities(term: String, limit: Int? = nil, completion:  @escaping (Result<EntitySearchResult?, Error>) -> Void) {
+        var resource = "entitySearch?q=\(sanitizeTerm(term))"
+        if let limit = limit {
+            resource += "&limit=\(limit)"
+        }
+        sendRequest(resource: resource, completion: completion)
     }
 
-    func searchObjects(term: String, completion:  @escaping (Result<ObjectSearchResult?, Error>) -> Void) {
-        sendRequest(resource: "objectSearch?q=\(sanitizeTerm(term))", completion: completion)
+    func searchObjects(term: String, limit: Int? = nil, completion:  @escaping (Result<ObjectSearchResult?, Error>) -> Void) {
+        var resource = "objectSearch?q=\(sanitizeTerm(term))"
+        if let limit = limit {
+            resource += "&limit=\(limit)"
+        }
+        sendRequest(resource: resource, completion: completion)
     }
 
     func downloadFile(_ url: URL, path: URL, completion: @escaping (URL, Error?) -> Void) {

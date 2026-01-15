@@ -56,3 +56,6 @@
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "rDI-Q7-Tyn"; */
 "detail" = "Detalle";
+
+/** Search */
+"search_seeMore" = "Ver más";
