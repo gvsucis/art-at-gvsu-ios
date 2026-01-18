@@ -1,1 +1,1 @@
-Refresh UI for iOS 26
+Update search page to include quick results for both artists and artworks
