@@ -107,7 +107,7 @@ func shareFavorites() {
         activityItems: [exportFavorites()],
         applicationActivities: nil
     )
-    if let root = UIApplication.shared.windows.first?.rootViewController{
+    if let root = UIApplication.shared.keyWindowRootViewController {
         root.present(activity, animated: true, completion: nil)
     }
 }

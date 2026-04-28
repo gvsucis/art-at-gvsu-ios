@@ -3,16 +3,20 @@ import MapKit
 
 struct MapSnapshot: View {
     var coordinate: CLLocationCoordinate2D
-    
-    @State private var region = MKCoordinateRegion()
+
+    private var region: MKCoordinateRegion {
+        MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
+        )
+    }
 
     var body: some View {
         Map(
-            coordinateRegion: $region,
-            interactionModes: .init(),
-            annotationItems: [Annotation(coordinate: coordinate)]
-        ) { annotation in
-            MapPin(coordinate: annotation.coordinate)
+            initialPosition: .region(region),
+            interactionModes: []
+        ) {
+            Marker("", coordinate: coordinate)
         }
         .onTapGesture {
             MKMapItem(placemark: MKPlacemark(coordinate: coordinate))
@@ -22,23 +26,7 @@ struct MapSnapshot: View {
                     ]
             )
         }
-        .onAppear {
-            setRegion(coordinate)
-        }
     }
-
-    private func setRegion(_ coordinate: CLLocationCoordinate2D) {
-        region = MKCoordinateRegion(
-            center: coordinate,
-            span: MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
-        )
-    }
-}
-
-struct Annotation: Identifiable {
-    var id = UUID()
-
-    let coordinate: CLLocationCoordinate2D
 }
 
 struct MapSnapshot_Previews: PreviewProvider {

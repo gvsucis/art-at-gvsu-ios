@@ -179,7 +179,7 @@ class ARAssetViewController: UIViewController, ARSCNViewDelegate {
             return
         }
 
-        let asset = AVAsset(url: assetVideo)
+        let asset = AVURLAsset(url: assetVideo)
         let playerItem = AVPlayerItem(asset: asset)
         videoPlayer = AVQueuePlayer(playerItem: playerItem)
         videoLooper = AVPlayerLooper(player: videoPlayer, templateItem: playerItem)
