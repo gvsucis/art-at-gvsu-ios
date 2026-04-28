@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'fastlane', '~>2.230.0'
+gem 'fastlane', '~>2.233.0'
 gem "rexml", "~> 3.4.4"
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
