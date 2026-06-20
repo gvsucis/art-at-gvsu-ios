@@ -122,7 +122,9 @@ final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
             return
         }
 
-        let anchorEntity = AnchorEntity(anchor: imageAnchor)
+        // Track the ARKit anchor by identifier — RealityKit keeps the entity's
+        // transform in sync with the detected image as it updates.
+        let anchorEntity = AnchorEntity(.anchor(identifier: imageAnchor.identifier))
         let entity = ARVideoEntity(physicalSize: imageAnchor.referenceImage.physicalSize)
         entity.anchorEntity = anchorEntity
         anchorEntity.addChild(entity.modelEntity)
