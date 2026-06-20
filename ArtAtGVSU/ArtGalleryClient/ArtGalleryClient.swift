@@ -26,6 +26,10 @@ struct ArtGalleryClient {
         sendRequest(resource: "objectDetail?id=\(id)", completion: completion)
     }
 
+    func fetchARArt(completion: @escaping (Result<ObjectSearchResult?, Error>) -> Void) {
+        sendRequest(resource: "objectSearch?q=featured_ar", completion: completion)
+    }
+
     func fetchEntityDetail(id: String, completion:  @escaping (Result<EntityDetail?, Error>) -> Void) {
         sendRequest(resource: "entityDetail?id=\(id)", completion: completion)
     }

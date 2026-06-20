@@ -11,7 +11,7 @@ import SwiftUI
 struct ArtworkDetailTitleRow: View {
     let artwork: Artwork
     @ObservedObject var favorite: FavoritesStore
-    @State private var isFetchingARAsset = false
+    @State private var isPresentingAR = false
 
     var body: some View {
         HStack(alignment: .top) {
@@ -30,23 +30,11 @@ struct ArtworkDetailTitleRow: View {
                 if artwork.arDigitalAsset != nil {
                     Spacer()
                         .frame(width: 16)
-                    Button(action: {
-                        isFetchingARAsset = true
-
-                        Task {
-                            await showARAsset()
-                            isFetchingARAsset = false
-                        }
-                    }) {
-                        if isFetchingARAsset {
-                            ProgressView()
-                        } else {
-                            Image(systemName: "camera.viewfinder")
-                                .foregroundColor(Color(UIColor.label))
-                                .imageScale(.large)
-                        }
+                    Button(action: { isPresentingAR = true }) {
+                        Image(systemName: "camera.viewfinder")
+                            .foregroundColor(Color(UIColor.label))
+                            .imageScale(.large)
                     }
-                    .disabled(isFetchingARAsset)
                     .frame(width: 24)
                 }
                 Spacer()
@@ -58,6 +46,9 @@ struct ArtworkDetailTitleRow: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $isPresentingAR) {
+            ARExperienceView()
+        }
     }
 
     func shareArtwork() {
@@ -68,36 +59,6 @@ struct ArtworkDetailTitleRow: View {
         if let root = UIApplication.shared.keyWindowRootViewController {
             root.present(activity, animated: true, completion: nil)
         }
-    }
-
-    func showARAsset() async {
-        guard let arAssetViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ARAssetVC") as? ARAssetViewController else {
-            fatalError("ARAssetViewController not implemented in storyboard")
-        }
-
-        let asset = try! await ARAsset.getARResources(artwork: artwork)
-
-        arAssetViewController.arAsset = asset
-        arAssetViewController.modalPresentationStyle = .fullScreen
-
-        if let root = UIApplication.shared.keyWindowRootViewController {
-            root.present(arAssetViewController, animated: true, completion: nil)
-        }
-    }
-}
-
-struct ARAssetVCView: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> ARAssetViewController {
-
-        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ARAssetVC") as? ARAssetViewController else {
-            fatalError("ARAssetViewController not implemented in storyboard")
-        }
-
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: ARAssetViewController, context: Context) {
     }
 }
 
