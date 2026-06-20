@@ -11,6 +11,7 @@ import SwiftUI
 struct FeaturedIndexView: View {
     let collection: ArtworkCollection
     @State var data: Async<[Artwork]> = .uninitialized
+    @State private var isPresentingAR = false
 
     var body: some View {
         VStack {
@@ -27,6 +28,19 @@ struct FeaturedIndexView: View {
         .background(Color.background)
         .navigationTitle(LocalizedStringKey(title))
         .toolbarTitleDisplayMode(.inline)
+        .toolbar {
+            if collection == .featuredAR {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: { isPresentingAR = true }) {
+                        Image(systemName: "camera.viewfinder")
+                    }
+                    .accessibilityLabel("View in augmented reality")
+                }
+            }
+        }
+        .fullScreenCover(isPresented: $isPresentingAR) {
+            ARExperienceView()
+        }
     }
 
     private func fetchArtworks() {
