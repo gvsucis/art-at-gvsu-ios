@@ -19,7 +19,8 @@ class ARArtworkTest: XCTestCase {
         "object_id": 2329,
         "object_name": "Calavera de Don Quijote",
         "media_medium_url": "https://artgallery.gvsu.edu/admin/media/medium.jpg",
-        "ar_digital_asset": "https://artgallery.gvsu.edu/admin/media/video.mp4"
+        "ar_digital_asset": "https://artgallery.gvsu.edu/admin/media/video.mp4",
+        "ar_3d_file_usdz": "https://artgallery.gvsu.edu/admin/media/model.usdz"
       },
       "9999": {
         "access": "1",
@@ -42,6 +43,10 @@ class ARArtworkTest: XCTestCase {
         XCTAssertEqual(
             arArtworks.first?.arDigitalAsset,
             URL(string: "https://artgallery.gvsu.edu/admin/media/video.mp4")
+        )
+        XCTAssertEqual(
+            arArtworks.first?.arModel,
+            URL(string: "https://artgallery.gvsu.edu/admin/media/model.usdz")
         )
     }
 }

@@ -60,37 +60,42 @@ struct ARViewContainer: UIViewRepresentable {
     }
 }
 
-/// ARKit session delegate that materializes a looping video for each detected
-/// artwork and bounds memory with an LRU of active videos.
+/// ARKit session delegate that materializes a looping video plus optional model
+/// for each detected artwork and bounds memory with an LRU of active overlays.
 final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
     weak var arView: ARView?
 
     private let artworksByImageName: [String: Artwork]
-    private let maxActiveVideos: Int
+    /// Caps how many artwork overlays (each a video plane and any model) stay
+    /// live at once; the rest are torn down least-recently-seen first.
+    private let maxActiveOverlays: Int
 
-    private var entities: [UUID: ARVideoEntity] = [:]
+    private var entities: [UUID: ARArtworkEntity] = [:]
     /// Anchor identifiers ordered least- to most-recently seen.
     private var lruOrder: [UUID] = []
 
-    init(artworksByImageName: [String: Artwork], maxActiveVideos: Int = 4) {
+    init(artworksByImageName: [String: Artwork], maxActiveOverlays: Int = 4) {
         self.artworksByImageName = artworksByImageName
-        self.maxActiveVideos = maxActiveVideos
+        self.maxActiveOverlays = maxActiveOverlays
     }
 
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for case let imageAnchor as ARImageAnchor in anchors {
-            addVideo(for: imageAnchor)
+            addOverlay(for: imageAnchor)
         }
     }
 
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
         for case let imageAnchor as ARImageAnchor in anchors {
-            guard let entity = entities[imageAnchor.identifier] else { continue }
-            if imageAnchor.isTracked {
-                markRecentlyUsed(imageAnchor.identifier)
-                entity.play()
-            } else {
-                entity.pause()
+            if let entity = entities[imageAnchor.identifier] {
+                if imageAnchor.isTracked {
+                    markRecentlyUsed(imageAnchor.identifier)
+                }
+                entity.setTracked(imageAnchor.isTracked)
+            } else if imageAnchor.isTracked {
+                // The overlay was LRU-evicted while away; ARKit keeps the anchor and
+                // won't fire didAdd again, so rebuild it here on re-approach.
+                addOverlay(for: imageAnchor)
             }
         }
     }
@@ -111,9 +116,9 @@ final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
         lruOrder.removeAll()
     }
 
-    // MARK: - Video lifecycle
+    // MARK: - Overlay lifecycle
 
-    private func addVideo(for imageAnchor: ARImageAnchor) {
+    private func addOverlay(for imageAnchor: ARImageAnchor) {
         guard let arView,
               entities[imageAnchor.identifier] == nil,
               let name = imageAnchor.referenceImage.name,
@@ -125,9 +130,9 @@ final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
         // Track the ARKit anchor by identifier — RealityKit keeps the entity's
         // transform in sync with the detected image as it updates.
         let anchorEntity = AnchorEntity(.anchor(identifier: imageAnchor.identifier))
-        let entity = ARVideoEntity(physicalSize: imageAnchor.referenceImage.physicalSize)
+        let entity = ARArtworkEntity(physicalSize: imageAnchor.referenceImage.physicalSize)
         entity.anchorEntity = anchorEntity
-        anchorEntity.addChild(entity.modelEntity)
+        anchorEntity.addChild(entity.videoPlane)
         arView.scene.addAnchor(anchorEntity)
 
         entities[imageAnchor.identifier] = entity
@@ -137,9 +142,21 @@ final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
         Task { @MainActor in
             do {
                 let localURL = try await ARMediaCache.shared.localURL(for: videoURL)
-                entity.start(url: localURL)
+                entity.startVideo(url: localURL)
             } catch {
                 logger.error("Failed to load AR video for \(artwork.id, privacy: .public): \(error.localizedDescription, privacy: .public)")
+            }
+        }
+
+        guard let modelURL = artwork.arModel else { return }
+
+        Task { @MainActor in
+            do {
+                let localURL = try await ARMediaCache.shared.localURL(for: modelURL)
+                let model = try await Entity(contentsOf: localURL)
+                entity.setModel(model)
+            } catch {
+                logger.error("Failed to load AR model for \(artwork.id, privacy: .public): \(error.localizedDescription, privacy: .public)")
             }
         }
     }
@@ -150,7 +167,7 @@ final class ARVideoSessionCoordinator: NSObject, ARSessionDelegate, Logging {
     }
 
     private func evictIfNeeded() {
-        while lruOrder.count > maxActiveVideos {
+        while lruOrder.count > maxActiveOverlays {
             let victim = lruOrder.removeFirst()
             entities[victim]?.teardown()
             entities[victim] = nil

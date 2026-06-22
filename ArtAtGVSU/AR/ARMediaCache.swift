@@ -23,16 +23,33 @@ actor ARMediaCache {
     private let fileManager = FileManager.default
     private let session: URLSession
     private let directoryName = "ARMedia"
-    private let maxCachedVideos: Int
+    private let maxCachedFiles: Int
+    /// In-flight downloads keyed by remote URL. Lets concurrent callers for the
+    /// same asset (e.g. the video and the model loading at once, or a re-detected
+    /// anchor) share one download instead of racing past the file-exists check
+    /// across the `await` and each downloading the same file.
+    private var inFlight: [URL: Task<URL, Error>] = [:]
 
-    init(session: URLSession = .shared, maxCachedVideos: Int = 8) {
+    init(session: URLSession = .shared, maxCachedFiles: Int = 8) {
         self.session = session
-        self.maxCachedVideos = maxCachedVideos
+        self.maxCachedFiles = maxCachedFiles
     }
 
     /// A local file URL for `remoteURL`, downloading it if it isn't cached.
     /// Re-touches the file so the most-recently-viewed videos survive eviction.
     func localURL(for remoteURL: URL) async throws -> URL {
+        if let existing = inFlight[remoteURL] {
+            return try await existing.value
+        }
+        // Register the task synchronously, before any suspension, so a second
+        // caller arriving mid-download finds it here and awaits the same work.
+        let task = Task { try await fetch(remoteURL) }
+        inFlight[remoteURL] = task
+        defer { inFlight[remoteURL] = nil }
+        return try await task.value
+    }
+
+    private func fetch(_ remoteURL: URL) async throws -> URL {
         let directory = try cacheDirectory()
         let destination = directory.appendingPathComponent(remoteURL.lastPathComponent)
 
@@ -93,12 +110,12 @@ actor ARMediaCache {
         let directory = try cacheDirectory()
         let key: URLResourceKey = .contentModificationDateKey
         let files = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [key])
-        guard files.count > maxCachedVideos else { return }
+        guard files.count > maxCachedFiles else { return }
 
         let sorted = files.sorted { lhs, rhs in
             modificationDate(of: lhs) < modificationDate(of: rhs)
         }
-        for file in sorted.prefix(files.count - maxCachedVideos) {
+        for file in sorted.prefix(files.count - maxCachedFiles) {
             try? fileManager.removeItem(at: file)
         }
     }

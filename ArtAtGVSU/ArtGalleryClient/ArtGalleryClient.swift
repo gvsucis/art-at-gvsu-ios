@@ -27,7 +27,10 @@ struct ArtGalleryClient {
     }
 
     func fetchARArt(completion: @escaping (Result<ObjectSearchResult?, Error>) -> Void) {
-        sendRequest(resource: "objectSearch?q=featured_ar", completion: completion)
+        // Hard-coded for now: bypass CollectiveAccess's Simple API response cache so
+        // re-uploaded AR assets show up immediately instead of waiting out the
+        // server's ~1h cache TTL. Revisit (e.g. a real toggle) once asset churn settles.
+        sendRequest(resource: "objectSearch?q=featured_ar&noCache=1", completion: completion)
     }
 
     func fetchEntityDetail(id: String, completion:  @escaping (Result<EntityDetail?, Error>) -> Void) {

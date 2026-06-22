@@ -37,6 +37,7 @@ struct Artwork: Equatable {
     var mediaLarge: URL?
     var thumbnail: URL?
     var arDigitalAsset: URL?
+    var arModel: URL?
 
     static func == (lhs: Artwork, rhs: Artwork) -> Bool {
         lhs.id == rhs.id
@@ -93,7 +94,8 @@ extension Artwork {
             mediaMedium: optionalURL(objectDetail.media_medium_url),
             mediaLarge: optionalURL(objectDetail.media_large_url),
             thumbnail: optionalURL(objectDetail.media_small_url),
-            arDigitalAsset: optionalURL(objectDetail.ar_digital_asset)
+            arDigitalAsset: optionalURL(objectDetail.ar_digital_asset),
+            arModel: optionalURL(objectDetail.ar_3d_file_usdz)
         )
     }
 
