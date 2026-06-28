@@ -14,27 +14,23 @@ struct VisionCameraButton: View {
   @State var capturedImage: UIImage? = nil
 
   var body: some View {
-      ZStack {
-          NavigationLink(
-              destination: VisionResultView(capturedImage: capturedImage)
-                  .navigationBarTitleDisplayMode(.inline)
-                  .navigationTitle("navigation_SimilarWorks"),
-              isActive: $showVisionResult
-          ) {
-              EmptyView()
-          }
-          Button(action: {
-            isPresentingCamera = true
-          }) {
-            Image(systemName: "camera")
-          }.fullScreenCover(isPresented: $isPresentingCamera) {
-              VisionSearchCamera(capturedImage: $capturedImage)
-                  .onDisappear {
-                      if capturedImage != nil {
-                          showVisionResult = true
-                      }
+      Button(action: {
+          isPresentingCamera = true
+      }) {
+          Image(systemName: "camera")
+      }
+      .fullScreenCover(isPresented: $isPresentingCamera) {
+          VisionSearchCamera(capturedImage: $capturedImage)
+              .onDisappear {
+                  if capturedImage != nil {
+                      showVisionResult = true
                   }
-          }
+              }
+      }
+      .navigationDestination(isPresented: $showVisionResult) {
+          VisionResultView(capturedImage: capturedImage)
+              .navigationBarTitleDisplayMode(.inline)
+              .navigationTitle("navigation_SimilarWorks")
       }
   }
 }

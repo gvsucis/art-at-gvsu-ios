@@ -123,9 +123,8 @@ extension DownloadSession: URLSessionTaskDelegate {
 					cacheRedirect(oldURLString, newURLString)
 				}
 			}
-
-			completionHandler(request)
 		}
+		completionHandler(request)
 	}
 }
 
@@ -135,7 +134,7 @@ extension DownloadSession: URLSessionDataDelegate {
 
 	nonisolated public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
 
-		MainActor.assumeIsolated {
+		let disposition: URLSession.ResponseDisposition = MainActor.assumeIsolated {
 
 			tasksInProgress.insert(dataTask)
 			tasksPending.remove(dataTask)
@@ -145,27 +144,23 @@ extension DownloadSession: URLSessionDataDelegate {
 			info?.urlResponse = response
 
 			if response.forcedStatusCode == HTTPResponseCode.notModified {
-
 				if let identifier {
 					delegate?.downloadSession(self, didReceiveNotModifiedResponse: response, identifier: identifier)
 				}
-				completionHandler(.allow)
-				return
+				return .allow
 			}
 
 			if !response.statusIsOK {
-
 				if let identifier {
 					delegate?.downloadSession(self, didReceiveUnexpectedResponse: response, identifier: identifier)
 				}
-				completionHandler(.cancel)
-				return
+				return .cancel
 			}
 
 			addDataTaskFromQueueIfNecessary()
-
-			completionHandler(.allow)
+			return .allow
 		}
+		completionHandler(disposition)
 	}
 
 	nonisolated public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {

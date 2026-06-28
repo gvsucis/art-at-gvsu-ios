@@ -38,8 +38,8 @@ struct TourDetailView: View {
                         .frame(height: 144)
                         .padding(8)
                     }
-                    .onChange(of: selected) {
-                        if let stop = $0?.tourStop {
+                    .onChange(of: selected) { _, newValue in
+                        if let stop = newValue?.tourStop {
                             withAnimation {
                                 reader.scrollTo(stop.id, anchor: .center)
                             }

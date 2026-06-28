@@ -65,7 +65,7 @@ struct ArtworkDetailTitleRow: View {
             activityItems: [Links.artworkDetail(id: "\(artwork.id)")],
             applicationActivities: nil
         )
-        if let root = UIApplication.shared.windows.first?.rootViewController{
+        if let root = UIApplication.shared.keyWindowRootViewController {
             root.present(activity, animated: true, completion: nil)
         }
     }
@@ -80,7 +80,7 @@ struct ArtworkDetailTitleRow: View {
         arAssetViewController.arAsset = asset
         arAssetViewController.modalPresentationStyle = .fullScreen
 
-        if let root = UIApplication.shared.windows.first?.rootViewController{
+        if let root = UIApplication.shared.keyWindowRootViewController {
             root.present(arAssetViewController, animated: true, completion: nil)
         }
     }
