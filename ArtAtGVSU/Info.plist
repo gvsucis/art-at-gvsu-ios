@@ -44,7 +44,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to scan artwork barcodes.</string>
+	<string>Used to scan artwork and view it in augmented reality.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>By accessing your location, this app can find you and help you navigate to your favorite Artwork.</string>
 	<key>UIFileSharingEnabled</key>

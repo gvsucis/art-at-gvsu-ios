@@ -48,7 +48,6 @@ struct ObjectDetail: Codable, Equatable {
     var rg_xlarge: String? = ""
     var ar_digital_asset: String? = ""
     var ar_3d_file_usdz: String? = ""
-    var ar_coordinates: String? = ""
 
     enum CodingKeys: String, CodingKey {
         case ok
@@ -91,6 +90,5 @@ struct ObjectDetail: Codable, Equatable {
         case rg_xlarge = "rg_x-large"
         case ar_digital_asset
         case ar_3d_file_usdz
-        case ar_coordinates
     }
 }

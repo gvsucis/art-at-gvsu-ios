@@ -8,7 +8,6 @@
 import Foundation
 import MapKit
 import Web
-import SceneKit
 
 struct SecondaryMedia: Equatable {
     let url: URL
@@ -38,7 +37,7 @@ struct Artwork: Equatable {
     var mediaLarge: URL?
     var thumbnail: URL?
     var arDigitalAsset: URL?
-    var arTransform: [Model] = []
+    var arModel: URL?
 
     static func == (lhs: Artwork, rhs: Artwork) -> Bool {
         lhs.id == rhs.id
@@ -96,52 +95,25 @@ extension Artwork {
             mediaLarge: optionalURL(objectDetail.media_large_url),
             thumbnail: optionalURL(objectDetail.media_small_url),
             arDigitalAsset: optionalURL(objectDetail.ar_digital_asset),
-            arTransform: getModel(file: objectDetail.ar_3d_file_usdz, matrix: objectDetail.ar_coordinates)
+            arModel: optionalURL(objectDetail.ar_3d_file_usdz)
         )
     }
 
-    static func getModel(file: String?, matrix: String?) -> [Model] {
-        guard let file = file else {
-            return []
-        }
-
-        var m: [Float] = []
-
-        var t: SCNMatrix4? = nil
-
-        do {
-            m = try mapToARCoordinates(String(matrix ?? ""))
-            if m.count == 16 {
-                t = SCNMatrix4(
-                    m11: m[0], m12: m[1], m13: m[2], m14: m[3],
-                    m21: m[4], m22: m[5], m23: m[6], m24: m[7],
-                    m31: m[8], m32: m[9], m33: m[10], m34: m[11],
-                    m41: m[12], m42: m[13], m43: m[14], m44: m[15]
-                )
+    /// Fetches every artwork in the gallery's AR set (`objectSearch?q=featured_ar`),
+    /// keeping only those that actually carry a playable AR video.
+    static func fetchARArtworks(transport: Transport = URLSession.shared) async -> [Artwork] {
+        await withCheckedContinuation { continuation in
+            ArtGalleryClient(transport: transport).fetchARArt { result in
+                switch result {
+                case .success(let searchResult):
+                    let artworks = (searchResult?.objectDetails ?? [])
+                        .map { convertFrom(objectDetail: $0) }
+                        .filter { $0.arDigitalAsset != nil }
+                    continuation.resume(returning: artworks)
+                case .failure:
+                    continuation.resume(returning: [])
+                }
             }
-        } catch {
-            return []
         }
-
-        guard let url = URL(string: file) else {
-            return []
-        }
-
-        return [
-            Model(
-                url: url,
-                metadata: Metadata(
-                    transform: t
-                )
-            )
-        ]
     }
-}
-
-func mapToARCoordinates(_ target: String) throws -> [Float]  {
-    return target
-        .replacingOccurrences(of: "[", with: "")
-        .replacingOccurrences(of: "]", with: "")
-        .split(separator: ",")
-        .map { Float($0)! }
 }
