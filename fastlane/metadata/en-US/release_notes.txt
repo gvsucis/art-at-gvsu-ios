@@ -1,1 +1,1 @@
-Update search page to include quick results for both artists and artworks
+Update AR feature to display multiple artworks at any time
