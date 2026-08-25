@@ -7,12 +7,12 @@ jobs:
     runs-on: macos-26
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v7.0.1
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.281.0
+        uses: ruby/setup-ruby@v1.321.0
         with:
           bundler-cache: true
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.0.0
       - name: Setup build dependencies
         run: make py-deps
       - name: Bump beta version
